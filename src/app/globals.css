@@ -6,9 +6,26 @@
 .dark {
   --radius: 0.875rem;
 
-  /* October & Aurora Dark Palette — Midnight Aurora */
-  --bg-base: #07060b;
-  --background: #07060b;
+  /* Aqua Flow & Liquid Glass Dark Palette */
+  --bg-base: #061014;
+  --background: #061014;
+
+  /* Aqua Flow Liquid Glass Tokens (Dark Mode) */
+  --aqua-deep: #0a3940;
+  --aqua-soft: #1b6870;
+  --aqua-muted: #0e5963;
+  --cyan-muted: #4faeb5;
+  --blue-cool: #3b82a0;
+  --lavender-subtle: #6475b8;
+  --aqua-surface: #081a20;
+
+  --flow-grad-1: radial-gradient(ellipse 65% 55% at 45% 45%, rgba(27, 104, 112, 0.38) 0%, rgba(10, 57, 64, 0.24) 42%, rgba(6, 16, 20, 0.08) 65%, transparent 75%);
+  --flow-grad-2: radial-gradient(ellipse 60% 55% at 55% 45%, rgba(59, 130, 160, 0.30) 0%, rgba(79, 174, 181, 0.16) 45%, transparent 72%);
+  --flow-grad-3: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(14, 89, 99, 0.25) 0%, rgba(100, 117, 184, 0.08) 38%, rgba(10, 57, 64, 0.10) 60%, transparent 75%);
+  --flow-grad-4: radial-gradient(ellipse 75% 55% at 50% 55%, rgba(10, 57, 64, 0.36) 0%, rgba(8, 26, 32, 0.22) 45%, transparent 75%);
+  --flow-grad-refraction: radial-gradient(ellipse 70% 45% at 40% 40%, rgba(79, 174, 181, 0.12) 0%, rgba(165, 243, 252, 0.04) 35%, transparent 70%);
+  --flow-vignette: radial-gradient(ellipse 85% 80% at 50% 50%, transparent 35%, rgba(6, 16, 20, 0.6) 100%);
+  --flow-noise-opacity: 0.022;
   --surface: #0b0b0f;
   --surface-secondary: #111116;
   --surface-elevated: #15151b;
@@ -60,10 +77,10 @@
   --star-color: rgba(255, 255, 255, 0.55);
   --noise-opacity: 0.03;
 
-  /* Ambient gradient stops */
-  --ambient-1: rgba(232, 121, 249, 0.04);
-  --ambient-2: rgba(167, 139, 250, 0.03);
-  --ambient-3: rgba(141, 235, 255, 0.025);
+  /* Ambient gradient stops (Aqua Flow) */
+  --ambient-1: rgba(14, 89, 99, 0.06);
+  --ambient-2: rgba(59, 130, 160, 0.05);
+  --ambient-3: rgba(79, 174, 181, 0.04);
 
   /* Logo gradient — refined white-to-orchid */
   --gradient-logo: linear-gradient(120deg, #ffffff 0%, #f4a7c7 40%, #e879f9 75%, #a78bfa 100%);
@@ -114,9 +131,26 @@
 .light {
   --radius: 0.875rem;
 
-  /* October & Aurora Light Palette — Warm Dawn */
-  --bg-base: #faf9f7;
-  --background: #faf9f7;
+  /* Aqua Flow Liquid Glass Light Palette — Frosted Aqua Glass */
+  --bg-base: #f5fafa;
+  --background: #f5fafa;
+
+  /* Aqua Flow Liquid Glass Tokens (Light Mode — Frosted Aqua Glass) */
+  --aqua-deep: #bce8eb;
+  --aqua-soft: #a7e0e5;
+  --aqua-muted: #c4eceb;
+  --cyan-muted: #4faeb5;
+  --blue-cool: #b3d6e8;
+  --lavender-subtle: #d8ddf2;
+  --aqua-surface: #edf7f8;
+
+  --flow-grad-1: radial-gradient(ellipse 65% 55% at 45% 45%, rgba(167, 224, 229, 0.32) 0%, rgba(200, 239, 242, 0.18) 45%, transparent 70%);
+  --flow-grad-2: radial-gradient(ellipse 60% 55% at 55% 45%, rgba(179, 214, 232, 0.28) 0%, rgba(207, 235, 242, 0.15) 45%, transparent 72%);
+  --flow-grad-3: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(196, 236, 235, 0.22) 0%, rgba(216, 221, 242, 0.10) 40%, transparent 70%);
+  --flow-grad-4: radial-gradient(ellipse 75% 55% at 50% 55%, rgba(188, 232, 235, 0.25) 0%, rgba(225, 244, 246, 0.12) 50%, transparent 75%);
+  --flow-grad-refraction: radial-gradient(ellipse 70% 45% at 40% 40%, rgba(79, 174, 181, 0.12) 0%, rgba(255, 255, 255, 0.5) 35%, transparent 70%);
+  --flow-vignette: radial-gradient(ellipse 85% 80% at 50% 50%, transparent 40%, rgba(245, 250, 250, 0.45) 100%);
+  --flow-noise-opacity: 0.012;
   --surface: #ffffff;
   --surface-secondary: #f3f1ef;
   --surface-elevated: #ffffff;
@@ -169,9 +203,10 @@
   --star-color: rgba(180, 130, 160, 0.18);
   --noise-opacity: 0.015;
 
-  --ambient-1: rgba(217, 70, 239, 0.025);
-  --ambient-2: rgba(139, 92, 246, 0.02);
-  --ambient-3: rgba(14, 165, 233, 0.02);
+  /* Ambient gradient stops (Frosted Aqua Light) */
+  --ambient-1: rgba(167, 224, 229, 0.045);
+  --ambient-2: rgba(179, 214, 232, 0.035);
+  --ambient-3: rgba(207, 235, 242, 0.03);
 
   /* Logo gradient — charcoal to orchid */
   --gradient-logo: linear-gradient(120deg, #171717 0%, #3f3f46 45%, #d946ef 85%, #8b5cf6 100%);
@@ -268,7 +303,7 @@
   }
 
   html.intro-active {
-    background-color: #050505 !important;
+    background-color: #061014 !important;
   }
 
   html.intro-active body {
@@ -742,6 +777,49 @@
 .animate-moon-rise { animation: moon-rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .animate-sparkle { animation: star-sparkle 2.4s ease-in-out infinite; }
 
+/* ---------- Aqua Flow Liquid Glass Keyframes ---------- */
+
+@keyframes aqua-flow-1 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(32px, -24px) scale(1.05); }
+  100% { transform: translate(-18px, 18px) scale(0.98); }
+}
+
+@keyframes aqua-flow-2 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(-28px, 28px) scale(1.04); }
+  100% { transform: translate(22px, -16px) scale(0.97); }
+}
+
+@keyframes aqua-flow-3 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(24px, 24px) scale(1.06); }
+  100% { transform: translate(-22px, -18px) scale(1.01); }
+}
+
+@keyframes aqua-flow-4 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(-18px, -26px) scale(1.03); }
+  100% { transform: translate(24px, 14px) scale(0.98); }
+}
+
+@keyframes aqua-refraction {
+  0%, 100% {
+    opacity: 0.04;
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: translate(14px, -10px) scale(1.06);
+  }
+}
+
+.animate-aqua-flow-1 { animation: aqua-flow-1 34s ease-in-out infinite alternate; }
+.animate-aqua-flow-2 { animation: aqua-flow-2 42s ease-in-out infinite alternate; }
+.animate-aqua-flow-3 { animation: aqua-flow-3 38s ease-in-out infinite alternate; }
+.animate-aqua-flow-4 { animation: aqua-flow-4 46s ease-in-out infinite alternate; }
+.animate-aqua-refraction { animation: aqua-refraction 28s ease-in-out infinite alternate; }
+
 @keyframes aurora-drift-1 {
   0%, 100% { transform: translate(0px, 0px) scale(1); }
   50% { transform: translate(50px, -35px) scale(1.12); }
@@ -844,9 +922,9 @@
   position: absolute;
   inset: -20%;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(255, 182, 217, 0.04), transparent 60%),
-    radial-gradient(ellipse 70% 50% at 80% 80%, rgba(141, 235, 255, 0.03), transparent 55%),
-    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(248, 168, 200, 0.02), transparent 65%);
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(14, 89, 99, 0.05), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 80% 80%, rgba(59, 130, 160, 0.04), transparent 55%),
+    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(79, 174, 181, 0.03), transparent 65%);
   filter: blur(80px);
   animation: cinematic-drift 30s ease-in-out infinite alternate;
 }
@@ -917,8 +995,16 @@
     transition-duration: 0.01ms !important;
   }
 
-  .cinematic-bg::before {
-    animation: none;
+  .cinematic-bg::before,
+  .animate-aqua-flow-1,
+  .animate-aqua-flow-2,
+  .animate-aqua-flow-3,
+  .animate-aqua-flow-4,
+  .animate-aqua-refraction,
+  .animate-aurora-1,
+  .animate-aurora-2,
+  .animate-aurora-3 {
+    animation: none !important;
   }
 
   .cursor-glow {
