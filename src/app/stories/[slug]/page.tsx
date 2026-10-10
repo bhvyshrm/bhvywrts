@@ -808,7 +808,7 @@ export default function StoryPage({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: readingMode ? 0 : 0.2, ease: [0.16, 1, 0.3, 1] }}
             className={cn(
-              "reading-glass rounded-[32px] md:rounded-[36px] p-6 sm:p-9 md:p-14 shadow-2xl border border-white/20 relative",
+              "reading-glass rounded-[32px] md:rounded-[36px] p-6 sm:p-9 md:p-14 border border-white/80 dark:border-white/20 shadow-[0_20px_50px_rgba(10,57,64,0.06)] dark:shadow-2xl relative",
               readingMode && "bg-black/80 dark:bg-black/85"
             )}
           >
@@ -836,7 +836,7 @@ export default function StoryPage({
                   type="button"
                   onClick={() => setFeedbackOpen(true)}
                   aria-label="Write to the Author"
-                  className="h-11 px-4 rounded-full border border-white/20 bg-black/35 backdrop-blur-md text-white/85 hover:text-white hover:bg-white/20 hover:border-white/35 flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95 text-xs font-[var(--font-grotesk)] font-medium"
+                  className="h-11 px-4 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text-2)] hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95 text-xs font-[var(--font-grotesk)] font-medium backdrop-blur-md"
                 >
                   <Mail className="w-4 h-4 text-[var(--orchid)]" />
                   <span>Write to the Author</span>

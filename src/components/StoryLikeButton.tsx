@@ -122,7 +122,7 @@ export function StoryLikeButton({
               : "border border-white/20 bg-black/35 backdrop-blur-md text-white/85 hover:text-white hover:bg-white/20 hover:border-white/35 active:scale-95"
             : liked
               ? "border border-[#ff3366]/50 text-[#ff3366] bg-[#ff3366]/15 shadow-[0_0_14px_rgba(255,51,102,0.25)]"
-              : "border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text-2)] hover:text-foreground hover:bg-white/10 active:scale-95",
+              : "border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text-2)] hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 active:scale-95",
           className
         )}
       >

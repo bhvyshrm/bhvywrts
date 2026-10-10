@@ -147,7 +147,7 @@ export function FeedbackDialog({
             role="dialog"
             aria-modal="true"
             aria-labelledby="feedback-dialog-title"
-            className="relative z-10 w-full max-w-lg glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 border border-white/20 shadow-2xl overflow-y-auto max-h-[92vh]"
+            className="relative z-10 w-full max-w-lg glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 border border-white/80 dark:border-white/20 shadow-[0_24px_60px_rgba(10,57,64,0.12)] dark:shadow-2xl overflow-y-auto max-h-[92vh]"
           >
             {/* Close Button */}
             <button
@@ -155,7 +155,7 @@ export function FeedbackDialog({
               onClick={handleClose}
               disabled={submitting}
               aria-label="Close dialog"
-              className="absolute top-5 right-5 w-9 h-9 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] flex items-center justify-center text-[var(--muted)] hover:text-foreground hover:bg-white/10 transition-colors cursor-pointer disabled:opacity-40"
+              className="absolute top-5 right-5 w-9 h-9 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] flex items-center justify-center text-[var(--muted)] hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer disabled:opacity-40"
             >
               <X className="w-4 h-4" />
             </button>
@@ -215,7 +215,7 @@ export function FeedbackDialog({
 
                   {/* Contextual Story Information */}
                   {storyTitle && (
-                    <div className="mt-4 p-3 rounded-2xl bg-white/[0.04] border border-white/10 text-xs text-[var(--text-2)] font-[var(--font-grotesk)] flex items-center gap-2">
+                    <div className="mt-4 p-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-xs text-[var(--text-2)] font-[var(--font-grotesk)] flex items-center gap-2">
                       <span className="text-[var(--muted)] uppercase tracking-wider text-[10px] shrink-0 font-medium">
                         Story:
                       </span>
@@ -258,7 +258,7 @@ export function FeedbackDialog({
                       onChange={(e) => setName(e.target.value)}
                       placeholder="What should I call you?"
                       disabled={submitting}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/[0.04] border border-white/15 text-sm text-foreground placeholder:text-[var(--muted)] outline-none focus:border-[var(--orchid)]/60 focus:bg-white/[0.06] transition-all font-[var(--font-grotesk)]"
+                      className="w-full px-4 py-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/15 text-sm text-foreground placeholder:text-[var(--muted)] outline-none focus:border-[var(--orchid)]/60 focus:bg-white/60 dark:focus:bg-white/[0.06] transition-all font-[var(--font-grotesk)]"
                     />
                   </div>
 
@@ -284,7 +284,7 @@ export function FeedbackDialog({
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Share your thoughts about this story..."
                       disabled={submitting}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/[0.04] border border-white/15 text-sm text-foreground placeholder:text-[var(--muted)] outline-none focus:border-[var(--orchid)]/60 focus:bg-white/[0.06] transition-all resize-none font-[var(--font-source-serif)] leading-relaxed"
+                      className="w-full px-4 py-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/15 text-sm text-foreground placeholder:text-[var(--muted)] outline-none focus:border-[var(--orchid)]/60 focus:bg-white/60 dark:focus:bg-white/[0.06] transition-all resize-none font-[var(--font-source-serif)] leading-relaxed"
                     />
                   </div>
 
