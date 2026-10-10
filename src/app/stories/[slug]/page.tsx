@@ -25,6 +25,7 @@ import { Footer } from "@/components/Footer"
 import { ReadingProgress } from "@/components/ReadingProgress"
 import { FloatingWriteButton } from "@/components/FloatingWriteButton"
 import { StoryCard } from "@/components/StoryCard"
+import { StoryLikeButton } from "@/components/StoryLikeButton"
 import { formatDate, cn } from "@/lib/utils"
 import { supabase } from "@/lib/supabase-client"
 import { useAmbientStore } from "@/lib/store"
@@ -536,7 +537,7 @@ function StoryHero({
 
             {/* 44px Circular Glass Action Buttons */}
             <div className="flex items-center gap-2">
-              <FavoriteButton id={story.id} hero />
+              <StoryLikeButton slug={story.slug} hero />
               <BookmarkButton id={story.id} hero />
               <ShareButton title={story.title} slug={story.slug} hero />
               {!readingMode && (
@@ -812,6 +813,11 @@ export default function StoryPage({
               <p className="font-[var(--font-great-vibes)] text-3.5xl md:text-4.5xl gradient-logo mt-4">
                 Bhavya
               </p>
+
+              {/* Story Appreciation Bar */}
+              <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-3">
+                <StoryLikeButton slug={story.slug} />
+              </div>
             </div>
           </motion.article>
 

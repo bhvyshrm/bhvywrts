@@ -19,6 +19,7 @@ interface StoryCardProps {
     createdAt: string
     readingTime?: number | null
     content?: string | null
+    likeCount?: number | null
   }
   index?: number
   large?: boolean
@@ -226,13 +227,19 @@ export function StoryCard({ story, index = 0, large = false }: StoryCardProps) {
                     aria-label={favorites.isIn ? "Remove from favorites" : "Add to favorites"}
                     aria-pressed={favorites.isIn}
                     className={cn(
-                      "w-7 h-7 rounded-full flex items-center justify-center transition-colors cursor-pointer",
+                      "h-7 rounded-full flex items-center justify-center gap-1 transition-colors cursor-pointer",
+                      typeof story.likeCount === "number" && story.likeCount > 0 ? "px-2" : "w-7",
                       favorites.isIn
-                        ? "text-[var(--orchid)] bg-white/20"
+                        ? "text-[#ff3366] bg-[#ff3366]/20"
                         : "text-white/70 hover:text-white hover:bg-white/10"
                     )}
                   >
                     <Heart className="w-3 h-3" fill={favorites.isIn ? "currentColor" : "none"} />
+                    {typeof story.likeCount === "number" && story.likeCount > 0 && (
+                      <span className="text-[10px] font-[var(--font-grotesk)] tabular-nums font-medium">
+                        {story.likeCount}
+                      </span>
+                    )}
                   </button>
 
                   <button
