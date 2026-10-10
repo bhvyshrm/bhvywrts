@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { sb } from "@/lib/supabase"
+import { sb, likeDb } from "@/lib/supabase"
 import { isAuthenticated } from "@/lib/auth"
 import bcrypt from "bcryptjs"
 
@@ -46,14 +46,33 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
+  // Efficient batch aggregation of like counts without N+1 queries
+  const likeCountMap = new Map<string, number>()
+  try {
+    const { data: allLikes, error: likeError } = await likeDb().select("storyId")
+    if (!likeError && allLikes) {
+      for (const item of allLikes) {
+        if (item.storyId) {
+          likeCountMap.set(item.storyId, (likeCountMap.get(item.storyId) || 0) + 1)
+        }
+      }
+    }
+  } catch {
+    // Graceful fallback if StoryLike table is not yet initialized
+  }
+
   // Never expose passwordHash in public responses.
   // For locked stories, do not expose story content in the list.
   const safeStories = stories?.map((s: Record<string, unknown>) => {
     const { passwordHash: _hash, ...safe } = s
-    if (safe.isLocked) {
-      return { ...safe, content: "" }
+    const enriched = {
+      ...safe,
+      likeCount: likeCountMap.get(String(safe.id)) || 0,
     }
-    return safe
+    if (safe.isLocked) {
+      return { ...enriched, content: "" }
+    }
+    return enriched
   })
 
   return NextResponse.json(safeStories || [])
