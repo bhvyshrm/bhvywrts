@@ -13,8 +13,37 @@ export interface Story {
   featured: boolean
   wordCount: number
   readingTime: number
+  likeCount?: number
   createdAt: string
   updatedAt: string
+}
+
+export interface StoryLike {
+  id: string
+  storyId: string
+  readerId: string
+  createdAt: string
+}
+
+export type FeedbackStatus = "unread" | "read" | "archived"
+
+export interface StoryFeedback {
+  id: string
+  storyId: string | null
+  storyTitle: string | null
+  storySlug: string | null
+  name: string
+  message: string
+  status: FeedbackStatus
+  createdAt: string
+  readAt?: string | null
+}
+
+export interface FeedbackCounts {
+  total: number
+  unread: number
+  read: number
+  archived: number
 }
 
 export interface EditorMetrics {
@@ -25,3 +54,4 @@ export interface EditorMetrics {
 }
 
 export type WritingMode = "normal" | "focus" | "typewriter" | "zen" | "fullscreen"
+

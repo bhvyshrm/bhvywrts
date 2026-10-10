@@ -24,3 +24,12 @@ export function sb() {
 export function visitDb() {
   return getSupabaseAdmin().from("Visit") as any
 }
+
+export function likeDb() {
+  return getSupabaseAdmin().from("StoryLike") as any
+}
+
+export function feedbackDb() {
+  return getSupabaseAdmin().from("StoryFeedback") as any
+}
+
