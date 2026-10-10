@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --test tests/engagement.test.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.16",
