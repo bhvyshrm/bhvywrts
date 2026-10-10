@@ -19,6 +19,7 @@ import {
   Loader2,
   Check,
   Sparkles,
+  Mail,
 } from "lucide-react"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
@@ -26,6 +27,7 @@ import { ReadingProgress } from "@/components/ReadingProgress"
 import { FloatingWriteButton } from "@/components/FloatingWriteButton"
 import { StoryCard } from "@/components/StoryCard"
 import { StoryLikeButton } from "@/components/StoryLikeButton"
+import { FeedbackDialog } from "@/components/FeedbackDialog"
 import { formatDate, cn } from "@/lib/utils"
 import { supabase } from "@/lib/supabase-client"
 import { useAmbientStore } from "@/lib/store"
@@ -391,11 +393,13 @@ function StoryHero({
   tags,
   readingMode,
   onReadingMode,
+  onOpenFeedback,
 }: {
   story: Story
   tags: ReturnType<typeof parseStoryTags>
   readingMode: boolean
   onReadingMode: () => void
+  onOpenFeedback: () => void
 }) {
   const [imageLoaded, setImageLoaded] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
@@ -539,6 +543,15 @@ function StoryHero({
             <div className="flex items-center gap-2">
               <StoryLikeButton slug={story.slug} hero />
               <BookmarkButton id={story.id} hero />
+              <button
+                type="button"
+                onClick={onOpenFeedback}
+                aria-label="Write to the Author"
+                title="Write to the Author"
+                className="w-11 h-11 rounded-full border border-white/20 bg-black/35 backdrop-blur-md text-white/85 hover:text-white hover:bg-white/20 hover:border-white/35 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95"
+              >
+                <Mail className="w-4 h-4 text-[var(--orchid)]" />
+              </button>
               <ShareButton title={story.title} slug={story.slug} hero />
               {!readingMode && (
                 <button
@@ -572,6 +585,7 @@ export default function StoryPage({
   const [allStories, setAllStories] = useState<Story[]>([])
   const [loading, setLoading] = useState(true)
   const [readingMode, setReadingMode] = useState(false)
+  const [feedbackOpen, setFeedbackOpen] = useState(false)
   const setBgImage = useAmbientStore((s) => s.setBgImage)
 
   const loadStory = useCallback(async () => {
@@ -764,6 +778,7 @@ export default function StoryPage({
             tags={tags}
             readingMode={readingMode}
             onReadingMode={handleReadingMode}
+            onOpenFeedback={() => setFeedbackOpen(true)}
           />
         ) : (
           /* Minimal Header in Reading Mode */
@@ -814,9 +829,18 @@ export default function StoryPage({
                 Bhavya
               </p>
 
-              {/* Story Appreciation Bar */}
+              {/* Story Appreciation & Private Writer Feedback Bar */}
               <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-3">
                 <StoryLikeButton slug={story.slug} />
+                <button
+                  type="button"
+                  onClick={() => setFeedbackOpen(true)}
+                  aria-label="Write to the Author"
+                  className="h-11 px-4 rounded-full border border-white/20 bg-black/35 backdrop-blur-md text-white/85 hover:text-white hover:bg-white/20 hover:border-white/35 flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95 text-xs font-[var(--font-grotesk)] font-medium"
+                >
+                  <Mail className="w-4 h-4 text-[var(--orchid)]" />
+                  <span>Write to the Author</span>
+                </button>
               </div>
             </div>
           </motion.article>
@@ -931,6 +955,14 @@ export default function StoryPage({
             </div>
           </section>
         )}
+
+        {/* Private Feedback Dialog */}
+        <FeedbackDialog
+          isOpen={feedbackOpen}
+          onClose={() => setFeedbackOpen(false)}
+          storyTitle={story.title}
+          storySlug={story.slug}
+        />
       </main>
 
       {!readingMode && (
