@@ -87,7 +87,7 @@ export function StoryCard({ story, index = 0, large = false }: StoryCardProps) {
         <div
           className={cn(
             "relative overflow-hidden rounded-[28px] border border-[var(--glass-border)] h-full flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            "group-hover:-translate-y-1 group-hover:border-white/30 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.45)]",
+            "group-hover:-translate-y-1 group-hover:border-white/80 dark:group-hover:border-white/30 group-hover:shadow-[0_20px_50px_rgba(10,57,64,0.12)] dark:group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.45)]",
             large ? "aspect-[16/10] min-h-[380px]" : "aspect-[4/5] min-h-[420px]"
           )}
         >

@@ -130,7 +130,7 @@ export function HomeContent() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden rounded-[32px] md:rounded-[36px] glass-strong border border-white/20 shadow-2xl p-6 sm:p-8 md:p-12 lg:p-14"
+                className="relative overflow-hidden rounded-[32px] md:rounded-[36px] glass-strong border border-white/80 dark:border-white/20 shadow-[0_20px_50px_rgba(10,57,64,0.06)] dark:shadow-2xl p-6 sm:p-8 md:p-12 lg:p-14"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                   {/* Left Column: Story Identity & Controls */}
@@ -166,7 +166,7 @@ export function HomeContent() {
 
                     {/* Glass Capsule Row: Date · Reading Time · Chips */}
                     <div className="pt-2">
-                      <div className="inline-flex flex-wrap items-center gap-3 px-4 py-2 rounded-full glass border border-white/15 text-xs text-[var(--text-3)] font-[var(--font-grotesk)]">
+                      <div className="inline-flex flex-wrap items-center gap-3 px-4 py-2 rounded-full glass border border-white/80 dark:border-white/15 text-xs text-[var(--text-3)] font-[var(--font-grotesk)] shadow-xs dark:shadow-none">
                         <span className="flex items-center gap-1.5">
                           <Calendar className="w-3.5 h-3.5 text-[var(--orchid)]" />
                           <span>{formatDate(latestStory.createdAt)}</span>
@@ -205,7 +205,7 @@ export function HomeContent() {
                   <div className="lg:col-span-5">
                     <Link
                       href={`/stories/${latestStory.slug}`}
-                      className="group block relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5] rounded-[28px] overflow-hidden border border-white/25 shadow-xl"
+                      className="group block relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5] rounded-[28px] overflow-hidden border border-white/80 dark:border-white/25 shadow-xl"
                     >
                       {latestStory.coverImage ? (
                         <img
@@ -227,7 +227,7 @@ export function HomeContent() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
                       {/* Floating circular arrow on photo */}
-                      <div className="absolute bottom-4 right-4 w-11 h-11 rounded-full glass-strong border border-white/30 text-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
+                      <div className="absolute bottom-4 right-4 w-11 h-11 rounded-full glass-strong border border-white/80 dark:border-white/30 text-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
                         <ArrowUpRight className="w-5 h-5" />
                       </div>
                     </Link>
@@ -246,7 +246,7 @@ export function HomeContent() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 rounded-full glass border border-white/20 shadow-lg text-xs sm:text-sm text-[var(--text-2)] font-[var(--font-source-serif)] italic backdrop-blur-xl"
+              className="inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 rounded-full glass border border-white/80 dark:border-white/20 shadow-[0_8px_30px_rgba(10,57,64,0.05)] dark:shadow-lg text-xs sm:text-sm text-[var(--text-2)] font-[var(--font-source-serif)] italic backdrop-blur-xl"
             >
               <Feather className="w-4 h-4 text-[var(--orchid)] shrink-0" />
               <span>A digital journal of stories, thoughts and things left unsaid.</span>
@@ -360,7 +360,7 @@ export function HomeContent() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="glass-strong rounded-full px-4 sm:px-6 py-2.5 sm:py-3 border border-white/25 shadow-[0_16px_50px_rgba(0,0,0,0.5)] flex items-center justify-between gap-3 sm:gap-4 backdrop-blur-2xl"
+                className="glass-strong rounded-full px-4 sm:px-6 py-2.5 sm:py-3 border border-white/80 dark:border-white/25 shadow-[0_12px_40px_rgba(10,57,64,0.08)] dark:shadow-[0_16px_50px_rgba(0,0,0,0.5)] flex items-center justify-between gap-3 sm:gap-4 backdrop-blur-2xl"
               >
                 {/* Left: Avatar / Monogram */}
                 <Link
