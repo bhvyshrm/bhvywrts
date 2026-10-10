@@ -118,7 +118,7 @@ export function Navbar() {
           <nav
             className={cn(
               "relative flex items-center justify-between h-14 md:h-[58px] px-3 md:px-5 rounded-full transition-all duration-300",
-              "glass-pill shadow-[0_12px_40px_rgba(0,0,0,0.35)]",
+              "glass-pill shadow-[0_12px_36px_rgba(10,57,64,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.35)]",
               isStoryPage && "bg-[var(--glass-fill)]/70 backdrop-blur-xl opacity-90 hover:opacity-100"
             )}
           >
@@ -128,7 +128,7 @@ export function Navbar() {
             </div>
 
             {/* Center — Desktop Nav Links with Sliding Highlight */}
-            <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-black/10 dark:bg-white/5 border border-white/5">
+            <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-black/[0.04] dark:bg-white/5 border border-black/[0.05] dark:border-white/5">
               {NAV_ITEMS.map((item) => {
                 const active = isActive(item.href)
                 return (
@@ -146,7 +146,7 @@ export function Navbar() {
                     {active && (
                       <motion.span
                         layoutId="navbar-pill-active"
-                        className="absolute inset-0 rounded-full bg-white/20 dark:bg-white/15 border border-white/25 shadow-sm -z-10"
+                        className="absolute inset-0 rounded-full bg-white/80 dark:bg-white/15 border border-white/90 dark:border-white/25 shadow-xs dark:shadow-sm -z-10"
                         transition={{ type: "spring", stiffness: 450, damping: 35 }}
                       />
                     )}
@@ -167,7 +167,7 @@ export function Navbar() {
                     href="/dashboard"
                     aria-label="Dashboard"
                     title="Dashboard"
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-full text-[var(--text-2)] hover:text-foreground hover:bg-white/10 transition-colors"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full text-[var(--text-2)] hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
                   >
                     <LayoutDashboard className="w-3.5 h-3.5" />
                   </Link>
@@ -187,7 +187,7 @@ export function Navbar() {
                 onClick={() => setDrawerOpen(!drawerOpen)}
                 aria-label={drawerOpen ? "Close menu" : "Open menu"}
                 aria-expanded={drawerOpen}
-                className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text)] hover:bg-white/10 transition-colors cursor-pointer"
+                className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text)] hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer"
               >
                 {drawerOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
@@ -252,8 +252,8 @@ export function Navbar() {
                         className={cn(
                           "flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all font-[var(--font-grotesk)]",
                           active
-                            ? "bg-white/20 dark:bg-white/15 text-foreground font-semibold border border-white/20"
-                            : "text-[var(--text-2)] hover:text-foreground hover:bg-white/10"
+                            ? "bg-white/80 dark:bg-white/15 text-foreground font-semibold border border-white/90 dark:border-white/20 shadow-xs dark:shadow-none"
+                            : "text-[var(--text-2)] hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10"
                         )}
                       >
                         <span className="flex items-center gap-3">
@@ -272,7 +272,7 @@ export function Navbar() {
                     <Link
                       href="/dashboard"
                       onClick={() => setDrawerOpen(false)}
-                      className="flex-1 text-center py-2.5 rounded-xl border border-[var(--glass-border)] text-xs font-medium font-[var(--font-grotesk)] hover:bg-white/10 transition-colors"
+                      className="flex-1 text-center py-2.5 rounded-xl border border-[var(--glass-border)] text-xs font-medium font-[var(--font-grotesk)] hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
                     >
                       Dashboard
                     </Link>
