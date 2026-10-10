@@ -147,7 +147,7 @@ export function FeedbackDialog({
             role="dialog"
             aria-modal="true"
             aria-labelledby="feedback-dialog-title"
-            className="relative z-10 w-full max-w-lg glass-strong rounded-[32px] p-6 sm:p-8 border border-white/20 shadow-2xl overflow-hidden"
+            className="relative z-10 w-full max-w-lg glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-8 border border-white/20 shadow-2xl overflow-y-auto max-h-[92vh]"
           >
             {/* Close Button */}
             <button

@@ -985,7 +985,7 @@ export default function DashboardPage() {
 
               {/* Message Body (Rendered safely as plain text with preserved line breaks) */}
               <div className="my-5 flex-1 overflow-y-auto pr-1">
-                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-foreground font-[var(--font-source-serif)] text-sm sm:text-base leading-relaxed whitespace-pre-wrap selection:bg-[var(--orchid)]/20">
+                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-foreground font-[var(--font-source-serif)] text-sm sm:text-base leading-relaxed whitespace-pre-wrap break-words selection:bg-[var(--orchid)]/20">
                   {selectedFeedback.message}
                 </div>
               </div>
