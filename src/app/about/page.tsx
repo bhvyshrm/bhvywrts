@@ -63,8 +63,8 @@ export default function AboutPage() {
         />
       </div>
 
-      <main className="relative z-10 pt-28 md:pt-36 pb-16">
-        <div className="max-w-2xl mx-auto px-5 md:px-6">
+      <main id="main-content" className="relative z-10 pt-28 md:pt-36 pb-16">
+        <div className="max-w-3xl mx-auto px-5 sm:px-6 md:px-8">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}

@@ -57,8 +57,8 @@ export default function CollectionsPage() {
       <ReadingProgress />
       <Navbar />
 
-      <main className="relative z-10 pt-28 md:pt-36">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-20">
+      <main id="main-content" className="relative z-10 pt-28 md:pt-36">
+        <div className="max-w-[1560px] 2xl:max-w-[1740px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-20">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -77,8 +77,8 @@ export default function CollectionsPage() {
           </motion.div>
 
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-              {Array.from({ length: 4 }).map((_, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 xl:gap-8">
+              {Array.from({ length: 6 }).map((_, i) => (
                 <div key={i} className="h-80 rounded-[32px] skeleton border border-white/15" />
               ))}
             </div>
@@ -93,7 +93,7 @@ export default function CollectionsPage() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 xl:gap-8">
               {collections.map(({ collection, stories: colStories }, i) => {
                 const accent = COLLECTION_ACCENTS[collection] || "#e879f9"
                 const firstStory = colStories[0]

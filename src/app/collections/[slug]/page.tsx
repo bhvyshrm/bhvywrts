@@ -120,8 +120,8 @@ export default function CollectionPage({ params }: { params: Promise<{ slug: str
     <div className="relative min-h-screen">
       <ReadingProgress />
       <Navbar />
-      <main className="pt-32 md:pt-40">
-        <div className="max-w-7xl mx-auto px-5 md:px-8 pb-16">
+      <main id="main-content" className="pt-32 md:pt-40">
+        <div className="max-w-[1560px] 2xl:max-w-[1740px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-16">
           {!collection ? (
             <div className="text-center py-24 glass-card rounded-[32px] p-8 max-w-lg mx-auto">
               <Moon className="w-10 h-10 text-[var(--muted)] mx-auto mb-4 opacity-40" />
@@ -218,7 +218,7 @@ export default function CollectionPage({ params }: { params: Promise<{ slug: str
                                 {monthGroup.stories.length} {monthGroup.stories.length === 1 ? "story" : "stories"}
                               </span>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-7 xl:gap-8">
                               {monthGroup.stories.map((story, i) => (
                                 <StoryCard key={story.id} story={story} index={i} />
                               ))}
@@ -238,7 +238,7 @@ export default function CollectionPage({ params }: { params: Promise<{ slug: str
                         </h2>
                         <span className="h-px flex-1 bg-gradient-to-r from-[var(--border-strong)] to-transparent" />
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-7 xl:gap-8">
                         {grouped.undated.map((story, i) => (
                           <StoryCard key={story.id} story={story} index={i} />
                         ))}

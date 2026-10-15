@@ -111,28 +111,28 @@ export function HomeContent() {
       <Navbar />
 
       {loading ? (
-        <main className="min-h-screen pt-28 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto space-y-8">
+        <main id="main-content" className="min-h-screen pt-28 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-[1560px] 2xl:max-w-[1740px] mx-auto space-y-8">
           <div className="h-[70vh] rounded-[36px] skeleton" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-8">
             {Array.from({ length: 3 }).map((_, i) => (
               <div key={i} className="h-96 rounded-[28px] skeleton" />
             ))}
           </div>
         </main>
       ) : (
-        <main className="relative min-h-screen pt-24 md:pt-28 pb-28 space-y-16 md:space-y-24">
+        <main id="main-content" className="relative min-h-screen pt-24 md:pt-28 pb-28 space-y-16 md:space-y-24">
           {/* ========================================================= */}
           {/* 1. HERO: LARGE FROSTED-GLASS PANEL (NEWEST ENTRY)          */}
           {/* ========================================================= */}
           {latestStory && (
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-2 md:pt-4">
+            <section className="max-w-[1560px] 2xl:max-w-[1740px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-2 md:pt-4">
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden rounded-[32px] md:rounded-[36px] glass-strong border border-white/80 dark:border-white/20 shadow-[0_20px_50px_rgba(10,57,64,0.06)] dark:shadow-2xl p-6 sm:p-8 md:p-12 lg:p-14"
+                className="relative overflow-hidden rounded-[32px] md:rounded-[36px] glass-strong border border-white/80 dark:border-white/20 shadow-[0_20px_50px_rgba(10,57,64,0.06)] dark:shadow-2xl p-6 sm:p-8 md:p-12 lg:p-14 xl:p-16"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
                   {/* Left Column: Story Identity & Controls */}
                   <div className="lg:col-span-7 flex flex-col justify-center space-y-5">
                     {/* Single Eyebrow Badge (No duplicate) */}
@@ -150,7 +150,7 @@ export function HomeContent() {
                     </div>
 
                     {/* Big Serif Title */}
-                    <h1 className="font-[var(--font-instrument-serif)] text-3xl sm:text-4.5xl md:text-5.5xl lg:text-6xl text-foreground leading-[1.08] tracking-tight">
+                    <h1 className="font-[var(--font-instrument-serif)] text-3xl sm:text-4.5xl md:text-5.5xl lg:text-6xl xl:text-6.5xl text-foreground leading-[1.08] tracking-tight">
                       <Link
                         href={`/stories/${latestStory.slug}`}
                         className="hover:text-[var(--orchid)] transition-colors"
@@ -159,8 +159,8 @@ export function HomeContent() {
                       </Link>
                     </h1>
 
-                    {/* Subtitle / Excerpt clamped to 3 lines (No mid-word cut) */}
-                    <p className="text-sm sm:text-base md:text-[17px] text-[var(--text-2)] font-[var(--font-source-serif)] italic leading-relaxed line-clamp-3">
+                    {/* Subtitle / Excerpt clamped to 3 lines */}
+                    <p className="text-sm sm:text-base md:text-[17px] xl:text-[18px] text-[var(--text-2)] font-[var(--font-source-serif)] italic leading-relaxed line-clamp-3">
                       {latestStory.subtitle || cleanExcerpt(latestStory.excerpt)}
                     </p>
 
@@ -238,6 +238,98 @@ export function HomeContent() {
           )}
 
           {/* ========================================================= */}
+          {/* 2. START HERE: THREE EDITORIAL PATHS                      */}
+          {/* ========================================================= */}
+          <section className="max-w-[1560px] 2xl:max-w-[1740px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+            <div className="mb-6 md:mb-7 flex items-end justify-between">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.28em] text-[var(--orchid)] font-[var(--font-grotesk)] mb-1 font-medium">
+                  Begin Reading
+                </p>
+                <h2 className="text-2xl md:text-3.5xl text-foreground font-[var(--font-instrument-serif)] tracking-tight">
+                  Start Here
+                </h2>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 xl:gap-8">
+              {/* Path 1: New Here */}
+              <Link
+                href="/stories"
+                className="group glass-card rounded-[28px] p-6 sm:p-7 md:p-8 border border-[var(--glass-border)] hover:border-white/30 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-[var(--orchid)]/15 border border-[var(--orchid)]/30 flex items-center justify-center text-[var(--orchid)] mb-4">
+                    <Sparkles className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-[var(--font-instrument-serif)] text-2xl md:text-2.5xl text-foreground group-hover:text-[var(--orchid)] transition-colors">
+                    New here
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[var(--text-2)] mt-2 font-[var(--font-source-serif)] leading-relaxed italic">
+                    Selected introductory stories and reflections to discover the voice, themes, and rhythm of Bhavya Writes.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[var(--glass-border)] flex items-center justify-between text-xs font-[var(--font-grotesk)] text-[var(--orchid)] font-medium">
+                  <span>Explore introductions</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+
+              {/* Path 2: Read by mood */}
+              <div className="glass-card rounded-[28px] p-6 sm:p-7 md:p-8 border border-[var(--glass-border)] flex flex-col justify-between">
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-[var(--moon-glow)] border border-white/20 flex items-center justify-center text-[var(--soft-cyan)] mb-4">
+                    <BookOpen className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-[var(--font-instrument-serif)] text-2xl md:text-2.5xl text-foreground">
+                    Read by mood
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[var(--text-2)] mt-2 font-[var(--font-source-serif)] italic leading-relaxed">
+                    Step into an atmosphere curated by feeling:
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {["Thoughts", "Dreams", "Life", "Love", "Philosophy"].map((mood) => (
+                      <Link
+                        key={mood}
+                        href={`/stories?mood=${encodeURIComponent(mood.toLowerCase())}`}
+                        className="px-3 py-1.5 rounded-full text-xs font-[var(--font-grotesk)] glass border border-white/15 text-white/90 hover:text-white hover:border-[var(--orchid)]/60 hover:bg-white/10 transition-colors"
+                      >
+                        {mood}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[var(--glass-border)] flex items-center justify-between text-xs font-[var(--font-grotesk)] text-[var(--text-3)]">
+                  <span>Choose a mood</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </div>
+              </div>
+
+              {/* Path 3: Follow the journey */}
+              <Link
+                href="/writing-journey"
+                className="group glass-card rounded-[28px] p-6 sm:p-7 md:p-8 border border-[var(--glass-border)] hover:border-white/30 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-[var(--lavender)] mb-4">
+                    <Calendar className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-[var(--font-instrument-serif)] text-2xl md:text-2.5xl text-foreground group-hover:text-[var(--orchid)] transition-colors">
+                    Follow the journey
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[var(--text-2)] mt-2 font-[var(--font-source-serif)] leading-relaxed italic">
+                    A living timeline and seasonal rhythm of stories and reflections written under the moonlight.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[var(--glass-border)] flex items-center justify-between text-xs font-[var(--font-grotesk)] text-[var(--orchid)] font-medium">
+                  <span>View Writing Journey</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            </div>
+          </section>
+
+          {/* ========================================================= */}
           {/* 3. GLASS TAGLINE CAPSULE                                  */}
           {/* ========================================================= */}
           <section className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -254,10 +346,10 @@ export function HomeContent() {
           </section>
 
           {/* ========================================================= */}
-          {/* 2. ROW OF 3 TALL ROUNDED IMAGE CARDS (RECENT STORIES)      */}
+          {/* 4. RECENT STORIES (3 COLUMNS ON WIDE DESKTOP)              */}
           {/* ========================================================= */}
           {recentStories.length > 0 && (
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <section className="max-w-[1560px] 2xl:max-w-[1740px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
               <div className="flex items-end justify-between gap-4 mb-7 md:mb-9">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.28em] text-[var(--orchid)] font-[var(--font-grotesk)] mb-1.5 font-medium">
@@ -276,7 +368,7 @@ export function HomeContent() {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 xl:gap-8">
                 {recentStories.map((story, i) => (
                   <StoryCard key={story.id} story={story} index={i} />
                 ))}
@@ -285,10 +377,10 @@ export function HomeContent() {
           )}
 
           {/* ========================================================= */}
-          {/* COLLECTIONS PREVIEW                                       */}
+          {/* 5. FEATURED COLLECTIONS (3 COLUMNS ON WIDE DESKTOP)       */}
           {/* ========================================================= */}
           {collections.length > 0 && (
-            <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <section className="max-w-[1560px] 2xl:max-w-[1740px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
               <div className="flex items-end justify-between gap-4 mb-7 md:mb-9">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.28em] text-[var(--orchid)] font-[var(--font-grotesk)] mb-1.5 font-medium">
@@ -307,8 +399,8 @@ export function HomeContent() {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {collections.slice(0, 4).map(({ collection, stories: colStories }) => {
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 xl:gap-8">
+                {collections.slice(0, 3).map(({ collection, stories: colStories }) => {
                   const firstCover = colStories[0]?.coverImage
                   const accent = COLLECTION_ACCENTS[collection] || "var(--orchid)"
                   return (
@@ -349,7 +441,7 @@ export function HomeContent() {
                 })}
               </div>
             </section>
-          )}
+
 
           {/* ========================================================= */}
           {/* 4. BOTTOM GLASS BAR (THE REFERENCE'S BOTTOM BAR)          */}

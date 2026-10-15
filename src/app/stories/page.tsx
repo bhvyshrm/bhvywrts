@@ -24,13 +24,17 @@ export default function StoriesPage() {
   const [searchQuery, setSearchQuery] = useState<string>("")
   const [favoriteIds, setFavoriteIds] = useState<string[]>([])
 
-  // Preserve old shared links like /stories?collection=...
+  // Preserve old shared links like /stories?collection=... and handle ?mood= / ?q=
   useEffect(() => {
     if (typeof window === "undefined") return
     const params = new URLSearchParams(window.location.search)
     const collection = params.get("collection")
     if (collection) {
       router.replace(`/collections/${encodeURIComponent(collection.toLowerCase())}`, { scroll: false })
+    }
+    const qParam = params.get("q") || params.get("mood")
+    if (qParam) {
+      setSearchQuery(qParam)
     }
   }, [router])
 
@@ -86,7 +90,8 @@ export default function StoriesPage() {
           s.title.toLowerCase().includes(q) ||
           s.subtitle?.toLowerCase().includes(q) ||
           s.excerpt?.toLowerCase().includes(q) ||
-          s.category?.toLowerCase().includes(q)
+          s.category?.toLowerCase().includes(q) ||
+          s.tags?.toLowerCase().includes(q)
       )
     }
 
@@ -98,8 +103,8 @@ export default function StoriesPage() {
       <ReadingProgress />
       <Navbar />
 
-      <main className="relative z-10 pt-28 md:pt-36">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-20">
+      <main id="main-content" className="relative z-10 pt-28 md:pt-36">
+        <div className="max-w-[1600px] 2xl:max-w-[1760px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-20">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -130,7 +135,11 @@ export default function StoriesPage() {
               <div className="relative w-full max-w-sm">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-3)] pointer-events-none" />
                 <input
-                  type="text"
+                  type="search"
+                  name="q"
+                  id="story-search"
+                  aria-label="Search stories, excerpts, ideas"
+                  autoComplete="off"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search stories, excerpts, ideas..."
@@ -204,8 +213,8 @@ export default function StoriesPage() {
 
           {/* Stories Grid */}
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
-              {Array.from({ length: 6 }).map((_, i) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-7 xl:gap-8">
+              {Array.from({ length: 8 }).map((_, i) => (
                 <SkeletonCard key={i} />
               ))}
             </div>
@@ -239,7 +248,7 @@ export default function StoriesPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-7 xl:gap-8"
             >
               {filteredStories.map((story, i) => (
                 <StoryCard key={story.id} story={story} index={i} />
