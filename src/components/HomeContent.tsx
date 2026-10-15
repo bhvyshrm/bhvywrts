@@ -211,7 +211,10 @@ export function HomeContent() {
                         <img
                           src={latestStory.coverImage}
                           alt={latestStory.title}
+                          width={640}
+                          height={800}
                           loading="eager"
+                          fetchPriority="high"
                           className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                           style={
                             latestTags.coverPos

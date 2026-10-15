@@ -448,7 +448,10 @@ function StoryHero({
           <img
             src={story.coverImage}
             alt={story.title}
+            width={1920}
+            height={1080}
             loading="eager"
+            fetchPriority="high"
             decoding="async"
             onLoad={() => setImageLoaded(true)}
             className={cn(

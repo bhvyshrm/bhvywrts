@@ -99,7 +99,10 @@ export function StoryCard({ story, index = 0, large = false }: StoryCardProps) {
                 <img
                   src={story.coverImage}
                   alt={story.title}
-                  loading="lazy"
+                  width={large ? 800 : 600}
+                  height={large ? 500 : 750}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
                   decoding="async"
                   onLoad={() => setImageLoaded(true)}
                   className={cn(
