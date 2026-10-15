@@ -128,126 +128,7 @@
   --mood-adventure: #f97316;
 }
 
-.light {
-  --radius: 0.875rem;
 
-  /* Aqua Flow Liquid Glass Light Palette — Frosted Aqua Atmosphere */
-  --bg-base: #f2fafa;
-  --background: #f2fafa;
-
-  /* Aqua Flow Atmospheric Tokens (Light Mode — Pale Aqua & Soft Cyan) */
-  --aqua-deep: #c2ecf0;
-  --aqua-soft: #d8f1f2;
-  --aqua-muted: #e1f5f3;
-  --cyan-muted: #4faeb5;
-  --blue-cool: #e4eef9;
-  --lavender-subtle: #f0ebfa;
-  --aqua-surface: #edf8f9;
-
-  --flow-grad-1: radial-gradient(ellipse 70% 60% at 42% 38%, rgba(216, 241, 242, 0.62) 0%, rgba(225, 245, 243, 0.38) 45%, rgba(248, 252, 252, 0.12) 70%, transparent 80%);
-  --flow-grad-2: radial-gradient(ellipse 65% 55% at 58% 42%, rgba(228, 238, 249, 0.52) 0%, rgba(216, 241, 242, 0.32) 48%, transparent 75%);
-  --flow-grad-3: radial-gradient(ellipse 72% 52% at 50% 50%, rgba(225, 245, 243, 0.46) 0%, rgba(240, 235, 250, 0.20) 36%, rgba(228, 238, 249, 0.14) 60%, transparent 75%);
-  --flow-grad-4: radial-gradient(ellipse 78% 58% at 50% 60%, rgba(216, 241, 242, 0.48) 0%, rgba(225, 245, 243, 0.28) 46%, transparent 75%);
-  --flow-grad-refraction: radial-gradient(ellipse 70% 45% at 38% 36%, rgba(255, 255, 255, 0.65) 0%, rgba(216, 241, 242, 0.22) 38%, transparent 70%);
-  --flow-vignette: radial-gradient(ellipse 85% 80% at 50% 50%, transparent 45%, rgba(242, 250, 250, 0.50) 100%);
-  --flow-noise-opacity: 0.012;
-  --surface: rgba(255, 255, 255, 0.72);
-  --surface-secondary: rgba(243, 248, 248, 0.85);
-  --surface-elevated: rgba(255, 255, 255, 0.88);
-  --card: rgba(255, 255, 255, 0.65);
-  --card-secondary: rgba(246, 250, 250, 0.82);
-  --border: rgba(167, 224, 229, 0.40);
-  --border-strong: rgba(140, 210, 216, 0.55);
-  --border-subtle: rgba(167, 224, 229, 0.22);
-  --foreground: #171717;
-  --foreground-secondary: #4a4650;
-  --muted: #7a747e;
-
-  /* Aqua Flow Liquid Glass Light Tokens */
-  --glass-fill: rgba(255, 255, 255, 0.62);
-  --glass-fill-strong: rgba(255, 255, 255, 0.78);
-  --glass-border: rgba(255, 255, 255, 0.78);
-  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
-  --glass-shadow: 0 12px 36px rgba(10, 57, 64, 0.06), 0 2px 8px rgba(10, 57, 64, 0.03);
-  --glass-bg: rgba(255, 255, 255, 0.68);
-  --glass-blur: 22px;
-  --text: #171717;
-  --text-2: #4a4650;
-  --text-3: #7a747e;
-
-  /* Accents — Subtle orchid and warm tones */
-  --orchid: #d946ef;
-  --lavender: #8b5cf6;
-  --blush: #ec4899;
-  --amber: #ea580c;
-  --soft-cyan: #0891b2;
-  --deep-indigo: #4338ca;
-  --soft-pink: #d946ef;
-
-  --accent: #d946ef;
-  --accent-2: #8b5cf6;
-  --accent-foreground: #ffffff;
-  --primary: #d946ef;
-  --primary-foreground: #ffffff;
-  --secondary: rgba(0, 0, 0, 0.05);
-  --secondary-foreground: #3f3f46;
-  --ring: rgba(217, 70, 239, 0.35);
-
-  /* Ambient */
-  --glow: rgba(217, 70, 239, 0.10);
-  --moon-glow: rgba(236, 72, 153, 0.08);
-  --star-color: rgba(180, 130, 160, 0.18);
-  --noise-opacity: 0.015;
-
-  /* Ambient gradient stops (Frosted Aqua Light) */
-  --ambient-1: rgba(167, 224, 229, 0.045);
-  --ambient-2: rgba(179, 214, 232, 0.035);
-  --ambient-3: rgba(207, 235, 242, 0.03);
-
-  /* Logo gradient — charcoal to orchid */
-  --gradient-logo: linear-gradient(120deg, #171717 0%, #3f3f46 45%, #d946ef 85%, #8b5cf6 100%);
-  --gradient-shine: linear-gradient(
-    100deg,
-    rgba(217, 70, 239, 0) 30%,
-    rgba(217, 70, 239, 0.2) 50%,
-    rgba(217, 70, 239, 0) 70%
-  );
-
-  /* Reading prose */
-  --reading-text: #262629;
-  --reading-heading: #171717;
-  --reading-strong: #171717;
-  --reading-blockquote: #4a4a52;
-  --reading-muted: #66636a;
-  --reading-code-bg: rgba(0, 0, 0, 0.05);
-
-  /* Shadows */
-  --card-hover-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
-  --card-lift-shadow: 0 28px 64px rgba(0, 0, 0, 0.10), 0 0 32px rgba(217, 70, 239, 0.04);
-
-  --selection-bg: rgba(217, 70, 239, 0.22);
-  --selection-text: #171717;
-  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
-  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.25);
-  --skeleton-mid: rgba(0, 0, 0, 0.04);
-  --skeleton-high: rgba(0, 0, 0, 0.07);
-
-  color-scheme: light;
-
-  /* Moods — high contrast on paper */
-  --mood-dreams: #d946ef;
-  --mood-moonlight: #0284c7;
-  --mood-silence: #475569;
-  --mood-nature: #059669;
-  --mood-heartbreak: #db2777;
-  --mood-hope: #d97706;
-  --mood-philosophy: #7c3aed;
-  --mood-rain: #0284c7;
-  --mood-nostalgia: #ea580c;
-  --mood-calm: #0284c7;
-  --mood-mystery: #9333ea;
-  --mood-adventure: #ea580c;
-}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -294,9 +175,6 @@
     color-scheme: dark;
   }
 
-  html.light {
-    color-scheme: light;
-  }
 
   html.intro-active {
     background-color: #061014 !important;
@@ -397,11 +275,6 @@
   box-shadow: 0 28px 72px rgba(0, 0, 0, 0.5), var(--glass-highlight);
 }
 
-.light .glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 24px 54px rgba(10, 57, 64, 0.10), 0 2px 10px rgba(10, 57, 64, 0.04), var(--glass-highlight);
-}
-
 .reading-glass {
   background: rgba(10, 8, 16, 0.62);
   backdrop-filter: blur(28px) saturate(160%);
@@ -410,30 +283,15 @@
   box-shadow: var(--glass-shadow), var(--glass-highlight);
 }
 
-.light .reading-glass {
-  background: rgba(255, 255, 255, 0.84);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 16px 44px rgba(10, 57, 64, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-}
-
 @supports not (backdrop-filter: blur(1px)) {
   .glass,
   .glass-pill,
   .glass-card {
     background: rgba(15, 12, 22, 0.85);
   }
-  .light .glass,
-  .light .glass-pill,
-  .light .glass-card {
-    background: rgba(255, 255, 255, 0.92);
-  }
   .glass-strong,
   .reading-glass {
     background: rgba(18, 14, 26, 0.92);
-  }
-  .light .glass-strong,
-  .light .reading-glass {
-    background: rgba(255, 255, 255, 0.96);
   }
 }
 

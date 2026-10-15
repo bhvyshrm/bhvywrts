@@ -15,8 +15,8 @@ import {
   User,
   ArrowRight,
 } from "lucide-react"
+
 import { Logo } from "./Logo"
-import { ThemeToggle } from "./ThemeToggle"
 import { useAuthStore } from "@/lib/store"
 import { cn } from "@/lib/utils"
 
@@ -156,9 +156,8 @@ export function Navbar() {
               })}
             </div>
 
-            {/* Right — Theme Toggle, Admin Controls & Mobile Menu */}
+            {/* Right — Admin Controls & Mobile Menu */}
             <div className="flex items-center gap-2 shrink-0">
-              <ThemeToggle />
 
               {/* Admin Write Pill */}
               {adminReady && (

@@ -71,7 +71,6 @@ export const viewport: Viewport = {
   themeColor: "#061014",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   viewportFit: "cover",
 }
 
@@ -85,7 +84,7 @@ export default function RootLayout({
       lang="en"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${inter.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable} ${sourceSerif.variable} ${greatVibes.variable} ${geistMono.variable}`}
+      className={`dark ${inter.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable} ${sourceSerif.variable} ${greatVibes.variable} ${geistMono.variable}`}
     >
       <head>
         <script
@@ -100,12 +99,19 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen antialiased bg-background">
+      <body className="min-h-screen antialiased bg-background text-foreground">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-full focus:bg-[var(--orchid)] focus:text-black focus:font-medium focus:shadow-lg focus:outline-none"
+        >
+          Skip to content
+        </a>
         <ThemeProvider
           attribute="class"
+          forcedTheme="dark"
           defaultTheme="dark"
-          enableSystem
-          themes={["light", "dark"]}
+          enableSystem={false}
+          themes={["dark"]}
         >
           <AmbientBackground />
           <CursorWrapper />

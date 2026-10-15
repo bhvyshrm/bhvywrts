@@ -2,11 +2,10 @@
 
 import Link from "next/link"
 import { Logo } from "./Logo"
-import { ThemeToggle } from "./ThemeToggle"
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 mt-12 md:mt-20 backdrop-blur-xl bg-black/10 dark:bg-black/20">
+    <footer className="relative border-t border-white/10 mt-12 md:mt-20 backdrop-blur-xl bg-black/20">
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-10 md:py-14">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
@@ -19,11 +18,9 @@ export function Footer() {
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-[var(--font-grotesk)]" aria-label="Footer">
             <FooterLink href="/stories">Stories</FooterLink>
             <FooterLink href="/collections">Collections</FooterLink>
-            <FooterLink href="/writing-journey">Calendar</FooterLink>
+            <FooterLink href="/writing-journey">Writing Journey</FooterLink>
             <FooterLink href="/about">About</FooterLink>
-            <div className="inline-flex items-center gap-2 pl-2 border-l border-[var(--border)]">
-              <ThemeToggle />
-            </div>
+            <FooterLink href="/rss.xml">RSS</FooterLink>
           </nav>
         </div>
 
