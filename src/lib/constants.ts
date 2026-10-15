@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
   tagline: "Stories, thoughts, and worlds crafted by Bhavya.",
   author: "Bhavya",
   description: "A personal digital journal — a writing sanctuary under the moonlight.",
-  url: "https://bhavywrites.com",
+  url: "https://bhvywrts.vercel.app",
 } as const
 
 export const CATEGORIES = [
