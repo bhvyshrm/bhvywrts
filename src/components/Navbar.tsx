@@ -23,7 +23,7 @@ import { cn } from "@/lib/utils"
 const NAV_ITEMS = [
   { href: "/stories", label: "Stories", icon: BookOpen },
   { href: "/collections", label: "Collections", icon: FolderOpen },
-  { href: "/writing-journey", label: "Calendar", icon: Calendar },
+  { href: "/writing-journey", label: "Writing Journey", icon: Calendar },
   { href: "/about", label: "About", icon: User },
 ] as const
 

@@ -235,11 +235,11 @@ export default function WritingJourney() {
 
   if (stories.length === 0) {
     return (
-      <div className="min-h-screen relative">
-        <div className="max-w-4xl mx-auto px-5 md:px-8 pt-32 md:pt-40 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] font-[var(--font-grotesk)]">
+      <div className="relative">
+        <div className="max-w-5xl xl:max-w-6xl mx-auto px-5 md:px-8 pt-32 md:pt-40 text-center space-y-6">
+          <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-[var(--orchid)] font-[var(--font-grotesk)]">
             <Moon className="w-3 h-3" />
-            Calendar
+            Writing Journey
           </div>
           <h1 className="font-[var(--font-instrument-serif)] text-3xl md:text-4xl text-foreground leading-tight">
             Your writing journey starts here.
@@ -253,8 +253,8 @@ export default function WritingJourney() {
   }
 
   return (
-    <div className="min-h-screen relative">
-      <div className="max-w-4xl mx-auto px-5 md:px-8 pt-28 md:pt-36 pb-20">
+    <div className="relative">
+      <div className="max-w-5xl xl:max-w-6xl mx-auto px-5 md:px-8 pt-28 md:pt-36 pb-20">
         {/* Header */}
         <header className="text-center mb-10 md:mb-14">
           <motion.div
@@ -263,9 +263,9 @@ export default function WritingJourney() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-4"
           >
-            <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] font-[var(--font-grotesk)]">
+            <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-[var(--orchid)] font-[var(--font-grotesk)]">
               <Moon className="w-3 h-3" />
-              Calendar
+              Writing Journey
             </div>
             <h1 className="font-[var(--font-instrument-serif)] text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.15]">
               A timeline of the things I&apos;ve written.
