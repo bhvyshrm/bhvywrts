@@ -14,6 +14,7 @@ import {
   Calendar,
   User,
   ArrowRight,
+  Rss,
 } from "lucide-react"
 
 import { Logo } from "./Logo"
@@ -39,8 +40,28 @@ export function Navbar() {
 
   const isStoryPage = pathname.startsWith("/stories/") && pathname !== "/stories"
 
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const drawerRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     drawerOpenRef.current = drawerOpen
+    if (drawerOpen) {
+      // Focus first element inside drawer when opened
+      const timer = setTimeout(() => {
+        if (drawerRef.current) {
+          const focusables = drawerRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          )
+          if (focusables.length > 0) focusables[0].focus()
+        }
+      }, 50)
+      return () => clearTimeout(timer)
+    } else {
+      // Return focus to trigger button
+      if (triggerRef.current && document.activeElement !== triggerRef.current) {
+        triggerRef.current.focus()
+      }
+    }
   }, [drawerOpen])
 
   useEffect(() => {
@@ -87,11 +108,42 @@ export function Navbar() {
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setDrawerOpen(false)
+      if (!drawerOpen) return
+
+      if (e.key === "Escape") {
+        e.preventDefault()
+        setDrawerOpen(false)
+        return
+      }
+
+      if (e.key === "Tab" && drawerRef.current) {
+        const focusables = Array.from(
+          drawerRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((el) => !el.hasAttribute("disabled") && el.offsetParent !== null)
+
+        if (focusables.length === 0) return
+
+        const first = focusables[0]
+        const last = focusables[focusables.length - 1]
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            last.focus()
+            e.preventDefault()
+          }
+        } else {
+          if (document.activeElement === last) {
+            first.focus()
+            e.preventDefault()
+          }
+        }
+      }
     }
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
-  }, [])
+  }, [drawerOpen])
 
   const adminReady = isAdmin && !checking
 
@@ -182,11 +234,13 @@ export function Navbar() {
 
               {/* Mobile Drawer Trigger */}
               <button
+                ref={triggerRef}
                 type="button"
                 onClick={() => setDrawerOpen(!drawerOpen)}
-                aria-label={drawerOpen ? "Close menu" : "Open menu"}
+                aria-label={drawerOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={drawerOpen}
-                className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text)] hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                aria-controls="mobile-nav-panel"
+                className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text)] hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
               >
                 {drawerOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
@@ -206,24 +260,30 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setDrawerOpen(false)}
-              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-md md:hidden"
+              className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-md md:hidden"
             />
 
             {/* Glass Drawer Panel */}
             <motion.aside
+              id="mobile-nav-panel"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation Menu"
+              ref={drawerRef}
               initial={{ y: "-100%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: "-100%", opacity: 0 }}
               transition={{ type: "spring", stiffness: 350, damping: 32 }}
               className="fixed top-0 inset-x-0 z-[70] p-4 md:hidden pointer-events-auto"
             >
-              <div className="glass-strong rounded-[32px] p-6 shadow-2xl border border-[var(--glass-border)] max-w-md mx-auto">
+              <div className="glass-strong rounded-[32px] p-6 shadow-2xl border border-white/20 bg-[#080d12]/95 backdrop-blur-2xl max-w-md mx-auto">
                 <div className="flex items-center justify-between pb-4 border-b border-[var(--glass-border)]">
                   <Logo href="/" size="sm" />
                   <button
+                    type="button"
                     onClick={() => setDrawerOpen(false)}
-                    aria-label="Close menu"
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--glass-border)] text-foreground hover:bg-white/10 transition-colors cursor-pointer"
+                    aria-label="Close navigation menu"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--glass-border)] text-foreground hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -239,7 +299,7 @@ export function Navbar() {
                 </div>
 
                 {/* Primary Nav Links */}
-                <nav className="space-y-1.5 py-2">
+                <nav className="space-y-1.5 py-2" aria-label="Mobile Navigation">
                   {NAV_ITEMS.map((item) => {
                     const active = isActive(item.href)
                     const Icon = item.icon
@@ -249,10 +309,10 @@ export function Navbar() {
                         href={item.href}
                         onClick={() => setDrawerOpen(false)}
                         className={cn(
-                          "flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all font-[var(--font-grotesk)]",
+                          "flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all font-[var(--font-grotesk)] focus-visible:outline-2 focus-visible:outline-[var(--orchid)]",
                           active
-                            ? "bg-white/80 dark:bg-white/15 text-foreground font-semibold border border-white/90 dark:border-white/20 shadow-xs dark:shadow-none"
-                            : "text-[var(--text-2)] hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10"
+                            ? "bg-white/15 text-white font-semibold border border-white/20 shadow-xs"
+                            : "text-[var(--text-2)] hover:text-foreground hover:bg-white/10"
                         )}
                       >
                         <span className="flex items-center gap-3">
@@ -263,6 +323,19 @@ export function Navbar() {
                       </Link>
                     )
                   })}
+
+                  {/* Mobile RSS Link */}
+                  <Link
+                    href="/rss.xml"
+                    onClick={() => setDrawerOpen(false)}
+                    className="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all font-[var(--font-grotesk)] text-[var(--text-2)] hover:text-foreground hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
+                  >
+                    <span className="flex items-center gap-3">
+                      <Rss className="w-4 h-4 text-[var(--orchid)]" />
+                      <span>RSS Feed</span>
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5 opacity-60" />
+                  </Link>
                 </nav>
 
                 {/* Mobile Admin Section */}
