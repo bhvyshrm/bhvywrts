@@ -23,6 +23,7 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
   // 5: Scene 6 — The Transition / Homepage Dissolve (6.2s - 7.0s)
   const [phase, setPhase] = useState<0 | 1 | 2 | 3 | 4 | 5>(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [isReducedMotion, setIsReducedMotion] = useState(false)
   const timerRefs = useRef<NodeJS.Timeout[]>([])
 
   const clearAllTimers = useCallback(() => {
@@ -50,10 +51,30 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
       const alreadySeen = sessionStorage.getItem("bhavy-intro-seen")
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-      if (alreadySeen || prefersReduced) {
+      if (alreadySeen) {
         document.documentElement.classList.remove("intro-active")
         setShouldRender(false)
         onComplete?.()
+        return
+      }
+
+      // 2. Reduced Motion Mode: Shortened calm fade (1.5s) without movements, scale or blurs
+      if (prefersReduced) {
+        setIsReducedMotion(true)
+        setShouldRender(true)
+        setPhase(3) // Immediately show complete brand and statement with simple fade
+
+        timerRefs.current.push(
+          setTimeout(() => setPhase(5), 1100),
+          setTimeout(() => {
+            try {
+              sessionStorage.setItem("bhavy-intro-seen", "true")
+              document.documentElement.classList.remove("intro-active")
+            } catch {}
+            setShouldRender(false)
+            onComplete?.()
+          }, 1500)
+        )
         return
       }
     } catch {
@@ -63,12 +84,12 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
       return
     }
 
-    // 2. Determine screen size
+    // 3. Determine screen size
     const mobile = window.innerWidth < 768
     setIsMobile(mobile)
     setShouldRender(true)
 
-    // 3. Exact 7-Second Cinematic Timeline (in ms):
+    // 4. Exact 7-Second Cinematic Timeline (in ms):
     // Scene 1 (0.0s–1.0s): Atmospheric opening (phase 0)
     // Scene 2 (1.0s–2.2s): Brand reveal (phase 1) -> 1000ms
     // Scene 3 (2.2s–3.7s): Cinematic Aqua Flow & Liquid Glass (phase 2) -> 2200ms
@@ -129,7 +150,7 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+            transition: { duration: isReducedMotion ? 0.3 : 0.8, ease: [0.16, 1, 0.3, 1] },
           }}
           className="fixed inset-0 z-[100] bg-[#050505] flex items-center justify-center overflow-hidden select-none"
           style={{ willChange: "opacity" }}
@@ -138,16 +159,16 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
           <motion.div
             initial={{
               opacity: 0,
-              scale: 1.06,
-              filter: isMobile ? "blur(8px)" : "blur(12px)",
+              scale: isReducedMotion ? 1.0 : 1.06,
+              filter: isReducedMotion ? "none" : (isMobile ? "blur(8px)" : "blur(12px)"),
             }}
             animate={{
               opacity: phase >= 2 ? (isMobile ? 0.32 : 0.42) : 0,
-              scale: phase >= 2 ? 1.0 : 1.06,
-              filter: phase >= 2 ? "blur(0px)" : (isMobile ? "blur(8px)" : "blur(12px)"),
+              scale: 1.0,
+              filter: "none",
             }}
             transition={{
-              duration: 1.5,
+              duration: isReducedMotion ? 0.4 : 1.5,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="absolute inset-0 w-full h-full pointer-events-none"
@@ -174,7 +195,7 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: isReducedMotion ? 0.4 : 1.0, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 pointer-events-none overflow-hidden"
           >
             {/* Primary soft aqua reflection behind center area */}
@@ -228,13 +249,13 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
           {/* Liquid Glass Backing Layer (Scene 3, 2.2s - 3.7s) */}
           <motion.div
             aria-hidden="true"
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: isReducedMotion ? 1 : 0.96 }}
             animate={{
               opacity: phase >= 2 ? 1 : 0,
-              scale: phase >= 2 ? 1 : 0.96,
+              scale: 1,
             }}
             transition={{
-              duration: 1.4,
+              duration: isReducedMotion ? 0.4 : 1.4,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="absolute inset-0 pointer-events-none flex items-center justify-center p-4 sm:p-6"
@@ -254,14 +275,14 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
           <div className="relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-xl mx-auto">
             {/* Brand Reveal (1.0s - 2.2s) */}
             <motion.div
-              initial={{ opacity: 0, y: 16, scale: 0.96 }}
+              initial={{ opacity: 0, y: isReducedMotion ? 0 : 16, scale: isReducedMotion ? 1 : 0.96 }}
               animate={{
                 opacity: phase >= 1 ? 1 : 0,
-                y: phase >= 1 ? (phase >= 3 ? (isMobile ? -6 : -10) : 0) : 16,
-                scale: phase >= 1 ? 1 : 0.96,
+                y: isReducedMotion ? 0 : (phase >= 1 ? (phase >= 3 ? (isMobile ? -6 : -10) : 0) : 16),
+                scale: 1,
               }}
               transition={{
-                duration: 1.1,
+                duration: isReducedMotion ? 0.4 : 1.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="relative inline-block"
@@ -269,12 +290,12 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
               {/* Subtle brand backing reflection: soft aqua and strawberry-pink */}
               <motion.div
                 aria-hidden="true"
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: isReducedMotion ? 1 : 0.9 }}
                 animate={{
                   opacity: phase >= 1 ? 1 : 0,
-                  scale: phase >= 1 ? 1 : 0.9,
+                  scale: 1,
                 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: isReducedMotion ? 0.4 : 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="pointer-events-none absolute -inset-8 -z-10 rounded-full blur-2xl"
                 style={{
                   background:
@@ -294,7 +315,7 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
                 </h1>
 
                 {/* Subtle glass-like light reflection pass */}
-                {phase >= 1 && (
+                {!isReducedMotion && phase >= 1 && (
                   <motion.span
                     aria-hidden="true"
                     initial={{ x: "-130%", opacity: 0 }}
@@ -315,14 +336,14 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
 
             {/* Editorial Statement Reveal (Scene 4, 3.7s - 5.1s) */}
             <motion.div
-              initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
+              initial={{ opacity: 0, y: isReducedMotion ? 0 : 14, filter: isReducedMotion ? "none" : "blur(4px)" }}
               animate={{
                 opacity: phase >= 3 ? 1 : 0,
-                y: phase >= 3 ? 0 : 14,
-                filter: phase >= 3 ? "blur(0px)" : "blur(4px)",
+                y: 0,
+                filter: "none",
               }}
               transition={{
-                duration: 1.2,
+                duration: isReducedMotion ? 0.4 : 1.2,
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="mt-4 sm:mt-5"
@@ -333,14 +354,14 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
 
               {/* Glowing Moon Emblem Divider */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
+                initial={{ opacity: 0, scale: isReducedMotion ? 1 : 0.85 }}
                 animate={{
                   opacity: phase >= 3 ? 0.85 : 0,
-                  scale: phase >= 3 ? 1 : 0.85,
+                  scale: 1,
                 }}
                 transition={{
-                  duration: 1.0,
-                  delay: 0.2,
+                  duration: isReducedMotion ? 0.3 : 1.0,
+                  delay: isReducedMotion ? 0 : 0.2,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="mt-4 flex items-center justify-center gap-2.5"
