@@ -37,11 +37,11 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
       document.documentElement.classList.remove("intro-active")
     } catch {}
     setPhase(5)
-    // Short dissolve before unmounting
+    // Fast dissolve on manual skip so user enters homepage immediately
     setTimeout(() => {
       setShouldRender(false)
       onComplete?.()
-    }, 450)
+    }, 200)
   }, [clearAllTimers, onComplete])
 
   useEffect(() => {
@@ -97,7 +97,16 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
         } catch {}
         setShouldRender(false)
         onComplete?.()
-      }, T_END)
+      }, T_END),
+      // Safe failsafe at 7400ms: guarantees intro never stays stuck under any condition
+      setTimeout(() => {
+        try {
+          sessionStorage.setItem("bhavy-intro-seen", "true")
+          document.documentElement.classList.remove("intro-active")
+        } catch {}
+        setShouldRender(false)
+        onComplete?.()
+      }, 7400)
     )
 
     return () => {
@@ -202,18 +211,18 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
             />
           </motion.div>
 
-          {/* Skip Button */}
+          {/* Skip Intro Control */}
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.25, duration: 0.4 }}
             type="button"
             onClick={finishIntro}
-            className="absolute top-5 right-5 sm:top-8 sm:right-8 z-30 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-[var(--font-grotesk)] text-white/55 hover:text-white border border-white/10 hover:border-white/25 bg-black/40 backdrop-blur-md transition-all duration-300 active:scale-95 cursor-pointer"
-            aria-label="Skip opening animation"
+            className="absolute top-5 right-5 sm:top-8 sm:right-8 z-30 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-[var(--font-grotesk)] text-white/60 hover:text-white border border-white/10 hover:border-white/25 bg-[#050505]/50 hover:bg-white/[0.08] backdrop-blur-md transition-all duration-300 active:scale-95 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cyan-muted)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
+            aria-label="Skip intro and view homepage"
           >
-            <span>Skip</span>
-            <ArrowRight className="w-3 h-3 text-[var(--orchid)]" />
+            <span>Skip intro</span>
+            <ArrowRight className="w-3 h-3 text-[var(--cyan-muted)]" />
           </motion.button>
 
           {/* Liquid Glass Backing Layer (Scene 3, 2.2s - 3.7s) */}
