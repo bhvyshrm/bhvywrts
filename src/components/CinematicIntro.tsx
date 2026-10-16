@@ -14,7 +14,14 @@ interface CinematicIntroProps {
 
 export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) {
   const [shouldRender, setShouldRender] = useState(false)
-  const [phase, setPhase] = useState<0 | 1 | 2 | 3>(0) // 0: initial, 1: image reveal, 2: editorial text, 3: dissolving
+  // Phases:
+  // 0: Scene 1 — The Atmosphere (0.0s - 1.0s)
+  // 1: Scene 2 — The Brand Reveal (1.0s - 2.2s)
+  // 2: Scene 3 — Cinematic Aqua Flow & Liquid Glass (2.2s - 3.7s)
+  // 3: Scene 4 — The Editorial Statement (3.7s - 5.1s)
+  // 4: Scene 5 — The Final Brand Composition (5.1s - 6.2s)
+  // 5: Scene 6 — The Transition / Homepage Dissolve (6.2s - 7.0s)
+  const [phase, setPhase] = useState<0 | 1 | 2 | 3 | 4 | 5>(0)
   const [isMobile, setIsMobile] = useState(false)
   const timerRefs = useRef<NodeJS.Timeout[]>([])
 
@@ -29,7 +36,7 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
       sessionStorage.setItem("bhavy-intro-seen", "true")
       document.documentElement.classList.remove("intro-active")
     } catch {}
-    setPhase(3)
+    setPhase(5)
     // Short dissolve before unmounting
     setTimeout(() => {
       setShouldRender(false)
@@ -61,30 +68,28 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
     setIsMobile(mobile)
     setShouldRender(true)
 
-    // 3. Timelines (in ms):
-    // Desktop:
-    //   0ms: Logo fades in softly, image starts blurry & low opacity
-    //   700ms: Image smoothly expands/unblurs (scale 1.06 -> 1.00, blur 10px -> 0px)
-    //   1600ms: Editorial line reveals softly
-    //   2350ms: Dissolve into homepage begins
-    //   2900ms: Complete and unmount
-    //
-    // Mobile (fast 2.4s):
-    //   0ms: Logo fades in
-    //   500ms: Image expands/unblurs
-    //   1300ms: Editorial line reveals
-    //   1900ms: Dissolve begins
-    //   2400ms: Complete and unmount
+    // 3. Exact 7-Second Cinematic Timeline (in ms):
+    // Scene 1 (0.0s–1.0s): Atmospheric opening (phase 0)
+    // Scene 2 (1.0s–2.2s): Brand reveal (phase 1) -> 1000ms
+    // Scene 3 (2.2s–3.7s): Cinematic Aqua Flow & Liquid Glass (phase 2) -> 2200ms
+    // Scene 4 (3.7s–5.1s): Editorial statement reveal (phase 3) -> 3700ms
+    // Scene 5 (5.1s–6.2s): Final brand composition (phase 4) -> 5100ms
+    // Scene 6 (6.2s–7.0s): Smooth transition into homepage (phase 5) -> 6200ms
+    // 7000ms: Complete and unmount
 
-    const tImage = mobile ? 500 : 700
-    const tEditorial = mobile ? 1300 : 1600
-    const tDissolve = mobile ? 1900 : 2350
-    const tEnd = mobile ? 2400 : 2900
+    const T_BRAND = 1000
+    const T_IMAGE = 2200
+    const T_EDITORIAL = 3700
+    const T_FINAL = 5100
+    const T_DISSOLVE = 6200
+    const T_END = 7000
 
     timerRefs.current.push(
-      setTimeout(() => setPhase(1), tImage),
-      setTimeout(() => setPhase(2), tEditorial),
-      setTimeout(() => setPhase(3), tDissolve),
+      setTimeout(() => setPhase(1), T_BRAND),
+      setTimeout(() => setPhase(2), T_IMAGE),
+      setTimeout(() => setPhase(3), T_EDITORIAL),
+      setTimeout(() => setPhase(4), T_FINAL),
+      setTimeout(() => setPhase(5), T_DISSOLVE),
       setTimeout(() => {
         try {
           sessionStorage.setItem("bhavy-intro-seen", "true")
@@ -92,7 +97,7 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
         } catch {}
         setShouldRender(false)
         onComplete?.()
-      }, tEnd)
+      }, T_END)
     )
 
     return () => {
@@ -109,13 +114,13 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
 
   return (
     <AnimatePresence>
-      {phase < 3 ? (
+      {phase < 5 ? (
         <motion.div
           key="cinematic-intro"
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
           }}
           className="fixed inset-0 z-[100] bg-[#050505] flex items-center justify-center overflow-hidden select-none"
           style={{ willChange: "opacity" }}
@@ -299,16 +304,16 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
               </div>
             </motion.div>
 
-            {/* Editorial Line Reveal (1.6s - 2.3s) */}
+            {/* Editorial Statement Reveal (Scene 4, 3.7s - 5.1s) */}
             <motion.div
-              initial={{ opacity: 0, y: 14, filter: "blur(3px)" }}
+              initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
               animate={{
-                opacity: phase >= 2 ? 1 : 0,
-                y: phase >= 2 ? 0 : 14,
-                filter: phase >= 2 ? "blur(0px)" : "blur(3px)",
+                opacity: phase >= 3 ? 1 : 0,
+                y: phase >= 3 ? 0 : 14,
+                filter: phase >= 3 ? "blur(0px)" : "blur(4px)",
               }}
               transition={{
-                duration: 0.65,
+                duration: 1.2,
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="mt-4 sm:mt-5"
@@ -318,20 +323,30 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
               </p>
 
               {/* Glowing Moon Emblem Divider */}
-              <div
-                className="mt-4 flex items-center justify-center gap-2.5 opacity-80"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{
+                  opacity: phase >= 3 ? 0.85 : 0,
+                  scale: phase >= 3 ? 1 : 0.85,
+                }}
+                transition={{
+                  duration: 1.0,
+                  delay: 0.2,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="mt-4 flex items-center justify-center gap-2.5"
                 aria-hidden="true"
               >
                 <span className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--border-strong)]" />
                 <span
                   className="w-1.5 h-1.5 rounded-full"
                   style={{
-                    background: "radial-gradient(circle, #fff5f9 0%, #e879f9 100%)",
-                    boxShadow: "0 0 10px rgba(232,121,249,0.6)",
+                    background: "radial-gradient(circle, #fff5f9 0%, #4faeb5 60%, #e879f9 100%)",
+                    boxShadow: "0 0 10px rgba(79, 174, 181, 0.65), 0 0 20px rgba(232, 121, 249, 0.35)",
                   }}
                 />
                 <span className="h-px w-8 bg-gradient-to-l from-transparent to-[var(--border-strong)]" />
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>
