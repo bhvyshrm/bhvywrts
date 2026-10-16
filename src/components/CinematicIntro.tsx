@@ -213,28 +213,65 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
 
           {/* Centered Editorial Content */}
           <div className="relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-xl mx-auto">
-            {/* Logo Reveal (0.0s - 0.7s) */}
+            {/* Brand Reveal (1.0s - 2.2s) */}
             <motion.div
-              initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+              initial={{ opacity: 0, y: 16, scale: 0.96 }}
               animate={{
-                opacity: 1,
-                y: phase >= 2 ? (isMobile ? -6 : -10) : 0,
-                filter: "blur(0px)",
+                opacity: phase >= 1 ? 1 : 0,
+                y: phase >= 1 ? (phase >= 3 ? (isMobile ? -6 : -10) : 0) : 16,
+                scale: phase >= 1 ? 1 : 0.96,
               }}
               transition={{
-                duration: 0.7,
+                duration: 1.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
+              className="relative inline-block"
             >
-              <h1
-                className="font-[var(--font-instrument-serif)] text-4xl sm:text-5.5xl md:text-6xl text-foreground tracking-tight select-none leading-none"
-                style={{
-                  textShadow:
-                    "0 0 40px rgba(255,255,255,0.22), 0 0 80px rgba(232,121,249,0.18)",
+              {/* Subtle brand backing reflection: soft aqua and strawberry-pink */}
+              <motion.div
+                aria-hidden="true"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{
+                  opacity: phase >= 1 ? 1 : 0,
+                  scale: phase >= 1 ? 1 : 0.9,
                 }}
-              >
-                Bhavya Writes
-              </h1>
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                className="pointer-events-none absolute -inset-8 -z-10 rounded-full blur-2xl"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at center, rgba(79, 174, 181, 0.22) 0%, rgba(244, 167, 199, 0.08) 50%, transparent 75%)",
+                }}
+              />
+
+              <div className="relative overflow-hidden py-1 px-2">
+                <h1
+                  className="font-[var(--font-instrument-serif)] text-4xl sm:text-5.5xl md:text-6xl text-foreground tracking-tight select-none leading-none"
+                  style={{
+                    textShadow:
+                      "0 0 35px rgba(255,255,255,0.22), 0 0 70px rgba(79,174,181,0.25), 0 0 90px rgba(244,167,199,0.12)",
+                  }}
+                >
+                  Bhavya Writes
+                </h1>
+
+                {/* Subtle glass-like light reflection pass */}
+                {phase >= 1 && (
+                  <motion.span
+                    aria-hidden="true"
+                    initial={{ x: "-130%", opacity: 0 }}
+                    animate={{
+                      x: "160%",
+                      opacity: [0, 0.65, 0.65, 0],
+                    }}
+                    transition={{
+                      duration: 1.2,
+                      delay: 0.2,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="pointer-events-none absolute inset-0 block w-1/2 h-full bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-22deg]"
+                  />
+                )}
+              </div>
             </motion.div>
 
             {/* Editorial Line Reveal (1.6s - 2.3s) */}
