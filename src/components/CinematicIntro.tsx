@@ -120,20 +120,20 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
           className="fixed inset-0 z-[100] bg-[#050505] flex items-center justify-center overflow-hidden select-none"
           style={{ willChange: "opacity" }}
         >
-          {/* Subtle Cinematic Photography Layer */}
+          {/* Cinematic Photography Layer (Scene 3, 2.2s - 3.7s) */}
           <motion.div
             initial={{
-              opacity: 0.15,
+              opacity: 0,
               scale: 1.06,
-              filter: "blur(10px)",
+              filter: isMobile ? "blur(8px)" : "blur(12px)",
             }}
             animate={{
-              opacity: phase >= 1 ? (isMobile ? 0.45 : 0.55) : 0.15,
-              scale: phase >= 1 ? 1.0 : 1.06,
-              filter: phase >= 1 ? "blur(0px)" : "blur(10px)",
+              opacity: phase >= 2 ? (isMobile ? 0.32 : 0.42) : 0,
+              scale: phase >= 2 ? 1.0 : 1.06,
+              filter: phase >= 2 ? "blur(0px)" : (isMobile ? "blur(8px)" : "blur(12px)"),
             }}
             transition={{
-              duration: isMobile ? 1.2 : 1.5,
+              duration: 1.5,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="absolute inset-0 w-full h-full pointer-events-none"
@@ -210,6 +210,31 @@ export function CinematicIntro({ coverImage, onComplete }: CinematicIntroProps) 
             <span>Skip</span>
             <ArrowRight className="w-3 h-3 text-[var(--orchid)]" />
           </motion.button>
+
+          {/* Liquid Glass Backing Layer (Scene 3, 2.2s - 3.7s) */}
+          <motion.div
+            aria-hidden="true"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{
+              opacity: phase >= 2 ? 1 : 0,
+              scale: phase >= 2 ? 1 : 0.96,
+            }}
+            transition={{
+              duration: 1.4,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="absolute inset-0 pointer-events-none flex items-center justify-center p-4 sm:p-6"
+          >
+            <div
+              className="w-full max-w-xl h-[260px] sm:h-[300px] rounded-[32px] sm:rounded-[40px] border border-white/[0.07] backdrop-blur-md"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 50% 45%, rgba(27, 104, 112, 0.14) 0%, rgba(6, 16, 20, 0.38) 55%, rgba(5, 5, 5, 0.45) 100%)",
+                boxShadow:
+                  "inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(79, 174, 181, 0.08), 0 24px 60px rgba(0, 0, 0, 0.55)",
+              }}
+            />
+          </motion.div>
 
           {/* Centered Editorial Content */}
           <div className="relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-xl mx-auto">
