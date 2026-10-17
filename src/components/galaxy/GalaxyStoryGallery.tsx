@@ -26,6 +26,7 @@ const PERSPECTIVE_PRESETS = [
 export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [activeCardIndex, setActiveCardIndex] = useState(0)
 
@@ -44,6 +45,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
   const desktopTrackX = useTransform(smoothProgress, [0.1, 0.9], ["2%", "-20%"])
 
   useEffect(() => {
+    setMounted(true)
     const media = window.matchMedia("(prefers-reduced-motion: reduce)")
     setReducedMotion(media.matches)
     const listener = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
@@ -147,7 +149,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
       <div className="hidden md:block w-full overflow-hidden" style={{ perspective: "1200px" }}>
         <motion.div
           ref={trackRef}
-          style={{ x: reducedMotion ? 0 : desktopTrackX }}
+          style={{ x: mounted && !reducedMotion ? desktopTrackX : 0 }}
           className="flex gap-6 md:gap-8 px-4 sm:px-8 md:px-12 overflow-x-auto pb-8 pt-4 scrollbar-none items-center will-change-transform"
         >
           {stories.map((story, index) => {
