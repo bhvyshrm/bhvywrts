@@ -120,7 +120,12 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
 
       {/* 1. MOBILE STORY TRACK (< 768px): Touch-friendly snap track */}
       <div className="md:hidden w-full overflow-hidden">
-        <div className="flex gap-3.5 min-[390px]:gap-4 px-3.5 min-[390px]:px-4 overflow-x-auto scrollbar-none snap-x snap-mandatory overscroll-x-contain pb-6">
+        <div
+          role="region"
+          aria-label="Story cards track"
+          tabIndex={0}
+          className="flex gap-3.5 min-[390px]:gap-4 px-3.5 min-[390px]:px-4 overflow-x-auto scrollbar-none snap-x snap-mandatory overscroll-x-contain pb-6 scroll-pl-3.5 min-[390px]:scroll-pl-4 focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
+        >
           {stories.map((story, index) => (
             <div
               key={`mobile-${story.id}`}
