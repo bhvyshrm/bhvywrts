@@ -27,12 +27,14 @@ export function GalaxyStoryCard({
   isActive = false,
 }: GalaxyStoryCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [imageFailed, setImageFailed] = useState(false)
 
-  const { coverPos } = useMemo(
+  const { coverPos, accent, mood } = useMemo(
     () => parseStoryTags(story.tags || ""),
     [story.tags]
   )
 
+  const hasValidImage = Boolean(story.coverImage && !imageFailed)
   const href = getStoryHref(story.slug)
 
   return (
@@ -55,17 +57,18 @@ export function GalaxyStoryCard({
       >
         {/* Cover Image Background */}
         <div className="absolute inset-0 bg-[#070811] overflow-hidden">
-          {story.coverImage ? (
+          {hasValidImage ? (
             <>
               {!imageLoaded && <div className="absolute inset-0 skeleton" />}
               <img
-                src={story.coverImage}
+                src={story.coverImage!}
                 alt=""
                 role="presentation"
                 loading={priority || index < 2 ? "eager" : "lazy"}
                 fetchPriority={priority || index === 0 ? "high" : "auto"}
                 decoding="async"
                 onLoad={() => setImageLoaded(true)}
+                onError={() => setImageFailed(true)}
                 className={cn(
                   "w-full h-full object-cover transform-gpu will-change-transform transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.035]",
                   imageLoaded ? "opacity-100" : "opacity-0"
@@ -78,13 +81,23 @@ export function GalaxyStoryCard({
               />
             </>
           ) : (
+            /* Tasteful Cosmic Galaxy Fallback for Stories without Cover Image */
             <div
-              className="w-full h-full"
+              className="w-full h-full relative"
               style={{
                 background:
-                  "radial-gradient(ellipse at 40% 30%, #17112b 0%, #0b1022 50%, #030306 90%)",
+                  "radial-gradient(circle at 30% 25%, #17112b 0%, #0b1022 45%, #070811 75%, #030306 100%)",
               }}
-            />
+            >
+              {/* Subtle Cosmic Dust Shimmer in Fallback */}
+              <div
+                className="absolute inset-0 opacity-40 mix-blend-overlay"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 70% 80%, rgba(27, 104, 112, 0.45) 0%, transparent 60%)",
+                }}
+              />
+            </div>
           )}
 
           {/* Targeted dark gradient overlay: deep at bottom for title contrast, clear at top */}
