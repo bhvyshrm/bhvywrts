@@ -169,8 +169,8 @@ export function Navbar() {
         <div className="max-w-[1100px] mx-auto pointer-events-auto">
           <nav
             className={cn(
-              "relative flex items-center justify-between h-14 md:h-[58px] px-3 md:px-5 rounded-full transition-all duration-300",
-              "glass-pill shadow-[0_12px_36px_rgba(10,57,64,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.35)]",
+              "relative flex items-center justify-between h-14 md:h-[58px] px-3.5 md:px-5 rounded-full transition-all duration-300",
+              "glass-pill border border-white/15 dark:border-white/15 bg-[#070811]/65 backdrop-blur-2xl shadow-[0_16px_45px_rgba(0,0,0,0.5)]",
               isStoryPage && "bg-[var(--glass-fill)]/70 backdrop-blur-xl opacity-90 hover:opacity-100"
             )}
           >
@@ -180,7 +180,7 @@ export function Navbar() {
             </div>
 
             {/* Center — Desktop Nav Links with Sliding Highlight */}
-            <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-black/[0.04] dark:bg-white/5 border border-black/[0.05] dark:border-white/5">
+            <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-white/[0.04] dark:bg-white/[0.05] border border-white/[0.08] dark:border-white/[0.08]">
               {NAV_ITEMS.map((item) => {
                 const active = isActive(item.href)
                 return (
