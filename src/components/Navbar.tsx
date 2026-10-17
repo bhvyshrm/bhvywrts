@@ -268,7 +268,7 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setDrawerOpen(false)}
-              className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-md md:hidden"
+              className="fixed inset-0 z-[90] bg-black/80 backdrop-blur-md md:hidden"
             />
 
             {/* Glass Drawer Panel */}
@@ -282,9 +282,9 @@ export function Navbar() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: "-100%", opacity: 0 }}
               transition={{ type: "spring", stiffness: 350, damping: 32 }}
-              className="fixed top-0 inset-x-0 z-[70] p-4 md:hidden pointer-events-auto"
+              className="fixed top-0 inset-x-0 z-[100] p-3 sm:p-4 md:hidden pointer-events-auto overscroll-contain"
             >
-              <div className="glass-strong rounded-[32px] p-6 shadow-2xl border border-white/20 bg-[#080d12]/95 backdrop-blur-2xl max-w-md mx-auto">
+              <div className="glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 shadow-2xl border border-white/20 bg-[#070811]/95 backdrop-blur-2xl max-w-md mx-auto">
                 <div className="flex items-center justify-between pb-4 border-b border-[var(--glass-border)]">
                   <Logo href="/" size="sm" />
                   <button
