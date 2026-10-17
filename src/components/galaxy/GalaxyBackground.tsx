@@ -31,10 +31,10 @@ export function GalaxyBackground() {
       />
 
       {/* LAYER 2: Restrained Deep Blue (#0B1022) & Muted Violet (#17112B) Nebulae */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden transform-gpu pointer-events-none" style={{ contain: "paint" }}>
         {/* Upper-Left Cosmic Deep Blue Nebula */}
         <div
-          className={`absolute -top-[15%] -left-[10%] w-[68vw] max-w-[1000px] h-[65vh] max-h-[850px] rounded-full blur-[110px] sm:blur-[150px] opacity-70 will-change-transform ${
+          className={`absolute -top-[15%] -left-[10%] w-[68vw] max-w-[1000px] h-[65vh] max-h-[850px] rounded-full blur-[70px] sm:blur-[140px] opacity-70 will-change-transform ${
             reducedMotion ? "" : "animate-aurora-1"
           }`}
           style={{
@@ -43,9 +43,9 @@ export function GalaxyBackground() {
           }}
         />
 
-        {/* Center-Right Muted Violet & Soft Lavender Cosmic Nebula */}
+        {/* Center-Right Muted Violet & Soft Lavender Cosmic Nebula (hidden on smallest screens to conserve GPU) */}
         <div
-          className={`absolute top-[25%] -right-[12%] w-[60vw] max-w-[900px] h-[60vh] max-h-[800px] rounded-full blur-[120px] sm:blur-[160px] opacity-60 will-change-transform ${
+          className={`hidden sm:block absolute top-[25%] -right-[12%] w-[60vw] max-w-[900px] h-[60vh] max-h-[800px] rounded-full blur-[80px] sm:blur-[150px] opacity-60 will-change-transform ${
             reducedMotion ? "" : "animate-aurora-2"
           }`}
           style={{
@@ -57,7 +57,7 @@ export function GalaxyBackground() {
         {/* LAYER 3: Subtle Aqua Flow Reflections (#1B6870 / #4FAEB5) */}
         {/* Soft Aqua Caustic Glow behind Gallery composition */}
         <div
-          className={`absolute top-[18%] left-[18%] w-[52vw] max-w-[780px] h-[40vh] max-h-[520px] rounded-full blur-[100px] sm:blur-[135px] opacity-45 will-change-transform ${
+          className={`absolute top-[18%] left-[18%] w-[52vw] max-w-[780px] h-[40vh] max-h-[520px] rounded-full blur-[60px] sm:blur-[120px] opacity-45 will-change-transform ${
             reducedMotion ? "" : "animate-aqua-refraction"
           }`}
           style={{
@@ -68,7 +68,7 @@ export function GalaxyBackground() {
 
         {/* Lower Deep Ocean Tone anchoring the viewport bottom */}
         <div
-          className={`absolute -bottom-[20%] left-[10%] w-[75vw] max-w-[1100px] h-[55vh] max-h-[750px] rounded-full blur-[110px] sm:blur-[150px] opacity-50 will-change-transform ${
+          className={`absolute -bottom-[20%] left-[10%] w-[75vw] max-w-[1100px] h-[55vh] max-h-[750px] rounded-full blur-[70px] sm:blur-[140px] opacity-50 will-change-transform ${
             reducedMotion ? "" : "animate-aurora-3"
           }`}
           style={{
