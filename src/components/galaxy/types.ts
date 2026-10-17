@@ -5,6 +5,9 @@ export interface GalaxyStoryItem {
   coverImage?: string | null
   tags?: string | null
   createdAt?: string
+  isLocked?: boolean
+  featured?: boolean
+  category?: string | null
 }
 
 export interface GalaxyGalleryProps {
