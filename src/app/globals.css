@@ -237,6 +237,21 @@
 
 /* ---------- Surfaces & Aurora Frosted Glass ---------- */
 
+/* ---------- Galaxy Responsive Spacing & Layout Utilities ---------- */
+.galaxy-container {
+  width: 100%;
+  max-width: 1680px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 3.5vw, 3.5rem);
+  padding-right: clamp(1rem, 3.5vw, 3.5rem);
+}
+
+.galaxy-section-gap {
+  margin-top: clamp(3rem, 7vw, 7rem);
+  margin-bottom: clamp(3rem, 7vw, 7rem);
+}
+
 .glass {
   background: var(--glass-fill);
   backdrop-filter: blur(22px) saturate(160%);
