@@ -86,14 +86,20 @@ export function GalaxyStoryCard({
             />
           )}
 
-          {/* Restrained dark gradient overlay focused near the title at bottom */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 pointer-events-none" />
+          {/* Targeted dark gradient overlay: deep at bottom for title contrast, clear at top */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(3, 3, 6, 0.92) 0%, rgba(3, 3, 6, 0.55) 32%, rgba(3, 3, 6, 0.12) 65%, transparent 100%)",
+            }}
+          />
         </div>
 
-        {/* Title-Only Overlay (Strict Rule: NO excerpts, NO dates, NO badges, NO read buttons) */}
+        {/* Title-Only Overlay (Strict Rule: ONLY the story title as text) */}
         <div className="relative z-10 p-5 sm:p-6 md:p-7 flex flex-col justify-end h-full">
           <h2
-            className="font-[var(--font-instrument-serif)] text-white text-xl sm:text-2xl md:text-[26px] leading-[1.14] font-normal tracking-[-0.01em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] group-hover:text-white/95 transition-colors"
+            className="font-[var(--font-instrument-serif)] text-white text-xl sm:text-2xl md:text-[26px] leading-[1.12] font-normal tracking-[-0.01em] drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)] group-hover:text-white transition-colors"
           >
             {story.title}
           </h2>
