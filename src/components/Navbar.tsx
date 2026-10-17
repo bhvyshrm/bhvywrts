@@ -208,8 +208,16 @@ export function Navbar() {
               })}
             </div>
 
-            {/* Right — Admin Controls & Mobile Menu */}
+            {/* Right — Primary Action, Admin Controls & Mobile Menu */}
             <div className="flex items-center gap-2 shrink-0">
+              {/* Restrained Primary Action: Explore Stories */}
+              <Link
+                href="/stories"
+                className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium font-[var(--font-grotesk)] text-white/90 bg-white/10 hover:bg-white/15 hover:text-white border border-white/15 transition-all active:scale-95 shadow-xs"
+              >
+                <span>Explore Stories</span>
+                <ArrowRight className="w-3 h-3 text-[var(--orchid)]" />
+              </Link>
 
               {/* Admin Write Pill */}
               {adminReady && (
