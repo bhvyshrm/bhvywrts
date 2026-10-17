@@ -10,7 +10,7 @@ interface GalaxyHeroProps {
 
 export function GalaxyHero({ onScrollToGallery }: GalaxyHeroProps) {
   return (
-    <section className="relative z-10 flex flex-col items-center justify-center text-center pt-24 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20 px-4 sm:px-6">
+    <section className="relative z-10 flex flex-col items-center justify-center text-center pt-20 pb-8 sm:pt-30 sm:pb-12 md:pt-36 md:pb-16 px-3 min-[360px]:px-4 sm:px-6">
       {/* Subtle Radial Contrast Underlay to guarantee perfect legibility over moving nebulae */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[700px] h-[340px] pointer-events-none -z-10"
@@ -25,7 +25,7 @@ export function GalaxyHero({ onScrollToGallery }: GalaxyHeroProps) {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: GALAXY_EASING.editorial }}
-        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.24em] font-medium font-[var(--font-grotesk)] border border-white/15 bg-white/5 text-[var(--orchid)] backdrop-blur-md mb-4 sm:mb-6 shadow-xs"
+        className="inline-flex items-center gap-1.5 px-2.5 min-[360px]:px-3 py-0.5 min-[360px]:py-1 rounded-full text-[9px] min-[360px]:text-[10px] uppercase tracking-[0.22em] font-medium font-[var(--font-grotesk)] border border-white/15 bg-white/5 text-[var(--orchid)] backdrop-blur-md mb-3 sm:mb-5 shadow-xs"
       >
         <Sparkles className="w-3 h-3 text-[var(--cyan-muted)]" />
         <span>A Digital Journal</span>
@@ -36,7 +36,7 @@ export function GalaxyHero({ onScrollToGallery }: GalaxyHeroProps) {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2, ease: GALAXY_EASING.editorial }}
-        className="font-[var(--font-instrument-serif)] text-4xl sm:text-5xl md:text-6.5xl lg:text-7xl text-foreground font-normal tracking-[-0.02em] leading-[1.08] select-none drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
+        className="font-[var(--font-instrument-serif)] text-[32px] min-[360px]:text-4xl sm:text-5xl md:text-6.5xl lg:text-7xl text-foreground font-normal tracking-[-0.02em] leading-[1.08] select-none drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
       >
         <span className="bg-gradient-to-b from-white via-[#f5f5f7] to-white/80 bg-clip-text text-transparent">
           Bhavya Writes
