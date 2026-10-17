@@ -59,3 +59,26 @@ test("Galaxy Journal 3.0: Responsive layout and breakpoint handling", () => {
   assert.ok(css.includes(".galaxy-container {"), "Must define .galaxy-container utility")
   assert.ok(css.includes("max-width: 1680px;"), "Galaxy container max width must be 1680px")
 })
+
+test("Galaxy Journal 3.0: Accessible gallery interactions and reduced-motion", () => {
+  const gallery = fs.readFileSync(path.join(ROOT, "src/components/galaxy/GalaxyStoryGallery.tsx"), "utf-8")
+  const hero = fs.readFileSync(path.join(ROOT, "src/components/galaxy/GalaxyHero.tsx"), "utf-8")
+  const bg = fs.readFileSync(path.join(ROOT, "src/components/galaxy/GalaxyBackground.tsx"), "utf-8")
+  const card = fs.readFileSync(path.join(ROOT, "src/components/galaxy/GalaxyStoryCard.tsx"), "utf-8")
+
+  // 1. Prefers-reduced-motion detection across all key components
+  assert.ok(gallery.includes("(prefers-reduced-motion: reduce)"), "Gallery must detect reduced motion")
+  assert.ok(hero.includes("(prefers-reduced-motion: reduce)"), "Hero must detect reduced motion")
+  assert.ok(bg.includes("(prefers-reduced-motion: reduce)"), "Background must detect reduced motion")
+
+  // 2. Keyboard gallery navigation buttons
+  assert.ok(gallery.includes('aria-label="Previous stories"'), "Must provide accessible previous button")
+  assert.ok(gallery.includes('aria-label="Next stories"'), "Must provide accessible next button")
+
+  // 3. Visible keyboard focus on story cards
+  assert.ok(card.includes("focus-visible:ring-2"), "Story card must provide visible focus indicator")
+  assert.ok(card.includes("aria-label="), "Story card must provide descriptive accessible aria-label")
+
+  // 4. Clean link target without nested buttons
+  assert.ok(!card.includes("<button"), "Story card link must not contain nested button elements")
+})
