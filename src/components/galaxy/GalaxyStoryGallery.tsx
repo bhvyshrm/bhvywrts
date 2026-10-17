@@ -124,6 +124,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
           role="region"
           aria-label="Story cards track"
           tabIndex={0}
+          style={{ WebkitOverflowScrolling: "touch", contain: "content" }}
           className="flex gap-3.5 min-[390px]:gap-4 px-3.5 min-[390px]:px-4 overflow-x-auto scrollbar-none snap-x snap-mandatory overscroll-x-contain pb-6 scroll-pl-3.5 min-[390px]:scroll-pl-4 focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
         >
           {stories.map((story, index) => (
