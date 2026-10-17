@@ -11,6 +11,15 @@ interface GalaxyHeroProps {
 export function GalaxyHero({ onScrollToGallery }: GalaxyHeroProps) {
   return (
     <section className="relative z-10 flex flex-col items-center justify-center text-center pt-24 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-20 px-4 sm:px-6">
+      {/* Subtle Radial Contrast Underlay to guarantee perfect legibility over moving nebulae */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[700px] h-[340px] pointer-events-none -z-10"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(3, 3, 6, 0.6) 0%, rgba(3, 3, 6, 0.2) 50%, transparent 80%)",
+        }}
+      />
+
       {/* Eyebrow Pill */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
