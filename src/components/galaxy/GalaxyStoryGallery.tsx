@@ -27,6 +27,20 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
   const [reducedMotion, setReducedMotion] = useState(false)
   const [activeCardIndex, setActiveCardIndex] = useState(0)
 
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  })
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 26,
+    restDelta: 0.001,
+  })
+
+  // Gentle horizontal shift tied to viewport scroll progress
+  const desktopTrackX = useTransform(smoothProgress, [0.1, 0.9], ["2%", "-20%"])
+
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)")
     setReducedMotion(media.matches)
@@ -76,7 +90,10 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
 
       {/* Horizontal Story Track with Controlled Perspective */}
       <div className="w-full overflow-hidden" style={{ perspective: "1200px" }}>
-        <div className="flex gap-6 md:gap-8 px-4 sm:px-8 md:px-12 overflow-x-auto pb-8 pt-4 scrollbar-none items-center">
+        <motion.div
+          style={{ x: reducedMotion ? 0 : desktopTrackX }}
+          className="flex gap-6 md:gap-8 px-4 sm:px-8 md:px-12 overflow-x-auto pb-8 pt-4 scrollbar-none items-center will-change-transform"
+        >
           {stories.map((story, index) => {
             const preset = PERSPECTIVE_PRESETS[index % PERSPECTIVE_PRESETS.length]
             const cardStyle: React.CSSProperties = reducedMotion
