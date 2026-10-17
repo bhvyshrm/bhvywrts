@@ -12,6 +12,16 @@ interface GalaxyStoryGalleryProps {
   loading?: boolean
 }
 
+// Deterministic, aesthetically balanced perspective and vertical stagger values
+const PERSPECTIVE_PRESETS = [
+  { rotate: "-2.2deg", y: 12, scale: 0.98 },
+  { rotate: "1.8deg", y: -10, scale: 1 },
+  { rotate: "-1.5deg", y: 14, scale: 0.99 },
+  { rotate: "2.5deg", y: -8, scale: 0.98 },
+  { rotate: "-2.0deg", y: 8, scale: 1 },
+  { rotate: "1.4deg", y: -12, scale: 0.99 },
+] as const
+
 export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
@@ -64,22 +74,33 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
         </div>
       </div>
 
-      {/* Horizontal Story Track */}
-      <div className="w-full overflow-hidden">
-        <div className="flex gap-6 md:gap-8 px-4 sm:px-8 md:px-12 overflow-x-auto pb-6 scrollbar-none">
-          {stories.map((story, index) => (
-            <div
-              key={story.id}
-              className="shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px] h-[440px] sm:h-[480px] md:h-[520px]"
-            >
-              <GalaxyStoryCard
-                story={story}
-                index={index}
-                priority={index < 3}
-                isActive={index === activeCardIndex}
-              />
-            </div>
-          ))}
+      {/* Horizontal Story Track with Controlled Perspective */}
+      <div className="w-full overflow-hidden" style={{ perspective: "1200px" }}>
+        <div className="flex gap-6 md:gap-8 px-4 sm:px-8 md:px-12 overflow-x-auto pb-8 pt-4 scrollbar-none items-center">
+          {stories.map((story, index) => {
+            const preset = PERSPECTIVE_PRESETS[index % PERSPECTIVE_PRESETS.length]
+            const cardStyle: React.CSSProperties = reducedMotion
+              ? {}
+              : {
+                  transform: `rotate(${preset.rotate}) translateY(${preset.y}px) scale(${preset.scale})`,
+                  transition: "transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
+                }
+
+            return (
+              <div
+                key={story.id}
+                className="shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px] h-[440px] sm:h-[480px] md:h-[520px] transition-transform duration-500 hover:!rotate-0 hover:!scale-105 hover:z-20"
+                style={cardStyle}
+              >
+                <GalaxyStoryCard
+                  story={story}
+                  index={index}
+                  priority={index < 3}
+                  isActive={index === activeCardIndex}
+                />
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
