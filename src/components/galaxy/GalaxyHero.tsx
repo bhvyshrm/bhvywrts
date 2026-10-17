@@ -39,7 +39,7 @@ export function GalaxyHero({ onScrollToGallery }: GalaxyHeroProps) {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.35, ease: GALAXY_EASING.editorial }}
-        className="mt-3 sm:mt-4 max-w-xl text-sm sm:text-base md:text-lg text-[var(--text-2)] font-[var(--font-source-serif)] italic leading-relaxed"
+        className="mt-3 sm:mt-4 max-w-sm sm:max-w-md md:max-w-lg text-[15px] sm:text-base md:text-lg text-[var(--text-2)] font-[var(--font-source-serif)] italic leading-relaxed text-balance"
       >
         A quieter corner of the internet.
       </motion.p>
