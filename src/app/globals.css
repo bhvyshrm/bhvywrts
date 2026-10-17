@@ -58,6 +58,13 @@
   --text-2: #d0cfd6;
   --text-3: #9a98a3;
 
+  /* Galaxy Liquid Glass Tokens */
+  --liquid-glass-bg: rgba(7, 8, 17, 0.65);
+  --liquid-glass-border: rgba(255, 255, 255, 0.12);
+  --liquid-glass-border-hover: rgba(255, 255, 255, 0.24);
+  --liquid-glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
+  --liquid-glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4);
+
   /* Accents */
   --orchid: #e879f9;
   --lavender: #a78bfa;
@@ -278,6 +285,23 @@
   border-radius: 9999px;
   box-shadow: var(--glass-shadow), var(--glass-highlight);
   will-change: transform;
+}
+
+.liquid-glass-pill {
+  background: var(--liquid-glass-bg);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--liquid-glass-border);
+  border-radius: 9999px;
+  box-shadow: var(--liquid-glass-shadow), var(--liquid-glass-highlight);
+}
+
+.liquid-glass-panel {
+  background: var(--liquid-glass-bg);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-shadow), var(--liquid-glass-highlight);
 }
 
 .glass-card {
