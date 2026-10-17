@@ -53,6 +53,29 @@ export function GalaxyBackground() {
               "radial-gradient(ellipse at center, rgba(23, 17, 43, 0.6) 0%, rgba(100, 117, 184, 0.14) 40%, transparent 70%)",
           }}
         />
+
+        {/* LAYER 3: Subtle Aqua Flow Reflections (#1B6870 / #4FAEB5) */}
+        {/* Soft Aqua Caustic Glow behind Gallery composition */}
+        <div
+          className={`absolute top-[18%] left-[18%] w-[52vw] max-w-[780px] h-[40vh] max-h-[520px] rounded-full blur-[100px] sm:blur-[135px] opacity-45 will-change-transform ${
+            reducedMotion ? "" : "animate-aqua-refraction"
+          }`}
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(27, 104, 112, 0.32) 0%, rgba(79, 174, 181, 0.12) 35%, transparent 68%)",
+          }}
+        />
+
+        {/* Lower Deep Ocean Tone anchoring the viewport bottom */}
+        <div
+          className={`absolute -bottom-[20%] left-[10%] w-[75vw] max-w-[1100px] h-[55vh] max-h-[750px] rounded-full blur-[110px] sm:blur-[150px] opacity-50 will-change-transform ${
+            reducedMotion ? "" : "animate-aurora-3"
+          }`}
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(10, 57, 64, 0.35) 0%, rgba(8, 26, 32, 0.2) 45%, transparent 75%)",
+          }}
+        />
       </div>
     </div>
   )
