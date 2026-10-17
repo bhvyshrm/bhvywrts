@@ -77,6 +77,38 @@ export function GalaxyBackground() {
           }}
         />
       </div>
+
+      {/* LAYER 4: Restrained Distant Star Field (Static, lightweight CSS stars) */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-40 mix-blend-screen"
+        style={{
+          backgroundImage: `radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                            radial-gradient(1.5px 1.5px at 100px 150px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+                            radial-gradient(1px 1px at 240px 90px, rgba(165,243,252,0.8), rgba(0,0,0,0)),
+                            radial-gradient(1.5px 1.5px at 380px 280px, rgba(255,255,255,0.5), rgba(0,0,0,0)),
+                            radial-gradient(1px 1px at 520px 180px, rgba(192,132,252,0.6), rgba(0,0,0,0)),
+                            radial-gradient(1.5px 1.5px at 660px 390px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+                            radial-gradient(1px 1px at 800px 120px, rgba(255,255,255,0.4), rgba(0,0,0,0)),
+                            radial-gradient(1.5px 1.5px at 940px 450px, rgba(165,243,252,0.7), rgba(0,0,0,0)),
+                            radial-gradient(1px 1px at 1100px 220px, rgba(255,255,255,0.5), rgba(0,0,0,0))`,
+          backgroundSize: "1200px 600px",
+        }}
+      />
+
+      {/* LAYER 5: Cosmic Depth Vignette & Noise Texture for Organic Grain */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 85% 75% at 50% 50%, transparent 40%, rgba(3, 3, 6, 0.75) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+        }}
+      />
     </div>
   )
 }
