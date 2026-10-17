@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# ✦ Bhavya Writes
 
-First, run the development server:
+### *A quieter corner of the internet.*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A personal digital journal for stories, thoughts,  
+and things left unsaid.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[**Explore the Journal ↗**](https://bhvywrts.vercel.app/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<br />
 
-## Learn More
+`Next.js` · `TypeScript` · `Tailwind CSS` · `Supabase`
 
-To learn more about Next.js, take a look at the following resources:
+</div>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### ✦ About
 
-## Deploy on Vercel
+Bhavya Writes is a little universe of words, memories, and stories.
+Built as a space to write freely, read slowly, and preserve the
+things that are sometimes difficult to say.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### ✦ Built With
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js** — Modern web framework
+- **TypeScript** — Type-safe development
+- **Tailwind CSS** — Responsive styling
+- **Supabase** — Database and storage
+- **Vercel** — Deployment
+
+---
+
+<div align="center">
+
+*Some things are better written than said.*
+
+Made with ♡ by **Bhavya**
+
+</div>
