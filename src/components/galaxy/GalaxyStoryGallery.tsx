@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import { ChevronLeft, ChevronRight, Compass } from "lucide-react"
 import { GalaxyStoryCard } from "./GalaxyStoryCard"
 import { GALAXY_EASING } from "./motion"
+import { cn } from "@/lib/utils"
 import type { GalaxyStoryItem } from "./types"
 
 interface GalaxyStoryGalleryProps {
@@ -96,29 +97,37 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
         >
           {stories.map((story, index) => {
             const preset = PERSPECTIVE_PRESETS[index % PERSPECTIVE_PRESETS.length]
+            const isActive = index === activeCardIndex
             const cardStyle: React.CSSProperties = reducedMotion
               ? {}
               : {
-                  transform: `rotate(${preset.rotate}) translateY(${preset.y}px) scale(${preset.scale})`,
+                  transform: isActive
+                    ? "rotate(0deg) translateY(0px) scale(1.03)"
+                    : `rotate(${preset.rotate}) translateY(${preset.y}px) scale(${preset.scale})`,
                   transition: "transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
                 }
 
             return (
               <div
                 key={story.id}
-                className="shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px] h-[440px] sm:h-[480px] md:h-[520px] transition-transform duration-500 hover:!rotate-0 hover:!scale-105 hover:z-20"
+                onMouseEnter={() => setActiveCardIndex(index)}
+                onFocus={() => setActiveCardIndex(index)}
+                className={cn(
+                  "shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px] h-[440px] sm:h-[480px] md:h-[520px] transition-all duration-500",
+                  isActive ? "z-30" : "z-10 hover:z-20 opacity-90 hover:opacity-100"
+                )}
                 style={cardStyle}
               >
                 <GalaxyStoryCard
                   story={story}
                   index={index}
                   priority={index < 3}
-                  isActive={index === activeCardIndex}
+                  isActive={isActive}
                 />
               </div>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
