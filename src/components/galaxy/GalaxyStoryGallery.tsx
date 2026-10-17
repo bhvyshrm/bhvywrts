@@ -25,6 +25,7 @@ const PERSPECTIVE_PRESETS = [
 
 export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [activeCardIndex, setActiveCardIndex] = useState(0)
 
@@ -87,11 +88,40 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
             Suspended in Thought
           </h2>
         </div>
+
+        {/* Gallery Navigation Controls for Keyboard/Mouse Discovery */}
+        <div className="hidden sm:flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              if (trackRef.current) {
+                trackRef.current.scrollBy({ left: -360, behavior: "smooth" })
+              }
+            }}
+            aria-label="Previous stories"
+            className="w-9 h-9 rounded-full border border-white/15 bg-white/5 text-white/80 hover:text-white hover:bg-white/15 flex items-center justify-center transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)] active:scale-95"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (trackRef.current) {
+                trackRef.current.scrollBy({ left: 360, behavior: "smooth" })
+              }
+            }}
+            aria-label="Next stories"
+            className="w-9 h-9 rounded-full border border-white/15 bg-white/5 text-white/80 hover:text-white hover:bg-white/15 flex items-center justify-center transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)] active:scale-95"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
 
       {/* Horizontal Story Track with Controlled Perspective */}
       <div className="w-full overflow-hidden" style={{ perspective: "1200px" }}>
         <motion.div
+          ref={trackRef}
           style={{ x: reducedMotion ? 0 : desktopTrackX }}
           className="flex gap-6 md:gap-8 px-4 sm:px-8 md:px-12 overflow-x-auto pb-8 pt-4 scrollbar-none items-center will-change-transform"
         >
