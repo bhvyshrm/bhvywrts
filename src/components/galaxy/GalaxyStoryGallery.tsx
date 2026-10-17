@@ -118,8 +118,27 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
         </div>
       </div>
 
-      {/* Horizontal Story Track with Controlled Perspective */}
-      <div className="w-full overflow-hidden" style={{ perspective: "1200px" }}>
+      {/* 1. MOBILE STORY TRACK (< 768px): Touch-friendly snap track */}
+      <div className="md:hidden w-full overflow-hidden">
+        <div className="flex gap-4 px-4 overflow-x-auto scrollbar-none snap-x snap-mandatory overscroll-x-contain pb-6">
+          {stories.map((story, index) => (
+            <div
+              key={`mobile-${story.id}`}
+              className="snap-center shrink-0 w-[80vw] max-w-[320px] h-[440px]"
+            >
+              <GalaxyStoryCard
+                story={story}
+                index={index}
+                priority={index < 2}
+                isActive={index === activeCardIndex}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 2. DESKTOP STORY TRACK (>= 768px): Horizontal perspective composition */}
+      <div className="hidden md:block w-full overflow-hidden" style={{ perspective: "1200px" }}>
         <motion.div
           ref={trackRef}
           style={{ x: reducedMotion ? 0 : desktopTrackX }}
