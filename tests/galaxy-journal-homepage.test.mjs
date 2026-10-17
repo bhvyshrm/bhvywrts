@@ -40,3 +40,22 @@ test("Galaxy Journal 3.0: Story routes and title-only card integrity", () => {
   assert.ok(hookCode.includes("story.published === true"), "Must require story.published === true")
   assert.ok(hookCode.includes("!story.isLocked"), "Must filter out locked stories")
 })
+
+test("Galaxy Journal 3.0: Responsive layout and breakpoint handling", () => {
+  const gallery = fs.readFileSync(path.join(ROOT, "src/components/galaxy/GalaxyStoryGallery.tsx"), "utf-8")
+  const hero = fs.readFileSync(path.join(ROOT, "src/components/galaxy/GalaxyHero.tsx"), "utf-8")
+  const css = fs.readFileSync(path.join(ROOT, "src/app/globals.css"), "utf-8")
+
+  // 1. Mobile-first track architecture
+  assert.ok(gallery.includes("md:hidden"), "Must contain dedicated mobile track (< 768px)")
+  assert.ok(gallery.includes("snap-x snap-mandatory"), "Mobile track must support CSS scroll snapping")
+  assert.ok(gallery.includes("hidden md:block"), "Must contain desktop perspective track (>= 768px)")
+
+  // 2. Responsive hero scaling
+  assert.ok(hero.includes("text-[32px] min-[360px]:text-4xl"), "Hero must scale down gracefully for narrow viewports")
+  assert.ok(hero.includes("font-[var(--font-instrument-serif)]"), "Hero must use brand Instrument Serif font")
+
+  // 3. Responsive galaxy container definition
+  assert.ok(css.includes(".galaxy-container {"), "Must define .galaxy-container utility")
+  assert.ok(css.includes("max-width: 1680px;"), "Galaxy container max width must be 1680px")
+})
