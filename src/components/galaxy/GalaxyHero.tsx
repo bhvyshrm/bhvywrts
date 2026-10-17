@@ -27,9 +27,11 @@ export function GalaxyHero({ onScrollToGallery }: GalaxyHeroProps) {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2, ease: GALAXY_EASING.editorial }}
-        className="font-[var(--font-instrument-serif)] text-4xl sm:text-5.5xl md:text-7xl lg:text-7.5xl text-foreground font-normal tracking-tight leading-[1.06] select-none"
+        className="font-[var(--font-instrument-serif)] text-4xl sm:text-5xl md:text-6.5xl lg:text-7xl text-foreground font-normal tracking-[-0.02em] leading-[1.08] select-none drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]"
       >
-        Bhavya Writes
+        <span className="bg-gradient-to-b from-white via-[#f5f5f7] to-white/80 bg-clip-text text-transparent">
+          Bhavya Writes
+        </span>
       </motion.h1>
 
       {/* Editorial Statement */}
