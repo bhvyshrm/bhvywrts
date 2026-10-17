@@ -74,7 +74,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
     <section
       id="story-gallery"
       ref={containerRef}
-      className="relative z-10 w-full pt-4 pb-16"
+      className="relative z-10 w-full max-w-full overflow-x-clip pt-4 pb-16"
       aria-label="Story Gallery"
     >
       {/* Section Header */}
