@@ -66,7 +66,7 @@ export function GalaxyStoryCard({
                 decoding="async"
                 onLoad={() => setImageLoaded(true)}
                 className={cn(
-                  "w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]",
+                  "w-full h-full object-cover transform-gpu will-change-transform transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.035]",
                   imageLoaded ? "opacity-100" : "opacity-0"
                 )}
                 style={
