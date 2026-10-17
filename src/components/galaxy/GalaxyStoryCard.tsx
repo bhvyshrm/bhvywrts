@@ -42,14 +42,14 @@ export function GalaxyStoryCard({
       href={href}
       aria-label={`Read story: ${story.title}`}
       className={cn(
-        "group block relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--orchid)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#030306] rounded-[24px] sm:rounded-[28px] overflow-hidden select-none cursor-pointer",
+        "group block relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--orchid)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#030306] rounded-[24px] sm:rounded-[26px] md:rounded-[28px] overflow-hidden select-none cursor-pointer w-full h-full",
         className
       )}
       style={style}
     >
       <div
         className={cn(
-          "relative w-full h-full overflow-hidden rounded-[24px] sm:rounded-[28px] border border-white/12 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "relative w-full h-full overflow-hidden rounded-[24px] sm:rounded-[26px] md:rounded-[28px] border border-white/12 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           "shadow-[0_16px_40px_rgba(0,0,0,0.55),inset_0_1px_1px_rgba(255,255,255,0.15)]",
           "group-hover:border-white/30 group-hover:shadow-[0_24px_60px_rgba(0,0,0,0.7),inset_0_1px_1px_rgba(255,255,255,0.25)]",
           isActive ? "border-white/30 shadow-[0_28px_70px_rgba(0,0,0,0.75),inset_0_1px_1px_rgba(255,255,255,0.3)]" : ""

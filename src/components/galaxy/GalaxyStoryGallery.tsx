@@ -13,14 +13,14 @@ interface GalaxyStoryGalleryProps {
   loading?: boolean
 }
 
-// Deterministic, aesthetically balanced perspective and vertical stagger values
+// Deterministic, aesthetically balanced perspective and subtle rotation values
 const PERSPECTIVE_PRESETS = [
-  { rotate: "-2.2deg", y: 12, scale: 0.98 },
-  { rotate: "1.8deg", y: -10, scale: 1 },
-  { rotate: "-1.5deg", y: 14, scale: 0.99 },
-  { rotate: "2.5deg", y: -8, scale: 0.98 },
-  { rotate: "-2.0deg", y: 8, scale: 1 },
-  { rotate: "1.4deg", y: -12, scale: 0.99 },
+  { rotate: "-1.6deg", y: 8, scale: 0.985 },
+  { rotate: "1.4deg", y: -6, scale: 1 },
+  { rotate: "-1.2deg", y: 10, scale: 0.985 },
+  { rotate: "1.6deg", y: -8, scale: 0.98 },
+  { rotate: "-1.4deg", y: 6, scale: 1 },
+  { rotate: "1.2deg", y: -6, scale: 0.985 },
 ] as const
 
 export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGalleryProps) {
@@ -56,11 +56,11 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
   if (loading) {
     return (
       <section className="relative z-10 galaxy-container py-16">
-        <div className="flex gap-6 overflow-hidden">
+        <div className="flex gap-6 md:gap-8 lg:gap-10 overflow-hidden">
           {Array.from({ length: 4 }).map((_, i) => (
             <div
               key={i}
-              className="w-[300px] sm:w-[340px] md:w-[380px] h-[460px] sm:h-[500px] rounded-[28px] skeleton shrink-0"
+              className="w-[250px] min-[360px]:w-[270px] min-[390px]:w-[285px] md:w-[290px] lg:w-[325px] xl:w-[345px] h-[280px] min-[360px]:h-[305px] min-[390px]:h-[325px] md:h-[330px] lg:h-[370px] xl:h-[390px] rounded-[24px] sm:rounded-[26px] md:rounded-[28px] skeleton shrink-0"
             />
           ))}
         </div>
@@ -97,7 +97,8 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
             type="button"
             onClick={() => {
               if (trackRef.current) {
-                trackRef.current.scrollBy({ left: -360, behavior: "smooth" })
+                const scrollStep = trackRef.current.clientWidth > 1024 ? 400 : 340
+                trackRef.current.scrollBy({ left: -scrollStep, behavior: "smooth" })
               }
             }}
             aria-label="Previous stories"
@@ -109,7 +110,8 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
             type="button"
             onClick={() => {
               if (trackRef.current) {
-                trackRef.current.scrollBy({ left: 360, behavior: "smooth" })
+                const scrollStep = trackRef.current.clientWidth > 1024 ? 400 : 340
+                trackRef.current.scrollBy({ left: scrollStep, behavior: "smooth" })
               }
             }}
             aria-label="Next stories"
@@ -132,7 +134,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
           {stories.map((story, index) => (
             <div
               key={`mobile-${story.id}`}
-              className="snap-center shrink-0 w-[82vw] max-w-[330px] h-[390px] min-[375px]:h-[420px] min-[430px]:h-[460px]"
+              className="snap-center shrink-0 w-[250px] min-[360px]:w-[270px] min-[390px]:w-[285px] min-[430px]:w-[300px] sm:w-[310px] h-[280px] min-[360px]:h-[305px] min-[390px]:h-[325px] min-[430px]:h-[340px] sm:h-[350px]"
             >
               <GalaxyStoryCard
                 story={story}
@@ -150,7 +152,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
         <motion.div
           ref={trackRef}
           style={{ x: mounted && !reducedMotion ? desktopTrackX : 0 }}
-          className="flex gap-6 md:gap-8 px-4 sm:px-8 md:px-12 overflow-x-auto pb-8 pt-4 scrollbar-none items-center will-change-transform"
+          className="flex gap-7 md:gap-8 lg:gap-10 xl:gap-12 px-6 md:px-12 lg:px-16 xl:px-20 overflow-x-auto pb-10 pt-4 scrollbar-none items-center will-change-transform"
         >
           {stories.map((story, index) => {
             const preset = PERSPECTIVE_PRESETS[index % PERSPECTIVE_PRESETS.length]
@@ -159,7 +161,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
               ? {}
               : {
                   transform: isActive
-                    ? "rotate(0deg) translateY(0px) scale(1.03)"
+                    ? "rotate(0deg) translateY(0px) scale(1.025)"
                     : `rotate(${preset.rotate}) translateY(${preset.y}px) scale(${preset.scale})`,
                   transition: "transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
                 }
@@ -170,7 +172,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
                 onMouseEnter={() => setActiveCardIndex(index)}
                 onFocus={() => setActiveCardIndex(index)}
                 className={cn(
-                  "shrink-0 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px] h-[440px] sm:h-[480px] md:h-[520px] transition-all duration-500",
+                  "shrink-0 md:w-[290px] md:h-[330px] lg:w-[325px] lg:h-[370px] xl:w-[345px] xl:h-[390px] 2xl:w-[360px] 2xl:h-[410px] transition-all duration-500",
                   isActive ? "z-30" : "z-10 hover:z-20 opacity-90 hover:opacity-100"
                 )}
                 style={cardStyle}
@@ -189,3 +191,4 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
     </section>
   )
 }
+
