@@ -162,14 +162,14 @@ export function Navbar() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
-          "fixed top-3 sm:top-4 inset-x-0 z-50 transition-transform duration-300 will-change-transform px-3.5 sm:px-6 pointer-events-none",
+          "fixed top-2.5 sm:top-4 inset-x-0 z-50 transition-transform duration-300 will-change-transform px-2.5 sm:px-4 md:px-6 pointer-events-none",
           hidden && !drawerOpen ? "-translate-y-24" : "translate-y-0"
         )}
       >
         <div className="max-w-[1100px] mx-auto pointer-events-auto">
           <nav
             className={cn(
-              "relative flex items-center justify-between h-14 md:h-[58px] px-3.5 md:px-5 rounded-full transition-all duration-300",
+              "relative flex items-center justify-between h-[52px] sm:h-14 md:h-[58px] px-3 sm:px-4 md:px-5 rounded-full transition-all duration-300",
               "glass-pill border border-white/15 dark:border-white/15 bg-[#070811]/65 backdrop-blur-2xl shadow-[0_16px_45px_rgba(0,0,0,0.5)]",
               isStoryPage && "bg-[var(--glass-fill)]/70 backdrop-blur-xl opacity-90 hover:opacity-100"
             )}
