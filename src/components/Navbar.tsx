@@ -189,7 +189,7 @@ export function Navbar() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "relative px-4 py-1.5 text-xs font-medium transition-colors duration-200 rounded-full font-[var(--font-grotesk)]",
+                      "relative px-4 py-1.5 text-xs font-medium transition-colors duration-200 rounded-full font-[var(--font-grotesk)] focus-visible:outline-2 focus-visible:outline-[var(--orchid)] focus-visible:outline-offset-1",
                       active
                         ? "text-foreground font-semibold"
                         : "text-[var(--text-2)] hover:text-foreground"
@@ -213,7 +213,7 @@ export function Navbar() {
               {/* Restrained Primary Action: Explore Stories */}
               <Link
                 href="/stories"
-                className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium font-[var(--font-grotesk)] text-white/90 bg-white/10 hover:bg-white/15 hover:text-white border border-white/15 transition-all active:scale-95 shadow-xs"
+                className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium font-[var(--font-grotesk)] text-white/90 bg-white/10 hover:bg-white/15 hover:text-white border border-white/15 transition-all active:scale-95 shadow-xs focus-visible:outline-2 focus-visible:outline-[var(--orchid)] focus-visible:outline-offset-2"
               >
                 <span>Explore Stories</span>
                 <ArrowRight className="w-3 h-3 text-[var(--orchid)]" />
