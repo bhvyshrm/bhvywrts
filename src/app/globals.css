@@ -19,6 +19,16 @@
   --lavender-subtle: #6475b8;
   --aqua-surface: #081a20;
 
+  /* Galaxy Journal 3.0 Cosmic Palette */
+  --galaxy-base: #030306;
+  --galaxy-secondary: #070811;
+  --galaxy-blue: #0b1022;
+  --galaxy-violet: #17112b;
+  --galaxy-aqua: #1b6870;
+  --galaxy-cyan: #4faeb5;
+  --galaxy-lavender: #6475b8;
+  --galaxy-star: rgba(255, 255, 255, 0.65);
+
   --flow-grad-1: radial-gradient(ellipse 65% 55% at 45% 45%, rgba(27, 104, 112, 0.38) 0%, rgba(10, 57, 64, 0.24) 42%, rgba(6, 16, 20, 0.08) 65%, transparent 75%);
   --flow-grad-2: radial-gradient(ellipse 60% 55% at 55% 45%, rgba(59, 130, 160, 0.30) 0%, rgba(79, 174, 181, 0.16) 45%, transparent 72%);
   --flow-grad-3: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(14, 89, 99, 0.25) 0%, rgba(100, 117, 184, 0.08) 38%, rgba(10, 57, 64, 0.10) 60%, transparent 75%);
