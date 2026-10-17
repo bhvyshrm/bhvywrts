@@ -14,11 +14,13 @@ export function useGalaxyStories() {
 
     async function fetchPublishedStories() {
       try {
+        // Optimized payload: fetch only required display fields, avoiding large story content
         const { data, error: queryError } = await supabase
           .from("Story")
-          .select("*")
+          .select("id, slug, title, coverImage, tags, createdAt, published, isLocked, featured, category")
           .eq("published", true)
           .order("createdAt", { ascending: false })
+          .limit(24)
 
         if (queryError) {
           if (isMounted) setError(queryError.message)
