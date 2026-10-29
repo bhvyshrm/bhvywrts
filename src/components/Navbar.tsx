@@ -170,7 +170,7 @@ export function Navbar() {
           <nav
             className={cn(
               "relative flex items-center justify-between h-[52px] sm:h-14 md:h-[58px] px-3 sm:px-4 md:px-5 rounded-full transition-all duration-300",
-              "glass-pill border border-white/15 dark:border-white/15 bg-[#070811]/65 backdrop-blur-2xl shadow-[0_16px_45px_rgba(0,0,0,0.5)]",
+              "glass-pill border border-white/10 bg-[#050505]/85 backdrop-blur-2xl shadow-[0_16px_45px_rgba(0,0,0,0.85)]",
               isStoryPage && "bg-[var(--glass-fill)]/70 backdrop-blur-xl opacity-90 hover:opacity-100"
             )}
           >
@@ -284,7 +284,7 @@ export function Navbar() {
               transition={{ type: "spring", stiffness: 350, damping: 32 }}
               className="fixed top-0 inset-x-0 z-[100] p-3 sm:p-4 md:hidden pointer-events-auto overscroll-contain"
             >
-              <div className="glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 shadow-2xl border border-white/20 bg-[#070811]/95 backdrop-blur-2xl max-w-md mx-auto">
+              <div className="glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 shadow-2xl border border-white/10 bg-[#050505]/95 backdrop-blur-2xl max-w-md mx-auto">
                 <div className="flex items-center justify-between pb-4 border-b border-[var(--glass-border)]">
                   <Logo href="/" size="sm" />
                   <button

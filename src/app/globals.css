@@ -6,142 +6,130 @@
 .dark {
   --radius: 0.875rem;
 
-  /* Aqua Flow & Liquid Glass Dark Palette */
-  --bg-base: #061014;
-  --background: #061014;
+  /* AMOLED Pure Black & Electric Lavender Foundation */
+  --bg-base: #000000;
+  --background: #000000;
 
-  /* Aqua Flow Liquid Glass Tokens (Dark Mode) */
-  --aqua-deep: #0a3940;
-  --aqua-soft: #1b6870;
-  --aqua-muted: #0e5963;
-  --cyan-muted: #4faeb5;
-  --blue-cool: #3b82a0;
-  --lavender-subtle: #6475b8;
-  --aqua-surface: #081a20;
+  /* AMOLED Elevated Surfaces */
+  --surface: #050505;
+  --surface-secondary: #0a0a0c;
+  --surface-elevated: #0d0d10;
+  --card: #0d0d10;
+  --card-hover: #15151a;
+  --card-secondary: #0a0a0c;
 
-  /* Galaxy Journal 3.0 Cosmic Palette */
-  --galaxy-base: #030306;
-  --galaxy-secondary: #070811;
-  --galaxy-blue: #0b1022;
-  --galaxy-violet: #17112b;
-  --galaxy-aqua: #1b6870;
-  --galaxy-cyan: #4faeb5;
-  --galaxy-lavender: #6475b8;
-  --galaxy-star: rgba(255, 255, 255, 0.65);
+  /* AMOLED Editorial Typography Palette */
+  --primary-text: #f5f1ea;
+  --foreground: #f5f1ea;
+  --foreground-secondary: #aaa6af;
+  --secondary-text: #aaa6af;
+  --muted: #77737e;
+  --muted-metadata: #77737e;
+  --text: #f5f1ea;
+  --text-2: #aaa6af;
+  --text-3: #77737e;
 
-  --flow-grad-1: radial-gradient(ellipse 65% 55% at 45% 45%, rgba(27, 104, 112, 0.38) 0%, rgba(10, 57, 64, 0.24) 42%, rgba(6, 16, 20, 0.08) 65%, transparent 75%);
-  --flow-grad-2: radial-gradient(ellipse 60% 55% at 55% 45%, rgba(59, 130, 160, 0.30) 0%, rgba(79, 174, 181, 0.16) 45%, transparent 72%);
-  --flow-grad-3: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(14, 89, 99, 0.25) 0%, rgba(100, 117, 184, 0.08) 38%, rgba(10, 57, 64, 0.10) 60%, transparent 75%);
-  --flow-grad-4: radial-gradient(ellipse 75% 55% at 50% 55%, rgba(10, 57, 64, 0.36) 0%, rgba(8, 26, 32, 0.22) 45%, transparent 75%);
-  --flow-grad-refraction: radial-gradient(ellipse 70% 45% at 40% 40%, rgba(79, 174, 181, 0.12) 0%, rgba(165, 243, 252, 0.04) 35%, transparent 70%);
-  --flow-vignette: radial-gradient(ellipse 85% 80% at 50% 50%, transparent 35%, rgba(6, 16, 20, 0.6) 100%);
-  --flow-noise-opacity: 0.022;
-  --surface: #0b0b0f;
-  --surface-secondary: #111116;
-  --surface-elevated: #15151b;
-  --card: #0d0d12;
-  --card-secondary: #121218;
-  --border: rgba(255, 255, 255, 0.14);
-  --border-strong: rgba(255, 255, 255, 0.22);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --foreground: #f5f5f7;
-  --foreground-secondary: #d0cfd6;
-  --muted: #9a98a3;
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --border-subtle: rgba(255, 255, 255, 0.06);
 
-  /* Aurora Glass Tokens (Midnight Aurora) */
-  --glass-fill: rgba(255, 255, 255, 0.08);
-  --glass-fill-strong: rgba(255, 255, 255, 0.14);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-  --text: #f5f5f7;
-  --text-2: #d0cfd6;
-  --text-3: #9a98a3;
+  /* Accents — Disciplined Lavender & Warm Ivory */
+  --lavender: #b66bff;
+  --soft-violet: #8e5bce;
+  --electric-lavender: #b66bff;
+  --orchid: #b66bff;
+  --warm-ivory: #f5f1ea;
+  --ivory: #f5f1ea;
+  --rose: #e8a5cf;
+  --blush: #e8a5cf;
+  --cyan-muted: #8e5bce;
+  --accent: #b66bff;
+  --accent-2: #8e5bce;
+  --accent-foreground: #000000;
+  --primary: #b66bff;
+  --primary-foreground: #000000;
+  --secondary: #0d0d10;
+  --secondary-foreground: #f5f1ea;
+  --ring: rgba(182, 107, 255, 0.45);
+
+  /* Restrained Atmospheric Ambient Gradients */
+  --flow-grad-1: radial-gradient(ellipse 65% 55% at 45% 45%, rgba(142, 91, 206, 0.10) 0%, rgba(182, 107, 255, 0.04) 42%, transparent 75%);
+  --flow-grad-2: radial-gradient(ellipse 60% 55% at 55% 45%, rgba(182, 107, 255, 0.08) 0%, rgba(232, 165, 207, 0.03) 45%, transparent 72%);
+  --flow-grad-3: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(142, 91, 206, 0.06) 0%, rgba(182, 107, 255, 0.02) 40%, transparent 75%);
+  --flow-grad-4: radial-gradient(ellipse 75% 55% at 50% 55%, rgba(142, 91, 206, 0.08) 0%, transparent 75%);
+  --flow-grad-refraction: radial-gradient(ellipse 70% 45% at 40% 40%, rgba(182, 107, 255, 0.06) 0%, transparent 70%);
+  --flow-vignette: radial-gradient(ellipse 85% 80% at 50% 50%, transparent 40%, #000000 100%);
+  --flow-noise-opacity: 0.015;
+
+  /* AMOLED Glass Material Tokens */
+  --glass-fill: rgba(13, 13, 16, 0.70);
+  --glass-fill-strong: rgba(13, 13, 16, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
 
   /* Galaxy Liquid Glass Tokens */
-  --liquid-glass-bg: rgba(7, 8, 17, 0.65);
-  --liquid-glass-border: rgba(255, 255, 255, 0.12);
-  --liquid-glass-border-hover: rgba(255, 255, 255, 0.24);
-  --liquid-glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
-  --liquid-glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --liquid-glass-bg: rgba(10, 10, 12, 0.85);
+  --liquid-glass-border: rgba(255, 255, 255, 0.10);
+  --liquid-glass-border-hover: rgba(182, 107, 255, 0.35);
+  --liquid-glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+  --liquid-glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
 
-  /* Accents */
-  --orchid: #e879f9;
-  --lavender: #a78bfa;
-  --blush: #f4a7c7;
-  --amber: #f5b97a;
-  --soft-cyan: #8debff;
-  --deep-indigo: #8fd3ff;
-  --soft-pink: #f4a7c7;
-  --accent: #e879f9;
-  --accent-2: #a78bfa;
-  --accent-foreground: #050505;
-  --primary: #e879f9;
-  --primary-foreground: #050505;
-  --secondary: rgba(255, 255, 255, 0.05);
-  --secondary-foreground: #e4e4e7;
-  --ring: rgba(232, 121, 249, 0.4);
+  /* Ambient Glow */
+  --glow: rgba(182, 107, 255, 0.15);
+  --moon-glow: rgba(232, 165, 207, 0.10);
+  --star-color: rgba(255, 255, 255, 0.45);
+  --noise-opacity: 0.02;
 
-  /* Glass */
-  --glass-bg: rgba(11, 11, 15, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.10);
-  --glass-shadow: rgba(0, 0, 0, 0.5);
-  --glass-blur: 24px;
+  /* Ambient gradient stops */
+  --ambient-1: rgba(182, 107, 255, 0.04);
+  --ambient-2: rgba(142, 91, 206, 0.03);
+  --ambient-3: rgba(232, 165, 207, 0.02);
 
-  /* Ambient */
-  --glow: rgba(232, 121, 249, 0.18);
-  --moon-glow: rgba(244, 167, 199, 0.12);
-  --star-color: rgba(255, 255, 255, 0.55);
-  --noise-opacity: 0.03;
-
-  /* Ambient gradient stops (Aqua Flow) */
-  --ambient-1: rgba(14, 89, 99, 0.06);
-  --ambient-2: rgba(59, 130, 160, 0.05);
-  --ambient-3: rgba(79, 174, 181, 0.04);
-
-  /* Logo gradient — refined white-to-orchid */
-  --gradient-logo: linear-gradient(120deg, #ffffff 0%, #f4a7c7 40%, #e879f9 75%, #a78bfa 100%);
+  /* Logo gradient — refined warm ivory into electric lavender */
+  --gradient-logo: linear-gradient(135deg, #f5f1ea 0%, #ffffff 45%, #b66bff 100%);
   --gradient-shine: linear-gradient(
     100deg,
     rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.5) 50%,
     rgba(255, 255, 255, 0) 70%
   );
 
   /* Reading prose */
-  --reading-text: rgba(245, 245, 247, 0.88);
-  --reading-heading: #f5f5f7;
+  --reading-text: rgba(245, 241, 234, 0.90);
+  --reading-heading: #f5f1ea;
   --reading-strong: #ffffff;
-  --reading-blockquote: rgba(244, 167, 199, 0.9);
-  --reading-muted: rgba(180, 180, 188, 0.65);
-  --reading-code-bg: rgba(255, 255, 255, 0.06);
+  --reading-blockquote: rgba(182, 107, 255, 0.9);
+  --reading-muted: #77737e;
+  --reading-code-bg: #0d0d10;
 
   /* Shadows */
-  --card-hover-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
-  --card-lift-shadow: 0 32px 72px rgba(0, 0, 0, 0.65), 0 0 36px rgba(232, 121, 249, 0.07);
+  --card-hover-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 24px rgba(182, 107, 255, 0.08);
+  --card-lift-shadow: 0 32px 72px rgba(0, 0, 0, 0.9), 0 0 36px rgba(182, 107, 255, 0.12);
 
   /* Selection + scrollbars */
-  --selection-bg: rgba(232, 121, 249, 0.28);
-  --selection-text: #ffffff;
+  --selection-bg: rgba(182, 107, 255, 0.28);
+  --selection-text: #f5f1ea;
   --scrollbar-thumb: rgba(255, 255, 255, 0.12);
-  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.22);
+  --scrollbar-thumb-hover: rgba(182, 107, 255, 0.35);
   --skeleton-mid: rgba(255, 255, 255, 0.04);
   --skeleton-high: rgba(255, 255, 255, 0.08);
 
   color-scheme: dark;
 
   /* Moods */
-  --mood-dreams: #e879f9;
-  --mood-moonlight: #67e8f9;
-  --mood-silence: #94a3b8;
+  --mood-dreams: #b66bff;
+  --mood-moonlight: #8e5bce;
+  --mood-silence: #77737e;
   --mood-nature: #34d399;
-  --mood-heartbreak: #f471b5;
+  --mood-heartbreak: #e8a5cf;
   --mood-hope: #fbbf24;
-  --mood-philosophy: #a78bfa;
-  --mood-rain: #7dd3fc;
-  --mood-nostalgia: #fb923c;
-  --mood-calm: #38bdf8;
-  --mood-mystery: #c084fc;
+  --mood-philosophy: #b66bff;
+  --mood-rain: #8e5bce;
+  --mood-nostalgia: #e8a5cf;
+  --mood-calm: #8e5bce;
+  --mood-mystery: #b66bff;
   --mood-adventure: #f97316;
 }
 
