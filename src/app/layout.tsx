@@ -48,27 +48,27 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Bhavya Writes — A Digital Journal",
-    template: "%s — Bhavya Writes",
+    default: "bhvy. — A Digital Journal",
+    template: "%s — bhvy.",
   },
   description:
-    "A personal writing sanctuary. Stories, thoughts, and worlds crafted by Bhavya — written under the moonlight.",
-  keywords: ["Bhavya Writes", "stories", "journal", "writing", "poetry", "thoughts"],
+    "A personal writing sanctuary. Stories, fragments, and quiet thoughts from a mind that never quite runs out of words.",
+  keywords: ["bhvy.", "bhvy", "Bhavya Writes", "stories", "journal", "writing", "poetry", "thoughts"],
   openGraph: {
     type: "website",
-    siteName: "Bhavya Writes",
-    title: "Bhavya Writes",
-    description: "A personal writing sanctuary. Stories and thoughts written under the moonlight.",
+    siteName: "bhvy.",
+    title: "bhvy. — A Digital Journal",
+    description: "A personal digital journal. Stories, fragments, and quiet thoughts from a mind that never quite runs out of words.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bhavya Writes",
-    description: "A personal writing sanctuary.",
+    title: "bhvy. — A Digital Journal",
+    description: "A personal digital journal. Stories, fragments, and quiet thoughts.",
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: "#061014",
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -86,19 +86,6 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`dark ${inter.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable} ${sourceSerif.variable} ${greatVibes.variable} ${geistMono.variable}`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                if (!sessionStorage.getItem('bhavy-intro-seen') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && (window.location.pathname === '/' || window.location.pathname === '')) {
-                  document.documentElement.classList.add('intro-active');
-                }
-              } catch (e) {}
-            `,
-          }}
-        />
-      </head>
       <body className="min-h-screen antialiased bg-background text-foreground">
         <a
           href="#main-content"
