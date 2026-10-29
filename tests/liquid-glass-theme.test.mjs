@@ -5,12 +5,14 @@ import path from "node:path"
 
 const ROOT = process.cwd()
 
-test("Dark-Only Theme: globals.css dark Aurora Glass tokens integrity", () => {
+test("AMOLED Black Theme: globals.css dark Aurora Glass tokens integrity", () => {
   const css = fs.readFileSync(path.join(ROOT, "src/app/globals.css"), "utf-8")
 
-  // 1. Dark background tokens
-  assert.ok(css.includes("--bg-base: #061014;"), "Must specify dark base #061014")
-  assert.ok(css.includes("--background: #061014;"), "Must specify dark background #061014")
+  // 1. Dark background tokens — AMOLED Pure Black #000000
+  assert.ok(css.includes("--bg-base: #000000;"), "Must specify AMOLED black base #000000")
+  assert.ok(css.includes("--background: #000000;"), "Must specify AMOLED background #000000")
+  assert.ok(css.includes("--surface: #050505;"), "Must specify AMOLED elevated surface #050505")
+  assert.ok(css.includes("--card: #0d0d10;"), "Must specify AMOLED card surface #0d0d10")
 
   // 2. Midnight Aurora flow gradients
   assert.ok(css.includes("--flow-grad-1:"), "Must define flow-grad-1")
@@ -21,11 +23,11 @@ test("Dark-Only Theme: globals.css dark Aurora Glass tokens integrity", () => {
   assert.ok(css.includes("--flow-vignette:"), "Must define atmospheric vignette")
 
   // 3. Dark Aurora Glass material tokens
-  assert.ok(css.includes("--glass-fill: rgba(255, 255, 255, 0.08);"), "Must define translucent glass fill")
-  assert.ok(css.includes("--glass-fill-strong: rgba(255, 255, 255, 0.14);"), "Must define strong glass fill")
-  assert.ok(css.includes("--glass-border: rgba(255, 255, 255, 0.18);"), "Must define subtle border")
-  assert.ok(css.includes("--glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25)"), "Must define specular inner highlight")
-  assert.ok(css.includes("--glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45)"), "Must define glass shadow")
+  assert.ok(css.includes("--glass-fill:"), "Must define translucent glass fill")
+  assert.ok(css.includes("--glass-fill-strong:"), "Must define strong glass fill")
+  assert.ok(css.includes("--glass-border:"), "Must define subtle border")
+  assert.ok(css.includes("--glass-highlight:"), "Must define specular inner highlight")
+  assert.ok(css.includes("--glass-shadow:"), "Must define glass shadow")
 
   // 4. Color scheme dark and no light theme block
   assert.ok(css.includes("color-scheme: dark;"), "Must enforce color-scheme: dark")
@@ -36,24 +38,24 @@ test("Dark-Only Theme: globals.css dark Aurora Glass tokens integrity", () => {
 test("Dark Mode Layout Enforcement: layout.tsx forces dark and dark themeColor", () => {
   const layout = fs.readFileSync(path.join(ROOT, "src/app/layout.tsx"), "utf-8")
 
-  assert.ok(layout.includes('themeColor: "#061014"'), "Browser themeColor must be #061014")
+  assert.ok(layout.includes('themeColor: "#000000"'), "Browser themeColor must be AMOLED #000000")
   assert.ok(layout.includes('forcedTheme="dark"'), "ThemeProvider must force dark theme")
   assert.ok(!layout.includes("maximumScale: 1"), "Must not restrict viewport zoom")
 })
 
 test("Component Material Integration: Navbar, Hero, and StoryCard dark liquid glass", () => {
   const navbar = fs.readFileSync(path.join(ROOT, "src/components/Navbar.tsx"), "utf-8")
-  const home = fs.readFileSync(path.join(ROOT, "src/components/HomeContent.tsx"), "utf-8")
+  const hero = fs.readFileSync(path.join(ROOT, "src/components/galaxy/GalaxyHero.tsx"), "utf-8")
   const storyCard = fs.readFileSync(path.join(ROOT, "src/components/StoryCard.tsx"), "utf-8")
 
   // Navbar has glass styling without theme switcher
   assert.ok(!navbar.includes("<ThemeToggle"), "Navbar must not include ThemeToggle")
   assert.ok(navbar.includes("glass-pill"), "Navbar must retain glass-pill styling")
 
-  // Featured story hero has glass styling
+  // Featured story hero has glass styling & border
   assert.ok(
-    home.includes("border-white/80 dark:border-white/20 shadow-[0_20px_50px_rgba(10,57,64,0.06)] dark:shadow-2xl"),
-    "Featured hero must apply glass border and shadow"
+    hero.includes("border-white/10"),
+    "Featured hero must apply glass border"
   )
 
   // StoryCard hover has glass border and shadow

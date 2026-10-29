@@ -26,7 +26,8 @@ export function useGalaxyStories() {
           if (isMounted) setError(queryError.message)
         } else if (data && isMounted) {
           // Strictly exclude drafts, unpublished records, and locked/password-protected stories
-          const eligibleStories = data.filter(
+          const rawItems = data as unknown as Story[]
+          const eligibleStories = rawItems.filter(
             (story: Story) =>
               story.published === true &&
               !story.isLocked &&

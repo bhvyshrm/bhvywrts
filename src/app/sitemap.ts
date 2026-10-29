@@ -61,7 +61,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .order("createdAt", { ascending: false })
 
     if (stories && stories.length > 0) {
-      storyRoutes = stories
+      type SitemapStory = {
+        slug: string
+        updatedAt?: string | null
+        createdAt: string
+        published: boolean
+        isLocked: boolean
+      }
+      storyRoutes = (stories as unknown as SitemapStory[])
         .filter((s) => s.published && !s.isLocked)
         .map((s) => {
           const modDate = s.updatedAt ? new Date(s.updatedAt) : new Date(s.createdAt)

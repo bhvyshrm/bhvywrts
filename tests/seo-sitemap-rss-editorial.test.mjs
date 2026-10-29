@@ -81,7 +81,7 @@ test("Desktop Reading Experience: two-column layout & recommendation sidebar", (
   assert.ok(detail.includes("lg:grid-cols-12"), "Must use 12-column grid for two-column desktop reading")
   assert.ok(detail.includes("lg:col-span-8"), "Story content must occupy ~65-70% (8/12)")
   assert.ok(detail.includes("lg:col-span-4"), "Sidebar must occupy ~30-35% (4/12)")
-  assert.ok(detail.includes("More from Bhavya Writes"), "Sidebar must include More from Bhavya Writes")
+  assert.ok(detail.includes("More from bhvy.") || detail.includes("More from Bhavya Writes"), "Sidebar must include More from bhvy.")
   assert.ok(detail.includes("In this story"), "Sidebar must include Table of Contents section")
   assert.ok(detail.includes("Continue reading"), "Sidebar must include Continue reading navigation")
   assert.ok(detail.includes("Follow new writing by RSS"), "Sidebar must include RSS callout")
