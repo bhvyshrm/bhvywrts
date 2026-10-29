@@ -45,20 +45,20 @@ export async function generateMetadata({
 
   if (!story || !story.published) {
     return {
-      title: "Story Not Found | Bhavya Writes",
+      title: "Story Not Found | bhvy.",
       description: "The story you are looking for may have been moved or unpublished.",
     }
   }
 
   const excerpt = story.excerpt
     ? story.excerpt.trim().replace(/\s+/g, " ").slice(0, 160)
-    : `${story.title} — a story by Bhavya on Bhavya Writes.`
+    : `${story.title} — a story by Bhavya on bhvy.`
 
   const canonicalUrl = `https://bhvywrts.vercel.app/stories/${story.slug}`
   const ogImages = story.coverImage ? [story.coverImage] : []
 
   return {
-    title: `${story.title} | Bhavya Writes`,
+    title: `${story.title} | bhvy.`,
     description: excerpt,
     alternates: {
       canonical: canonicalUrl,
@@ -66,18 +66,18 @@ export async function generateMetadata({
     openGraph: {
       type: "article",
       url: canonicalUrl,
-      title: `${story.title} | Bhavya Writes`,
+      title: `${story.title} | bhvy.`,
       description: excerpt,
       images: ogImages,
       publishedTime: story.createdAt,
       modifiedTime: story.updatedAt || story.createdAt,
       authors: ["Bhavya"],
       section: story.category || "Stories",
-      siteName: "Bhavya Writes",
+      siteName: "bhvy.",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${story.title} | Bhavya Writes`,
+      title: `${story.title} | bhvy.`,
       description: excerpt,
       images: ogImages,
     },
@@ -120,7 +120,7 @@ export default async function StoryPage({
     },
     publisher: {
       "@type": "Organization",
-      name: "Bhavya Writes",
+      name: "bhvy.",
       url: "https://bhvywrts.vercel.app",
     },
     mainEntityOfPage: {

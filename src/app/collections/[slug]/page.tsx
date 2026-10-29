@@ -13,19 +13,19 @@ export async function generateMetadata({
 
   if (!collection) {
     return {
-      title: "Collection Not Found | Bhavya Writes",
+      title: "Collection Not Found | bhvy.",
       description: "The requested collection could not be found.",
     }
   }
 
   const description =
     COLLECTION_DESCRIPTIONS[collection] ||
-    `Explore stories in the ${collection} collection on Bhavya Writes.`
+    `Explore stories in the ${collection} collection on bhvy.`
 
   const canonicalUrl = `https://bhvywrts.vercel.app/collections/${encodeURIComponent(slug.toLowerCase())}`
 
   return {
-    title: `${collection} | Bhavya Writes`,
+    title: `${collection} | bhvy.`,
     description,
     alternates: {
       canonical: canonicalUrl,
@@ -33,13 +33,13 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       url: canonicalUrl,
-      title: `${collection} | Bhavya Writes`,
+      title: `${collection} | bhvy.`,
       description,
-      siteName: "Bhavya Writes",
+      siteName: "bhvy.",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${collection} | Bhavya Writes`,
+      title: `${collection} | bhvy.`,
       description,
     },
   }
@@ -58,12 +58,12 @@ export default async function CollectionDetailPage({
     ? {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        name: `${collection} — Collection | Bhavya Writes`,
+        name: `${collection} — Collection | bhvy.`,
         description: COLLECTION_DESCRIPTIONS[collection],
         url: `https://bhvywrts.vercel.app/collections/${encodeURIComponent(slug.toLowerCase())}`,
         isPartOf: {
           "@type": "WebSite",
-          name: "Bhavya Writes",
+          name: "bhvy.",
           url: "https://bhvywrts.vercel.app",
         },
       }

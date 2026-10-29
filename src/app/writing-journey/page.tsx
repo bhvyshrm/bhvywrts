@@ -5,7 +5,7 @@ import { FloatingWriteButton } from "@/components/FloatingWriteButton"
 import WritingJourney from "@/components/WritingJourney"
 
 export const metadata: Metadata = {
-  title: "Writing Journey | Bhavya Writes",
+  title: "Writing Journey | bhvy.",
   description:
     "A living timeline and seasonal rhythm of stories, thoughts, and writings crafted by Bhavya under the moonlight.",
   alternates: {
@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://bhvywrts.vercel.app/writing-journey",
-    title: "Writing Journey | Bhavya Writes",
+    title: "Writing Journey | bhvy.",
     description:
       "A living timeline and seasonal rhythm of stories, thoughts, and writings crafted by Bhavya under the moonlight.",
-    siteName: "Bhavya Writes",
+    siteName: "bhvy.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Writing Journey | Bhavya Writes",
+    title: "Writing Journey | bhvy.",
     description:
       "A living timeline and seasonal rhythm of stories, thoughts, and writings crafted by Bhavya under the moonlight.",
   },

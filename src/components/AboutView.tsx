@@ -24,7 +24,7 @@ const TIMELINE = [
     text: "The writing stopped trying to be anything and finally became mine.",
   },
   {
-    year: "Bhavya Writes",
+    year: "bhvy.",
     text: "This journal — a place to leave pieces of myself without fear.",
   },
 ]
@@ -92,7 +92,7 @@ export function AboutView() {
                 Dear Reader,
               </p>
               <p>
-                Bhavya Writes is where I leave pieces of myself. Every story here is a thought that
+                bhvy. is where I leave pieces of myself. Every story here is a thought that
                 wouldn&apos;t leave me alone, a feeling that needed somewhere to go, a night I couldn&apos;t
                 sleep and chose instead to write.
               </p>

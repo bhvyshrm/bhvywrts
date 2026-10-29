@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { StoriesArchiveView } from "@/components/StoriesArchiveView"
 
 export const metadata: Metadata = {
-  title: "Stories | Bhavya Writes",
+  title: "Stories | bhvy.",
   description:
     "Browse the complete digital journal archive of stories, reflections, and personal essays by Bhavya.",
   alternates: {
@@ -11,14 +11,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://bhvywrts.vercel.app/stories",
-    title: "Stories | Bhavya Writes",
+    title: "Stories | bhvy.",
     description:
       "Browse the complete digital journal archive of stories, reflections, and personal essays by Bhavya.",
-    siteName: "Bhavya Writes",
+    siteName: "bhvy.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Stories | Bhavya Writes",
+    title: "Stories | bhvy.",
     description:
       "Browse the complete digital journal archive of stories, reflections, and personal essays by Bhavya.",
   },

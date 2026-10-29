@@ -65,7 +65,9 @@ export default function AdminLoginPage() {
             <div className="w-12 h-12 rounded-full glass flex items-center justify-center mx-auto mb-5">
               <Moon className="w-5 h-5 text-[var(--lavender)]" />
             </div>
-            <h1 className="font-[var(--font-great-vibes)] text-3xl gradient-logo">Bhavya Writes</h1>
+            <h1 className="font-[var(--font-instrument-serif)] text-4xl text-[#F5F1EA]">
+              bhvy<span className="text-[var(--orchid)]">.</span>
+            </h1>
             <p className="text-xs text-[var(--muted)] mt-2 font-[var(--font-grotesk)] tracking-wide">
               Sign in to manage the journal
             </p>

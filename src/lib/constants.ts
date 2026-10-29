@@ -1,8 +1,8 @@
 export const SITE_CONFIG = {
-  name: "Bhavya Writes",
-  tagline: "Stories, thoughts, and worlds crafted by Bhavya.",
+  name: "bhvy.",
+  tagline: "Stories, fragments, and quiet thoughts from a mind that never quite runs out of words.",
   author: "Bhavya",
-  description: "A personal digital journal — a writing sanctuary under the moonlight.",
+  description: "A digital journal — stories, fragments, and quiet thoughts crafted by Bhavya.",
   url: "https://bhvywrts.vercel.app",
 } as const
 

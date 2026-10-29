@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { CollectionsView } from "@/components/CollectionsView"
 
 export const metadata: Metadata = {
-  title: "Collections | Bhavya Writes",
+  title: "Collections | bhvy.",
   description:
     "Curated thematic collections of stories, thoughts, and reflections exploring night thoughts, midnight memories, and digital journal entries by Bhavya.",
   alternates: {
@@ -11,14 +11,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://bhvywrts.vercel.app/collections",
-    title: "Collections | Bhavya Writes",
+    title: "Collections | bhvy.",
     description:
       "Curated thematic collections of stories, thoughts, and reflections exploring night thoughts, midnight memories, and digital journal entries by Bhavya.",
-    siteName: "Bhavya Writes",
+    siteName: "bhvy.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Collections | Bhavya Writes",
+    title: "Collections | bhvy.",
     description:
       "Curated thematic collections of stories, thoughts, and reflections exploring night thoughts, midnight memories, and digital journal entries by Bhavya.",
   },
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
 const collectionPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Collections | Bhavya Writes",
+  name: "Collections | bhvy.",
   description:
     "Curated thematic collections of stories, thoughts, and reflections exploring night thoughts, midnight memories, and digital journal entries by Bhavya.",
   url: "https://bhvywrts.vercel.app/collections",
   publisher: {
     "@type": "Organization",
-    name: "Bhavya Writes",
+    name: "bhvy.",
     url: "https://bhvywrts.vercel.app",
   },
 }

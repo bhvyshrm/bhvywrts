@@ -888,12 +888,12 @@ export function StoryDetailView({
                     </nav>
                   )}
 
-                  {/* More from Bhavya Writes on mobile */}
+                  {/* More from bhvy. on mobile */}
                   {recommendedStories.length > 0 && (
                     <section className="pt-6">
                       <div className="flex items-center justify-between pb-3 border-b border-[var(--glass-border)] mb-4">
                         <h3 className="text-sm font-[var(--font-grotesk)] uppercase tracking-wider text-[var(--text-2)] font-medium">
-                          More from Bhavya Writes
+                          More from bhvy.
                         </h3>
                         <Link
                           href="/stories"
@@ -967,14 +967,14 @@ export function StoryDetailView({
             {/* RIGHT COLUMN: STICKY DESKTOP SIDEBAR (30–35% width, hidden on mobile) */}
             {!readingMode && (
               <aside className="lg:col-span-4 min-w-0 hidden lg:block sticky top-24 space-y-6 max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar">
-                {/* 1. “More from Bhavya Writes” (3 recommendations) */}
+                {/* 1. “More from bhvy.” (3 recommendations) */}
                 {recommendedStories.length > 0 && (
                   <section className="glass-card rounded-[28px] p-5 xl:p-6 border border-[var(--glass-border)] shadow-lg">
                     <div className="flex items-center justify-between pb-3.5 border-b border-[var(--glass-border)] mb-4">
                       <div className="flex items-center gap-2">
                         <Sparkles className="w-3.5 h-3.5 text-[var(--orchid)]" />
                         <h3 className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-2)] font-[var(--font-grotesk)] font-semibold">
-                          More from Bhavya Writes
+                          More from bhvy.
                         </h3>
                       </div>
                       <Link

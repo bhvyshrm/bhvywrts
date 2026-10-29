@@ -287,10 +287,10 @@ export function StoryEditorForm({
 
   const seoTitle = useMemo(() => {
     if (title.trim()) {
-      return `${title.trim()} — Bhavya Writes`
+      return `${title.trim()} — bhvy.`
     }
 
-    return "Untitled — Bhavya Writes"
+    return "Untitled — bhvy."
   }, [title])
 
   const accentSwatch =
