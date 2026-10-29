@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from "react"
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import { ChevronLeft, ChevronRight, Compass } from "lucide-react"
 import { GalaxyStoryCard } from "./GalaxyStoryCard"
-import { GALAXY_EASING } from "./motion"
 import { cn } from "@/lib/utils"
 import type { GalaxyStoryItem } from "./types"
 
@@ -60,7 +59,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
           {Array.from({ length: 4 }).map((_, i) => (
             <div
               key={i}
-              className="w-[250px] min-[360px]:w-[270px] min-[390px]:w-[285px] md:w-[290px] lg:w-[325px] xl:w-[345px] h-[280px] min-[360px]:h-[305px] min-[390px]:h-[325px] md:h-[330px] lg:h-[370px] xl:h-[390px] rounded-[24px] sm:rounded-[26px] md:rounded-[28px] skeleton shrink-0"
+              className="w-[250px] min-[360px]:w-[270px] min-[390px]:w-[285px] md:w-[290px] lg:w-[325px] xl:w-[345px] h-[280px] min-[360px]:h-[305px] min-[390px]:h-[325px] md:h-[330px] lg:h-[370px] xl:h-[390px] rounded-[24px] sm:rounded-[26px] md:rounded-[28px] skeleton bg-[#0D0D10] border border-white/10 shrink-0"
             />
           ))}
         </div>
@@ -76,19 +75,22 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
     <section
       id="story-gallery"
       ref={containerRef}
-      className="relative z-10 w-full max-w-full overflow-x-clip pt-4 pb-16"
+      className="relative z-10 w-full max-w-full overflow-x-clip pt-6 pb-16 sm:pb-20"
       aria-label="Story Gallery"
     >
       {/* Section Header */}
       <div className="galaxy-container mb-8 md:mb-12 flex items-end justify-between">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.22em] font-medium font-[var(--font-grotesk)] text-[var(--orchid)] bg-white/5 border border-white/10 mb-2">
-            <Compass className="w-3 h-3 text-[var(--cyan-muted)]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.22em] font-medium font-[var(--font-grotesk)] text-[var(--orchid)] bg-white/[0.03] border border-white/10 mb-2.5">
+            <Compass className="w-3 h-3 text-[var(--orchid)]" />
             <span>Story Gallery</span>
           </div>
-          <h2 className="font-[var(--font-instrument-serif)] text-2xl sm:text-3.5xl md:text-4xl text-foreground font-normal tracking-tight">
+          <h2 className="font-[var(--font-instrument-serif)] text-3xl sm:text-4xl text-[#F5F1EA] font-normal tracking-tight">
             Suspended in Thought
           </h2>
+          <p className="mt-1 text-xs sm:text-sm text-[#AAA6AF] font-[var(--font-source-serif)] italic">
+            Recent writings, fragments, and quiet reflections.
+          </p>
         </div>
 
         {/* Gallery Navigation Controls for Keyboard/Mouse Discovery */}
@@ -102,7 +104,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
               }
             }}
             aria-label="Previous stories"
-            className="w-9 h-9 rounded-full border border-white/15 bg-white/5 text-white/80 hover:text-white hover:bg-white/15 flex items-center justify-center transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)] active:scale-95"
+            className="w-9 h-9 rounded-full border border-white/10 bg-[#0D0D10] text-white/80 hover:text-white hover:bg-[#15151A] hover:border-white/20 flex items-center justify-center transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)] active:scale-95"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -115,7 +117,7 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
               }
             }}
             aria-label="Next stories"
-            className="w-9 h-9 rounded-full border border-white/15 bg-white/5 text-white/80 hover:text-white hover:bg-white/15 flex items-center justify-center transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)] active:scale-95"
+            className="w-9 h-9 rounded-full border border-white/10 bg-[#0D0D10] text-white/80 hover:text-white hover:bg-[#15151A] hover:border-white/20 flex items-center justify-center transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)] active:scale-95"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -191,4 +193,3 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
     </section>
   )
 }
-
