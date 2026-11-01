@@ -22,7 +22,26 @@ export function AmbientBackground({ coverImage: _coverImage }: AmbientBackground
       className="fixed inset-0 pointer-events-none -z-10 overflow-hidden select-none bg-[var(--bg-base)]"
       aria-hidden="true"
     >
-      {/* LAYER 1: Deep Aqua-Black Base is on the parent container (var(--bg-base)) */}
+      {/* LAYER 1: Subtle Coastal Landscape Continuity Backdrop */}
+      <div className="absolute inset-0 opacity-25 pointer-events-none overflow-hidden">
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet="/images/coastal-wallpaper-mobile.webp"
+            type="image/webp"
+          />
+          <source
+            srcSet="/images/coastal-wallpaper.webp"
+            type="image/webp"
+          />
+          <img
+            src="/images/coastal-wallpaper.jpg"
+            alt=""
+            role="presentation"
+            className="w-full h-full object-cover object-[center_65%] filter blur-[1px]"
+          />
+        </picture>
+      </div>
 
       {/* LAYER 2: Flowing Liquid Gradients (Fluid Atmospheric Shapes) */}
       <div className="absolute inset-0 overflow-hidden">

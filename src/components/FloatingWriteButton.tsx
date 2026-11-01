@@ -12,7 +12,7 @@ export function FloatingWriteButton() {
   return (
     <Link
       href="/editor"
-      className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-12 h-12 rounded-full bg-foreground text-background shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_8px_30px_rgba(232,121,249,0.35)] transition-all hover:scale-105 active:scale-95 border border-[var(--border-strong)]"
+      className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-12 h-12 rounded-full bg-white text-[#091825] shadow-[0_8px_30px_rgba(9,24,37,0.35)] hover:shadow-[0_8px_30px_rgba(140,205,242,0.45)] transition-all hover:scale-105 active:scale-95 border border-white/25"
       aria-label="Write a new story"
       title="Write a new story"
     >

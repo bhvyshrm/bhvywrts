@@ -58,11 +58,11 @@ export function CursorEffect() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      // Soft spotlight following cursor
+      // Soft coastal water spotlight following cursor
       const { x, y } = mouseRef.current
       const grad = ctx.createRadialGradient(x, y, 0, x, y, 240)
-      grad.addColorStop(0, "rgba(255, 182, 217, 0.04)")
-      grad.addColorStop(0.5, "rgba(248, 168, 200, 0.015)")
+      grad.addColorStop(0, "rgba(140, 205, 242, 0.05)")
+      grad.addColorStop(0.5, "rgba(23, 107, 156, 0.02)")
       grad.addColorStop(1, "rgba(0, 0, 0, 0)")
       ctx.fillStyle = grad
       ctx.fillRect(0, 0, canvas.width, canvas.height)
@@ -81,7 +81,7 @@ export function CursorEffect() {
         }
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 200, 220, ${t * 0.4})`
+        ctx.fillStyle = `rgba(220, 235, 245, ${t * 0.45})`
         ctx.fill()
       }
 

@@ -112,13 +112,13 @@ export function StoriesArchiveView() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-10 md:mb-12"
           >
-            <p className="text-[10px] uppercase tracking-[0.32em] text-[var(--orchid)] font-[var(--font-grotesk)] mb-3 font-medium">
+            <p className="text-[10px] uppercase tracking-[0.32em] text-[#8CCDF2] font-semibold mb-3">
               The Archive
             </p>
-            <h1 className="text-4xl md:text-5.5xl text-foreground font-[var(--font-instrument-serif)] tracking-tight">
+            <h1 className="text-4xl md:text-5.5xl text-white font-[var(--font-instrument-serif)] tracking-tight drop-shadow-sm">
               Stories
             </h1>
-            <p className="text-sm md:text-base text-[var(--text-2)] mt-3.5 max-w-md mx-auto leading-relaxed font-[var(--font-source-serif)] italic">
+            <p className="text-sm md:text-base text-[#DCE5EC] mt-3.5 max-w-md mx-auto leading-relaxed">
               Every page of this journal, waiting to be read.
             </p>
           </motion.div>
@@ -143,7 +143,7 @@ export function StoriesArchiveView() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search stories, excerpts, ideas..."
-                  className="w-full h-11 pl-11 pr-9 rounded-full glass border border-white/20 text-xs text-foreground placeholder:text-[var(--text-3)] outline-none focus:border-[var(--orchid)]/60 font-[var(--font-grotesk)] transition-colors shadow-sm"
+                  className="w-full h-11 pl-11 pr-9 rounded-full glass border border-white/20 text-xs text-foreground placeholder:text-[var(--text-3)] outline-none focus:border-[#8CCDF2]/60 font-[var(--font-grotesk)] transition-colors shadow-sm"
                 />
                 {searchQuery && (
                   <button
@@ -199,7 +199,7 @@ export function StoriesArchiveView() {
                     className={cn(
                       "inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all font-[var(--font-grotesk)] cursor-pointer",
                       selectedCategory === "favorites"
-                        ? "bg-[var(--orchid)] text-white shadow-sm font-semibold"
+                        ? "bg-[#8CCDF2] text-[#091825] shadow-sm font-semibold"
                         : "text-[var(--text-2)] hover:text-foreground hover:bg-white/10"
                     )}
                   >

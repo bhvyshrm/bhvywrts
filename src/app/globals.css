@@ -6,115 +6,130 @@
 .dark {
   --radius: 0.875rem;
 
-  /* AMOLED Pure Black & Electric Lavender Foundation */
+  /* AMOLED Pure Black & Coastal Foundation */
   --bg-base: #000000;
   --background: #000000;
 
-  /* AMOLED Elevated Surfaces */
+  /* Coastal & AMOLED Elevated Surfaces */
   --surface: #050505;
   --surface-secondary: #0a0a0c;
   --surface-elevated: #0d0d10;
   --card: #0d0d10;
-  --card-hover: #15151a;
+  --card-hover: #123d5a;
   --card-secondary: #0a0a0c;
 
-  /* AMOLED Editorial Typography Palette */
-  --primary-text: #f5f1ea;
-  --foreground: #f5f1ea;
-  --foreground-secondary: #aaa6af;
-  --secondary-text: #aaa6af;
-  --muted: #77737e;
-  --muted-metadata: #77737e;
-  --text: #f5f1ea;
-  --text-2: #aaa6af;
-  --text-3: #77737e;
+  /* Coastal Landscape Primary Colors */
+  --ocean-blue: #176B9C;
+  --coastal-deep: #123D5A;
+  --sky-blue: #8CCDF2;
+  --cloud-white: #F8FBFF;
+  --warm-white: #FFFFFF;
+  --silver: #DCE5EC;
+  --muted-slate: #667B8C;
+
+  /* Coastal Apple Glass Surfaces */
+  --glass-white: rgba(255, 255, 255, 0.16);
+  --glass-strong-fill: rgba(255, 255, 255, 0.24);
+  --glass-dark-fill: rgba(9, 24, 37, 0.28);
+  --glass-border-coastal: rgba(255, 255, 255, 0.32);
+
+  /* iOS Editorial Typography Palette */
+  --primary-text: #ffffff;
+  --foreground: #f8fbff;
+  --foreground-secondary: #dce5ec;
+  --secondary-text: #dce5ec;
+  --muted: #667b8c;
+  --muted-metadata: #667b8c;
+  --text: #ffffff;
+  --text-2: #dce5ec;
+  --text-3: #8ccdf2;
 
   /* Borders */
-  --border: rgba(255, 255, 255, 0.10);
-  --border-strong: rgba(255, 255, 255, 0.18);
-  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.15);
+  --border-strong: rgba(255, 255, 255, 0.32);
+  --border-subtle: rgba(255, 255, 255, 0.10);
 
-  /* Accents — Disciplined Lavender & Warm Ivory */
-  --lavender: #b66bff;
-  --soft-violet: #8e5bce;
-  --electric-lavender: #b66bff;
-  --orchid: #b66bff;
-  --warm-ivory: #f5f1ea;
-  --ivory: #f5f1ea;
-  --rose: #e8a5cf;
-  --blush: #e8a5cf;
-  --cyan-muted: #8e5bce;
-  --accent: #b66bff;
-  --accent-2: #8e5bce;
-  --accent-foreground: #000000;
-  --primary: #b66bff;
-  --primary-foreground: #000000;
-  --secondary: #0d0d10;
-  --secondary-foreground: #f5f1ea;
-  --ring: rgba(182, 107, 255, 0.45);
+  /* Accents — Coastal Blue & Pure White (Purple Removed) */
+  --lavender: #8ccdf2;
+  --soft-violet: #176b9c;
+  --electric-lavender: #8ccdf2;
+  --orchid: #8ccdf2;
+  --warm-ivory: #ffffff;
+  --ivory: #ffffff;
+  --rose: #8ccdf2;
+  --blush: #dce5ec;
+  --cyan-muted: #176b9c;
+  --accent: #8ccdf2;
+  --accent-2: #176b9c;
+  --accent-foreground: #091825;
+  --primary: #8ccdf2;
+  --primary-foreground: #091825;
+  --secondary: #123d5a;
+  --secondary-foreground: #ffffff;
+  --ring: rgba(140, 205, 242, 0.45);
 
   /* Restrained Atmospheric Ambient Gradients */
-  --flow-grad-1: radial-gradient(ellipse 65% 55% at 45% 45%, rgba(142, 91, 206, 0.10) 0%, rgba(182, 107, 255, 0.04) 42%, transparent 75%);
-  --flow-grad-2: radial-gradient(ellipse 60% 55% at 55% 45%, rgba(182, 107, 255, 0.08) 0%, rgba(232, 165, 207, 0.03) 45%, transparent 72%);
-  --flow-grad-3: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(142, 91, 206, 0.06) 0%, rgba(182, 107, 255, 0.02) 40%, transparent 75%);
-  --flow-grad-4: radial-gradient(ellipse 75% 55% at 50% 55%, rgba(142, 91, 206, 0.08) 0%, transparent 75%);
-  --flow-grad-refraction: radial-gradient(ellipse 70% 45% at 40% 40%, rgba(182, 107, 255, 0.06) 0%, transparent 70%);
+  --flow-grad-1: radial-gradient(ellipse 65% 55% at 45% 45%, rgba(23, 107, 156, 0.16) 0%, rgba(140, 205, 242, 0.05) 42%, transparent 75%);
+  --flow-grad-2: radial-gradient(ellipse 60% 55% at 55% 45%, rgba(140, 205, 242, 0.12) 0%, rgba(18, 61, 90, 0.08) 45%, transparent 72%);
+  --flow-grad-3: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(23, 107, 156, 0.10) 0%, rgba(140, 205, 242, 0.04) 40%, transparent 75%);
+  --flow-grad-4: radial-gradient(ellipse 75% 55% at 50% 55%, rgba(18, 61, 90, 0.18) 0%, transparent 75%);
+  --flow-grad-refraction: radial-gradient(ellipse 70% 45% at 40% 40%, rgba(140, 205, 242, 0.14) 0%, transparent 70%);
   --flow-vignette: radial-gradient(ellipse 85% 80% at 50% 50%, transparent 40%, #000000 100%);
   --flow-noise-opacity: 0.015;
 
-  /* AMOLED Glass Material Tokens */
-  --glass-fill: rgba(13, 13, 16, 0.70);
-  --glass-fill-strong: rgba(13, 13, 16, 0.88);
-  --glass-border: rgba(255, 255, 255, 0.10);
-  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
+  /* Coastal Apple Glass Material Tokens */
+  --glass-fill: rgba(255, 255, 255, 0.14);
+  --glass-fill-strong: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.28);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  --glass-shadow: 0 20px 60px rgba(9, 24, 37, 0.45);
 
   /* Galaxy Liquid Glass Tokens */
-  --liquid-glass-bg: rgba(10, 10, 12, 0.85);
-  --liquid-glass-border: rgba(255, 255, 255, 0.10);
-  --liquid-glass-border-hover: rgba(182, 107, 255, 0.35);
-  --liquid-glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
-  --liquid-glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+  --liquid-glass-bg: rgba(9, 24, 37, 0.55);
+  --liquid-glass-border: rgba(255, 255, 255, 0.22);
+  --liquid-glass-border-hover: rgba(140, 205, 242, 0.5);
+  --liquid-glass-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+  --liquid-glass-shadow: 0 20px 50px rgba(9, 24, 37, 0.5);
 
   /* Ambient Glow */
-  --glow: rgba(182, 107, 255, 0.15);
-  --moon-glow: rgba(232, 165, 207, 0.10);
-  --star-color: rgba(255, 255, 255, 0.45);
-  --noise-opacity: 0.02;
+  --glow: rgba(140, 205, 242, 0.18);
+  --moon-glow: rgba(140, 205, 242, 0.12);
+  --star-color: rgba(255, 255, 255, 0.65);
+  --noise-opacity: 0.015;
 
   /* Ambient gradient stops */
-  --ambient-1: rgba(182, 107, 255, 0.04);
-  --ambient-2: rgba(142, 91, 206, 0.03);
-  --ambient-3: rgba(232, 165, 207, 0.02);
+  --ambient-1: rgba(23, 107, 156, 0.12);
+  --ambient-2: rgba(18, 61, 90, 0.10);
+  --ambient-3: rgba(140, 205, 242, 0.08);
 
-  /* Logo gradient — refined warm ivory into electric lavender */
-  --gradient-logo: linear-gradient(135deg, #f5f1ea 0%, #ffffff 45%, #b66bff 100%);
+  /* Logo gradient — crisp warm white into coastal sky blue */
+  --gradient-logo: linear-gradient(135deg, #ffffff 0%, #dce5ec 45%, #8ccdf2 100%);
   --gradient-shine: linear-gradient(
     100deg,
     rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.7) 50%,
     rgba(255, 255, 255, 0) 70%
   );
 
   /* Reading prose */
-  --reading-text: rgba(245, 241, 234, 0.90);
-  --reading-heading: #f5f1ea;
+  --reading-text: rgba(248, 251, 255, 0.94);
+  --reading-heading: #ffffff;
   --reading-strong: #ffffff;
-  --reading-blockquote: rgba(182, 107, 255, 0.9);
-  --reading-muted: #77737e;
-  --reading-code-bg: #0d0d10;
+  --reading-blockquote: rgba(140, 205, 242, 0.9);
+  --reading-muted: #667b8c;
+  --reading-code-bg: rgba(9, 24, 37, 0.6);
 
   /* Shadows */
-  --card-hover-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 24px rgba(182, 107, 255, 0.08);
-  --card-lift-shadow: 0 32px 72px rgba(0, 0, 0, 0.9), 0 0 36px rgba(182, 107, 255, 0.12);
+  --card-hover-shadow: 0 24px 60px rgba(9, 24, 37, 0.4), 0 0 24px rgba(140, 205, 242, 0.15);
+  --card-lift-shadow: 0 32px 72px rgba(9, 24, 37, 0.5), 0 0 36px rgba(140, 205, 242, 0.2);
 
   /* Selection + scrollbars */
-  --selection-bg: rgba(182, 107, 255, 0.28);
-  --selection-text: #f5f1ea;
-  --scrollbar-thumb: rgba(255, 255, 255, 0.12);
-  --scrollbar-thumb-hover: rgba(182, 107, 255, 0.35);
-  --skeleton-mid: rgba(255, 255, 255, 0.04);
-  --skeleton-high: rgba(255, 255, 255, 0.08);
+  --selection-bg: rgba(23, 107, 156, 0.35);
+  --selection-text: #ffffff;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.25);
+  --scrollbar-thumb-hover: rgba(140, 205, 242, 0.5);
+  --skeleton-mid: rgba(255, 255, 255, 0.08);
+  --skeleton-high: rgba(255, 255, 255, 0.15);
 
   color-scheme: dark;
 
@@ -161,12 +176,12 @@
   --color-border: var(--border);
   --color-input: var(--border);
   --color-ring: var(--ring);
-  --font-sans: var(--font-inter);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", var(--font-inter), sans-serif;
   --font-serif: var(--font-instrument-serif);
-  --font-body: var(--font-source-serif);
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", var(--font-source-serif), sans-serif;
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-instrument-serif);
-  --font-grotesk: var(--font-space-grotesk);
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", var(--font-instrument-serif), sans-serif;
+  --font-grotesk: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", var(--font-space-grotesk), sans-serif;
   --font-brand: var(--font-great-vibes);
 }
 
@@ -180,7 +195,6 @@
     color-scheme: dark;
   }
 
-
   html.intro-active {
     background-color: #050505 !important;
   }
@@ -191,16 +205,16 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
     background-color: var(--background);
     overflow-x: hidden;
     transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-instrument-serif), Georgia, serif;
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
 
   ::selection {
@@ -224,13 +238,47 @@
   }
 
   :focus-visible {
-    outline: 2px solid rgba(255, 182, 217, 0.6);
+    outline: 2px solid rgba(140, 205, 242, 0.6);
     outline-offset: 2px;
     border-radius: 4px;
   }
 }
 
-/* ---------- Surfaces & Aurora Frosted Glass ---------- */
+/* ---------- Surfaces & Coastal Apple Glass ---------- */
+
+/* Coastal Glass Utilities */
+.coastal-glass {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 20px 50px rgba(9, 24, 37, 0.3), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.coastal-glass-strong {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(32px) saturate(190%);
+  -webkit-backdrop-filter: blur(32px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  box-shadow: 0 28px 70px rgba(9, 24, 37, 0.4), inset 0 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.coastal-glass-dark {
+  background: rgba(9, 24, 37, 0.45);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.coastal-glass-pill {
+  background: rgba(9, 24, 37, 0.60);
+  backdrop-filter: blur(26px) saturate(180%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 9999px;
+  box-shadow: 0 16px 45px rgba(9, 24, 37, 0.35), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+}
 
 /* ---------- Galaxy Responsive Spacing & Layout Utilities ---------- */
 .galaxy-container {
@@ -249,8 +297,8 @@
 
 .glass {
   background: var(--glass-fill);
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), var(--glass-highlight);
   will-change: transform;
@@ -258,8 +306,8 @@
 
 .glass-strong {
   background: var(--glass-fill-strong);
-  backdrop-filter: blur(28px) saturate(170%);
-  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), var(--glass-highlight);
   will-change: transform;
@@ -267,8 +315,8 @@
 
 .glass-pill {
   background: var(--glass-fill);
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--glass-border);
   border-radius: 9999px;
   box-shadow: var(--glass-shadow), var(--glass-highlight);

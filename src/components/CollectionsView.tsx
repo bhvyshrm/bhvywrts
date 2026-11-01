@@ -65,13 +65,13 @@ export function CollectionsView() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-12 md:mb-16"
           >
-            <p className="text-[10px] uppercase tracking-[0.32em] text-[var(--orchid)] font-[var(--font-grotesk)] mb-3 font-medium">
+            <p className="text-[10px] uppercase tracking-[0.32em] text-[#8CCDF2] font-semibold mb-3">
               Series &amp; Themes
             </p>
-            <h1 className="text-4xl md:text-5.5xl text-foreground font-[var(--font-instrument-serif)] tracking-tight">
+            <h1 className="text-4xl md:text-5.5xl text-white font-[var(--font-instrument-serif)] tracking-tight drop-shadow-sm">
               Collections
             </h1>
-            <p className="text-sm md:text-base text-[var(--text-2)] mt-3.5 max-w-md mx-auto leading-relaxed font-[var(--font-source-serif)] italic">
+            <p className="text-sm md:text-base text-[#DCE5EC] mt-3.5 max-w-md mx-auto leading-relaxed">
               Groups of stories that belong to the same world, mood, or season of the heart.
             </p>
           </motion.div>
@@ -95,7 +95,7 @@ export function CollectionsView() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 xl:gap-8">
               {collections.map(({ collection, stories: colStories }, i) => {
-                const accent = COLLECTION_ACCENTS[collection] || "#e879f9"
+                const accent = COLLECTION_ACCENTS[collection] || "#8CCDF2"
                 const firstStory = colStories[0]
                 return (
                   <motion.div

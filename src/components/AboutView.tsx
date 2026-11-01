@@ -56,9 +56,9 @@ export function AboutView() {
       {/* Ambient background glow */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div
-          className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[140px] opacity-[0.07]"
+          className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[140px] opacity-[0.09]"
           style={{
-            background: "radial-gradient(circle, #e879f9 0%, #a855f7 50%, transparent 70%)",
+            background: "radial-gradient(circle, #8ccdf2 0%, #176b9c 50%, transparent 70%)",
           }}
         />
       </div>
@@ -72,10 +72,10 @@ export function AboutView() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-14 md:mb-16"
           >
-            <p className="text-[10px] uppercase tracking-[0.32em] text-[var(--orchid)] font-[var(--font-grotesk)] mb-3 font-medium">
+            <p className="text-[10px] uppercase tracking-[0.32em] text-[#8CCDF2] font-semibold mb-3">
               About
             </p>
-            <h1 className="text-4xl md:text-5.5xl text-foreground font-[var(--font-instrument-serif)] tracking-tight">
+            <h1 className="text-4xl md:text-5.5xl text-white font-[var(--font-instrument-serif)] tracking-tight drop-shadow-sm">
               A Letter
             </h1>
           </motion.div>
@@ -124,19 +124,19 @@ export function AboutView() {
             transition={{ duration: 0.7 }}
             className="grid grid-cols-2 gap-4 mt-8"
           >
-            <div className="glass-card rounded-[22px] md:rounded-[26px] p-6 text-center border border-[var(--border)]">
-              <Feather className="w-5 h-5 text-[var(--orchid)] mx-auto mb-2.5" />
-              <p className="font-[var(--font-instrument-serif)] text-3xl md:text-4xl text-foreground">
+            <div className="glass-card rounded-[22px] md:rounded-[26px] p-6 text-center border border-white/20">
+              <Feather className="w-5 h-5 text-[#8CCDF2] mx-auto mb-2.5" />
+              <p className="font-[var(--font-instrument-serif)] text-3xl md:text-4xl text-white">
                 {loading ? "—" : storyCount}
               </p>
-              <p className="text-xs text-[var(--muted)] mt-1.5 font-[var(--font-grotesk)]">Stories written</p>
+              <p className="text-xs text-[#DCE5EC] mt-1.5 font-[var(--font-grotesk)]">Stories written</p>
             </div>
-            <div className="glass-card rounded-[22px] md:rounded-[26px] p-6 text-center border border-[var(--border)]">
-              <BookOpen className="w-5 h-5 text-[var(--orchid)] mx-auto mb-2.5" />
-              <p className="font-[var(--font-instrument-serif)] text-3xl md:text-4xl text-foreground">
+            <div className="glass-card rounded-[22px] md:rounded-[26px] p-6 text-center border border-white/20">
+              <BookOpen className="w-5 h-5 text-[#8CCDF2] mx-auto mb-2.5" />
+              <p className="font-[var(--font-instrument-serif)] text-3xl md:text-4xl text-white">
                 {loading ? "—" : wordCount.toLocaleString()}
               </p>
-              <p className="text-xs text-[var(--muted)] mt-1.5 font-[var(--font-grotesk)]">Words published</p>
+              <p className="text-xs text-[#DCE5EC] mt-1.5 font-[var(--font-grotesk)]">Words published</p>
             </div>
           </motion.div>
 
@@ -148,10 +148,10 @@ export function AboutView() {
             transition={{ duration: 0.8 }}
             className="mt-14"
           >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--orchid)] font-[var(--font-grotesk)] mb-7 font-medium">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-[#8CCDF2] font-semibold mb-7">
               The Road So Far
             </p>
-            <div className="space-y-7 relative before:absolute before:left-[7px] before:top-1 before:bottom-1 before:w-px before:bg-[var(--border)]">
+            <div className="space-y-7 relative before:absolute before:left-[7px] before:top-1 before:bottom-1 before:w-px before:bg-white/20">
               {TIMELINE.map((item, i) => (
                 <motion.div
                   key={item.year}
@@ -161,9 +161,9 @@ export function AboutView() {
                   transition={{ duration: 0.5, delay: i * 0.05 }}
                   className="relative pl-8"
                 >
-                  <span className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 border-[var(--background)] bg-[var(--orchid)] shadow-[0_0_10px_rgba(232,121,249,0.3)]" />
-                  <h3 className="font-[var(--font-instrument-serif)] text-xl text-foreground">{item.year}</h3>
-                  <p className="text-xs sm:text-sm text-[var(--foreground-secondary)] mt-1 leading-relaxed font-[var(--font-source-serif)]">{item.text}</p>
+                  <span className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2 border-[#091825] bg-[#8CCDF2] shadow-[0_0_10px_rgba(140,205,242,0.6)]" />
+                  <h3 className="font-[var(--font-instrument-serif)] text-xl text-white">{item.year}</h3>
+                  <p className="text-xs sm:text-sm text-[#DCE5EC] mt-1 leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -175,17 +175,17 @@ export function AboutView() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8 }}
-            className="mt-14 glass-card rounded-[24px] md:rounded-[28px] p-7 md:p-9 border border-[var(--border)]"
+            className="mt-14 glass-card rounded-[24px] md:rounded-[28px] p-7 md:p-9 border border-white/20"
           >
-            <Quote className="w-6 h-6 text-[var(--orchid)] mb-3 opacity-70" />
-            <p className="font-[var(--font-instrument-serif)] italic text-xl md:text-2xl text-foreground leading-relaxed">
+            <Quote className="w-6 h-6 text-[#8CCDF2] mb-3 opacity-80" />
+            <p className="font-[var(--font-instrument-serif)] italic text-xl md:text-2xl text-white leading-relaxed">
               &ldquo;A story is a room you build so someone else can rest in it.&rdquo;
             </p>
-            <div className="mt-5 pt-5 border-t border-[var(--border)]">
-              <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--muted)] font-[var(--font-grotesk)] mb-2">
+            <div className="mt-5 pt-5 border-t border-white/15">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-[#8CCDF2] mb-2 font-medium">
                 Writing Philosophy
               </p>
-              <p className="text-xs sm:text-sm text-[var(--foreground-secondary)] leading-relaxed font-[var(--font-source-serif)]">
+              <p className="text-xs sm:text-sm text-[#DCE5EC] leading-relaxed">
                 Write like no one is reading. Edit like everyone will. Keep the heart of it, always.
               </p>
             </div>
@@ -199,13 +199,13 @@ export function AboutView() {
             transition={{ duration: 0.8 }}
             className="mt-14 text-center"
           >
-            <Sparkles className="w-5 h-5 text-[var(--orchid)] mx-auto mb-3" />
-            <p className="font-[var(--font-instrument-serif)] italic text-lg text-[var(--foreground-secondary)]">
+            <Sparkles className="w-5 h-5 text-[#8CCDF2] mx-auto mb-3" />
+            <p className="font-[var(--font-instrument-serif)] italic text-lg text-[#DCE5EC]">
               If you made it this far, maybe read one.
             </p>
             <Link
               href="/stories"
-              className="inline-flex items-center gap-2 rounded-full bg-foreground text-background text-xs sm:text-sm font-medium px-6 py-3 mt-5 hover:opacity-90 transition-all font-[var(--font-grotesk)] shadow-sm active:scale-95"
+              className="inline-flex items-center gap-2 rounded-full bg-white text-[#091825] text-xs sm:text-sm font-medium px-6 py-3 mt-5 hover:bg-[#F8FBFF] hover:shadow-[0_0_24px_rgba(140,205,242,0.4)] transition-all shadow-sm active:scale-95"
             >
               <span>Browse the journal</span>
               <ArrowRight className="w-3.5 h-3.5" />

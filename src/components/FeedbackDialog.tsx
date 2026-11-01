@@ -198,7 +198,7 @@ export function FeedbackDialog({
               /* Feedback Form */
               <div>
                 <div className="mb-6">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.2em] font-[var(--font-grotesk)] font-medium text-[var(--orchid)] bg-[var(--orchid)]/10 border border-[var(--orchid)]/25 mb-3">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.2em] font-[var(--font-grotesk)] font-medium text-[#8CCDF2] bg-[#8CCDF2]/10 border border-[#8CCDF2]/25 mb-3">
                     <Mail className="w-3 h-3" />
                     <span>Private Note</span>
                   </div>
@@ -258,7 +258,7 @@ export function FeedbackDialog({
                       onChange={(e) => setName(e.target.value)}
                       placeholder="What should I call you?"
                       disabled={submitting}
-                      className="w-full px-4 py-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/15 text-sm text-foreground placeholder:text-[var(--muted)] outline-none focus:border-[var(--orchid)]/60 focus:bg-white/60 dark:focus:bg-white/[0.06] transition-all font-[var(--font-grotesk)]"
+                      className="w-full px-4 py-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/15 text-sm text-foreground placeholder:text-[var(--muted)] outline-none focus:border-[#8CCDF2]/60 focus:bg-white/60 dark:focus:bg-white/[0.06] transition-all font-[var(--font-grotesk)]"
                     />
                   </div>
 
@@ -284,7 +284,7 @@ export function FeedbackDialog({
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Share your thoughts about this story..."
                       disabled={submitting}
-                      className="w-full px-4 py-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/15 text-sm text-foreground placeholder:text-[var(--muted)] outline-none focus:border-[var(--orchid)]/60 focus:bg-white/60 dark:focus:bg-white/[0.06] transition-all resize-none font-[var(--font-source-serif)] leading-relaxed"
+                      className="w-full px-4 py-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/15 text-sm text-foreground placeholder:text-[var(--muted)] outline-none focus:border-[#8CCDF2]/60 focus:bg-white/60 dark:focus:bg-white/[0.06] transition-all resize-none font-[var(--font-source-serif)] leading-relaxed"
                     />
                   </div>
 
@@ -313,7 +313,7 @@ export function FeedbackDialog({
                         </>
                       ) : (
                         <>
-                          <Send className="w-4 h-4 text-[var(--orchid)]" />
+                          <Send className="w-4 h-4 text-[#8CCDF2]" />
                           <span>Send privately</span>
                         </>
                       )}

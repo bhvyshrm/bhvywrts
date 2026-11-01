@@ -59,7 +59,7 @@ export function StoryCard({ story, index = 0, large = false }: StoryCardProps) {
     [story.tags]
   )
   const moodColor = mood ? MOOD_COLORS[mood] : undefined
-  const borderGlow = accent || moodColor || "var(--orchid)"
+  const borderGlow = accent || moodColor || "#8CCDF2"
 
   const handleShare = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -133,7 +133,7 @@ export function StoryCard({ story, index = 0, large = false }: StoryCardProps) {
             <div className="flex items-center gap-1.5 flex-wrap">
               {editorsPick && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[9px] font-medium uppercase tracking-[0.16em] backdrop-blur-md border border-white/25 bg-black/40 text-white font-[var(--font-grotesk)] shadow-sm">
-                  <Star className="w-2.5 h-2.5 text-[var(--orchid)]" fill="currentColor" />
+                  <Star className="w-2.5 h-2.5 text-[#8CCDF2]" fill="currentColor" />
                   <span>Editor&apos;s Pick</span>
                 </span>
               )}
@@ -166,7 +166,7 @@ export function StoryCard({ story, index = 0, large = false }: StoryCardProps) {
               <div className="flex items-center justify-between text-[10px] text-white/75 font-[var(--font-grotesk)] mb-2">
                 <div className="flex items-center gap-2">
                   {story.category && (
-                    <span className="uppercase tracking-[0.2em] font-medium text-[var(--orchid)]">
+                    <span className="uppercase tracking-[0.2em] font-medium text-[#8CCDF2]">
                       {story.category}
                     </span>
                   )}
@@ -203,7 +203,7 @@ export function StoryCard({ story, index = 0, large = false }: StoryCardProps) {
 
               {/* Bottom Quick Actions (Bookmark, Favorite, Share) */}
               <div className="flex items-center justify-between pt-3 mt-3 border-t border-white/15">
-                <span className="text-[11px] font-medium text-white/90 group-hover:text-[var(--orchid)] transition-colors font-[var(--font-grotesk)] inline-flex items-center gap-1">
+                <span className="text-[11px] font-medium text-white/90 group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] inline-flex items-center gap-1">
                   <span>Read story</span>
                   <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
@@ -217,7 +217,7 @@ export function StoryCard({ story, index = 0, large = false }: StoryCardProps) {
                     className={cn(
                       "w-7 h-7 rounded-full flex items-center justify-center transition-colors cursor-pointer",
                       bookmarks.isIn
-                        ? "text-[var(--orchid)] bg-white/20"
+                        ? "text-[#8CCDF2] bg-white/20"
                         : "text-white/70 hover:text-white hover:bg-white/10"
                     )}
                   >

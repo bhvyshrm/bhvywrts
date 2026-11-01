@@ -158,14 +158,14 @@ function ShareButton({
       aria-label="Share story"
       title={copied ? "Link copied!" : "Share story"}
       className={cn(
-        "w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)]",
+        "w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#8CCDF2]",
         hero
           ? "border border-white/20 bg-black/40 backdrop-blur-md text-white/90 hover:text-white hover:bg-white/20 hover:border-white/40 active:scale-95 shadow-sm"
           : "border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text-2)] hover:text-foreground hover:bg-white/10 active:scale-95 shadow-sm"
       )}
     >
       {copied ? (
-        <Check className="w-4 h-4 text-[var(--orchid)]" />
+        <Check className="w-4 h-4 text-[#8CCDF2]" />
       ) : (
         <Share2 className="w-4 h-4" />
       )}
@@ -212,13 +212,13 @@ function BookmarkButton({
       aria-pressed={bookmarked}
       title={bookmarked ? "Bookmarked" : "Bookmark"}
       className={cn(
-        "w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)]",
+        "w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#8CCDF2]",
         hero
           ? bookmarked
-            ? "border border-[var(--orchid)]/60 text-[var(--orchid)] bg-[var(--orchid)]/25 shadow-[0_0_16px_rgba(232,121,249,0.3)]"
+            ? "border border-[#8CCDF2]/60 text-[#8CCDF2] bg-[#8CCDF2]/25 shadow-[0_0_16px_rgba(140,205,242,0.35)]"
             : "border border-white/20 bg-black/40 backdrop-blur-md text-white/90 hover:text-white hover:bg-white/20 hover:border-white/40 active:scale-95 shadow-sm"
           : bookmarked
-            ? "border border-[var(--orchid)]/50 text-[var(--orchid)] bg-[var(--orchid)]/15 shadow-[0_0_12px_rgba(232,121,249,0.2)]"
+            ? "border border-[#8CCDF2]/50 text-[#8CCDF2] bg-[#8CCDF2]/15 shadow-[0_0_12px_rgba(140,205,242,0.25)]"
             : "border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text-2)] hover:text-foreground hover:bg-white/10 active:scale-95 shadow-sm"
       )}
     >
@@ -303,10 +303,10 @@ function LockedStory({
               transition={{ delay: 0.15, duration: 0.5 }}
               className="relative mx-auto w-16 h-16 rounded-full border border-white/25 bg-black/20 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(232,121,249,0.25)]"
             >
-              <Lock className="w-6 h-6 text-[var(--orchid)]" />
+              <Lock className="w-6 h-6 text-[#8CCDF2]" />
             </motion.div>
 
-            <p className="text-[10px] uppercase tracking-[0.24em] text-[var(--orchid)] font-[var(--font-grotesk)] mb-3 font-medium">
+            <p className="text-[10px] uppercase tracking-[0.24em] text-[#8CCDF2] font-[var(--font-grotesk)] mb-3 font-medium">
               Private Story
             </p>
 
@@ -339,7 +339,7 @@ function LockedStory({
                   className={cn(
                     "w-full h-12 rounded-full border glass-pill pl-11 pr-5 text-sm text-foreground outline-none transition-all font-[var(--font-grotesk)]",
                     "placeholder:text-[var(--text-3)]",
-                    "focus:border-[var(--orchid)]/70 focus:ring-4 focus:ring-[var(--orchid)]/15",
+                    "focus:border-[#8CCDF2]/70 focus:ring-4 focus:ring-[#8CCDF2]/15",
                     error ? "border-red-400/50" : "border-white/20"
                   )}
                 />
@@ -372,7 +372,7 @@ function LockedStory({
               >
                 {unlocking ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-[var(--orchid)]" />
+                    <Loader2 className="w-4 h-4 animate-spin text-[#8CCDF2]" />
                     <span>Unlocking...</span>
                   </>
                 ) : (
@@ -424,7 +424,7 @@ function StoryHero({
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 24])
 
   const moodColor = tags.mood ? MOOD_COLORS[tags.mood as Mood] : undefined
-  const accentColor = tags.accent || moodColor || "var(--orchid)"
+  const accentColor = tags.accent || moodColor || "#8CCDF2"
 
   return (
     <div
@@ -506,11 +506,11 @@ function StoryHero({
                 className="text-[10px] uppercase tracking-[0.2em] font-medium font-[var(--font-grotesk)] px-3 py-1 rounded-full border border-white/25 text-white/95 bg-white/10 backdrop-blur-md"
                 style={{
                   borderColor:
-                    accentColor !== "var(--orchid)"
+                    accentColor !== "#8CCDF2"
                       ? `${accentColor}50`
                       : undefined,
                   color:
-                    accentColor !== "var(--orchid)" ? accentColor : undefined,
+                    accentColor !== "#8CCDF2" ? accentColor : undefined,
                 }}
               >
                 {story.category}
@@ -564,9 +564,9 @@ function StoryHero({
                 onClick={onOpenFeedback}
                 aria-label="Write to the Author"
                 title="Write to the Author"
-                className="w-11 h-11 rounded-full border border-white/20 bg-black/40 backdrop-blur-md text-white/90 hover:text-white hover:bg-white/20 hover:border-white/40 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95 focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
+                className="w-11 h-11 rounded-full border border-white/20 bg-black/40 backdrop-blur-md text-white/90 hover:text-white hover:bg-white/20 hover:border-white/40 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95 focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
               >
-                <Mail className="w-4 h-4 text-[var(--orchid)]" />
+                <Mail className="w-4 h-4 text-[#8CCDF2]" />
               </button>
               <ShareButton title={story.title} slug={story.slug} hero />
               {!readingMode && (
@@ -575,7 +575,7 @@ function StoryHero({
                   onClick={onReadingMode}
                   aria-label="Enter reading mode"
                   title="Reading mode"
-                  className="w-11 h-11 rounded-full border border-white/20 bg-black/40 backdrop-blur-md text-white/90 hover:text-white hover:bg-white/20 hover:border-white/40 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95 focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
+                  className="w-11 h-11 rounded-full border border-white/20 bg-black/40 backdrop-blur-md text-white/90 hover:text-white hover:bg-white/20 hover:border-white/40 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95 focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
                 >
                   <Maximize2 className="w-4 h-4" />
                 </button>
@@ -717,7 +717,7 @@ export function StoryDetailView({
             </p>
             <Link
               href="/stories"
-              className="text-xs uppercase tracking-[0.18em] text-[var(--orchid)] hover:opacity-80 mt-6 inline-block font-[var(--font-grotesk)] font-medium"
+              className="text-xs uppercase tracking-[0.18em] text-[#8CCDF2] hover:opacity-80 mt-6 inline-block font-[var(--font-grotesk)] font-medium"
             >
               ← Back to stories
             </Link>
@@ -752,7 +752,7 @@ export function StoryDetailView({
                 className="text-[11px] text-foreground hover:opacity-80 transition-opacity font-[var(--font-grotesk)] flex items-center gap-1.5 cursor-pointer font-medium"
                 aria-label="Exit reading mode"
               >
-                <Minimize2 className="w-3.5 h-3.5 text-[var(--orchid)]" />
+                <Minimize2 className="w-3.5 h-3.5 text-[#8CCDF2]" />
                 Exit
               </button>
             </div>
@@ -836,9 +836,9 @@ export function StoryDetailView({
                       type="button"
                       onClick={() => setFeedbackOpen(true)}
                       aria-label="Write to the Author"
-                      className="h-11 px-5 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text-2)] hover:text-foreground hover:bg-white/10 flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95 text-xs font-[var(--font-grotesk)] font-medium backdrop-blur-md focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
+                      className="h-11 px-5 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text-2)] hover:text-foreground hover:bg-white/10 flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95 text-xs font-[var(--font-grotesk)] font-medium backdrop-blur-md focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
                     >
-                      <Mail className="w-4 h-4 text-[var(--orchid)]" />
+                      <Mail className="w-4 h-4 text-[#8CCDF2]" />
                       <span>Write to the Author</span>
                     </button>
                   </div>
@@ -859,11 +859,11 @@ export function StoryDetailView({
                           href={`/stories/${prevStory.slug}`}
                           className="group block p-5 rounded-[24px] glass border border-[var(--glass-border)] hover:bg-white/10 transition-all shadow-md"
                         >
-                          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[var(--text-3)] group-hover:text-[var(--orchid)] transition-colors font-[var(--font-grotesk)] font-medium">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[var(--text-3)] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
                             <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
                             Previous story
                           </span>
-                          <span className="font-[var(--font-instrument-serif)] text-lg text-foreground group-hover:text-[var(--orchid)] transition-colors mt-2 block line-clamp-2 leading-snug">
+                          <span className="font-[var(--font-instrument-serif)] text-lg text-foreground group-hover:text-[#8CCDF2] transition-colors mt-2 block line-clamp-2 leading-snug">
                             {prevStory.title}
                           </span>
                         </Link>
@@ -876,11 +876,11 @@ export function StoryDetailView({
                           href={`/stories/${nextStory.slug}`}
                           className="group block p-5 rounded-[24px] glass border border-[var(--glass-border)] hover:bg-white/10 transition-all text-left sm:text-right shadow-md"
                         >
-                          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[var(--text-3)] group-hover:text-[var(--orchid)] transition-colors font-[var(--font-grotesk)] font-medium">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[var(--text-3)] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
                             Next story
                             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                           </span>
-                          <span className="font-[var(--font-instrument-serif)] text-lg text-foreground group-hover:text-[var(--orchid)] transition-colors mt-2 block line-clamp-2 leading-snug">
+                          <span className="font-[var(--font-instrument-serif)] text-lg text-foreground group-hover:text-[#8CCDF2] transition-colors mt-2 block line-clamp-2 leading-snug">
                             {nextStory.title}
                           </span>
                         </Link>
@@ -897,7 +897,7 @@ export function StoryDetailView({
                         </h3>
                         <Link
                           href="/stories"
-                          className="text-xs text-[var(--orchid)] hover:underline font-[var(--font-grotesk)]"
+                          className="text-xs text-[#8CCDF2] hover:underline font-[var(--font-grotesk)]"
                         >
                           Browse all →
                         </Link>
@@ -922,11 +922,11 @@ export function StoryDetailView({
                               )}
                             </div>
                             {rec.category && (
-                              <p className="text-[10px] uppercase tracking-wider text-[var(--orchid)] font-[var(--font-grotesk)] mb-1">
+                              <p className="text-[10px] uppercase tracking-wider text-[#8CCDF2] font-[var(--font-grotesk)] mb-1">
                                 {rec.category}
                               </p>
                             )}
-                            <h4 className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[var(--orchid)] transition-colors line-clamp-2 leading-snug">
+                            <h4 className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[#8CCDF2] transition-colors line-clamp-2 leading-snug">
                               {rec.title}
                             </h4>
                             <p className="text-[11px] text-[var(--text-3)] font-[var(--font-grotesk)] mt-2">
@@ -941,7 +941,7 @@ export function StoryDetailView({
                   {/* Mobile RSS Card */}
                   <div className="glass-card rounded-[24px] p-5 border border-[var(--glass-border)] flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-[var(--orchid)]/15 border border-[var(--orchid)]/30 flex items-center justify-center text-[var(--orchid)] shrink-0">
+                      <div className="w-9 h-9 rounded-full bg-[#8CCDF2]/15 border border-[#8CCDF2]/30 flex items-center justify-center text-[#8CCDF2] shrink-0">
                         <Rss className="w-4 h-4" />
                       </div>
                       <div>
@@ -972,7 +972,7 @@ export function StoryDetailView({
                   <section className="glass-card rounded-[28px] p-5 xl:p-6 border border-[var(--glass-border)] shadow-lg">
                     <div className="flex items-center justify-between pb-3.5 border-b border-[var(--glass-border)] mb-4">
                       <div className="flex items-center gap-2">
-                        <Sparkles className="w-3.5 h-3.5 text-[var(--orchid)]" />
+                        <Sparkles className="w-3.5 h-3.5 text-[#8CCDF2]" />
                         <h3 className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-2)] font-[var(--font-grotesk)] font-semibold">
                           More from bhvy.
                         </h3>
@@ -1008,11 +1008,11 @@ export function StoryDetailView({
                           </div>
                           <div className="flex-1 min-w-0 flex flex-col justify-center">
                             {rec.category && (
-                              <span className="text-[9px] uppercase tracking-[0.18em] text-[var(--orchid)] font-[var(--font-grotesk)] font-medium line-clamp-1">
+                              <span className="text-[9px] uppercase tracking-[0.18em] text-[#8CCDF2] font-[var(--font-grotesk)] font-medium line-clamp-1">
                                 {rec.category}
                               </span>
                             )}
-                            <h4 className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[var(--orchid)] transition-colors line-clamp-2 leading-snug mt-0.5">
+                            <h4 className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[#8CCDF2] transition-colors line-clamp-2 leading-snug mt-0.5">
                               {rec.title}
                             </h4>
                             <p className="text-[10px] text-[var(--text-3)] font-[var(--font-grotesk)] mt-1.5 flex items-center gap-2">
@@ -1031,7 +1031,7 @@ export function StoryDetailView({
                 {headings.length >= 2 && (
                   <section className="glass-card rounded-[28px] p-5 xl:p-6 border border-[var(--glass-border)] shadow-lg">
                     <div className="flex items-center gap-2 pb-3.5 border-b border-[var(--glass-border)] mb-3">
-                      <ListOrdered className="w-3.5 h-3.5 text-[var(--orchid)]" />
+                      <ListOrdered className="w-3.5 h-3.5 text-[#8CCDF2]" />
                       <h3 className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-2)] font-[var(--font-grotesk)] font-semibold">
                         In this story
                       </h3>
@@ -1048,7 +1048,7 @@ export function StoryDetailView({
                               "block py-1.5 px-3 rounded-xl text-xs transition-all duration-200 line-clamp-1 font-[var(--font-grotesk)]",
                               h.level === 3 && "pl-6 text-[11px]",
                               active
-                                ? "bg-white/10 text-[var(--orchid)] font-semibold"
+                                ? "bg-white/10 text-[#8CCDF2] font-semibold"
                                 : "text-[var(--text-2)] hover:text-foreground hover:bg-white/5"
                             )}
                           >
@@ -1072,11 +1072,11 @@ export function StoryDetailView({
                         href={`/stories/${prevStory.slug}`}
                         className="group block p-3.5 rounded-[20px] bg-black/20 hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-200"
                       >
-                        <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-[var(--text-3)] group-hover:text-[var(--orchid)] transition-colors font-[var(--font-grotesk)] font-medium">
+                        <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-[var(--text-3)] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
                           <ArrowLeft className="w-3 h-3 transition-transform group-hover:-translate-x-0.5" />
                           Previous story
                         </span>
-                        <span className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[var(--orchid)] transition-colors mt-1 block line-clamp-1 leading-snug">
+                        <span className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[#8CCDF2] transition-colors mt-1 block line-clamp-1 leading-snug">
                           {prevStory.title}
                         </span>
                       </Link>
@@ -1087,11 +1087,11 @@ export function StoryDetailView({
                         href={`/stories/${nextStory.slug}`}
                         className="group block p-3.5 rounded-[20px] bg-black/20 hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-200"
                       >
-                        <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-[var(--text-3)] group-hover:text-[var(--orchid)] transition-colors font-[var(--font-grotesk)] font-medium">
+                        <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-[var(--text-3)] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
                           Next story
                           <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
                         </span>
-                        <span className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[var(--orchid)] transition-colors mt-1 block line-clamp-1 leading-snug">
+                        <span className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[#8CCDF2] transition-colors mt-1 block line-clamp-1 leading-snug">
                           {nextStory.title}
                         </span>
                       </Link>
@@ -1102,7 +1102,7 @@ export function StoryDetailView({
                 {/* 4. Small RSS Callout */}
                 <div className="glass-card rounded-[24px] p-5 border border-[var(--glass-border)] shadow-md flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-[var(--orchid)]/15 border border-[var(--orchid)]/30 flex items-center justify-center text-[var(--orchid)] shrink-0">
+                    <div className="w-9 h-9 rounded-full bg-[#8CCDF2]/15 border border-[#8CCDF2]/30 flex items-center justify-center text-[#8CCDF2] shrink-0">
                       <Rss className="w-4 h-4" />
                     </div>
                     <div>

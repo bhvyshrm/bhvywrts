@@ -28,10 +28,10 @@ export function HomeContent() {
           .limit(24)
 
         if (data && isMounted) {
-          // Strictly filter for eligible stories
-          const eligible = (data as Story[]).filter(
-            (s) => s.published && !s.isLocked && s.slug && s.title
-          )
+          // Strictly filter for eligible stories sorted newest published first
+          const eligible = (data as Story[])
+            .filter((s) => s.published && !s.isLocked && s.slug && s.title)
+            .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
           setStories(eligible)
         }
       } catch {}
@@ -43,16 +43,10 @@ export function HomeContent() {
     }
   }, [])
 
-  // Identify the featured story (or the latest eligible story)
-  const latestStory = useMemo(() => {
+  // Featured story highlight for the hero banner
+  const featuredStory = useMemo(() => {
     return stories.find((s) => s.featured) || stories[0] || null
   }, [stories])
-
-  // Exclude the featured story from recent stories to prevent any duplicate rendering
-  const recentStories = useMemo(() => {
-    if (!latestStory) return stories
-    return stories.filter((s) => s.id !== latestStory.id)
-  }, [stories, latestStory])
 
   const scrollToGallery = () => {
     const el = document.getElementById("story-gallery")
@@ -63,31 +57,31 @@ export function HomeContent() {
 
   return (
     <>
-      {/* Background Atmosphere */}
+      {/* Coastal Background Atmosphere */}
       <GalaxyBackground />
 
-      {/* 1. NAVIGATION */}
+      {/* 1. FLOATING NAVIGATION */}
       <Navbar />
 
       <main id="main-content" className="relative min-h-screen text-foreground overflow-x-clip">
-        {/* 2. HERO / MAIN FEATURED-STORY PRESENTATION */}
+        {/* 2. LONG COASTAL GLASS HERO BANNER */}
         <GalaxyHero
-          featuredStory={latestStory}
+          featuredStory={featuredStory}
           loading={loading}
           onScrollToGallery={scrollToGallery}
         />
 
-        {/* 3. COLLECTIONS: Curated worlds directly after hero */}
-        <GalaxyCollections stories={stories} />
+        {/* 3. LATEST STORIES: Directly after Hero */}
+        <GalaxyStoryGallery stories={stories} loading={loading} />
 
-        {/* 4. RECENT STORIES: Excludes the featured story to eliminate duplication */}
-        <GalaxyStoryGallery stories={recentStories} loading={loading} />
+        {/* 4. COLLECTIONS: Placed below Latest Stories */}
+        <GalaxyCollections stories={stories} />
 
         {/* 5. ABOUT & WRITING JOURNEY BRIDGES */}
         <GalaxyJourneyLink />
       </main>
 
-      {/* 6. FOOTER */}
+      {/* 6. FINAL FOOTER */}
       <Footer />
       <FloatingWriteButton />
     </>

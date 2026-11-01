@@ -133,11 +133,11 @@ function TimelineEntry({ story, index, isLast }: { story: Story; index: number; 
         <div
           className="w-[11px] h-[11px] rounded-full border-2 border-[var(--background)] transition-all duration-300 group-hover:scale-125 z-10"
           style={{
-            backgroundColor: accentColor || "var(--orchid)",
+            backgroundColor: accentColor || "#8CCDF2",
             boxShadow: "none",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.boxShadow = `0 0 8px ${accentColor || "var(--orchid)"}40`
+            e.currentTarget.style.boxShadow = `0 0 8px ${accentColor || "#8CCDF2"}40`
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.boxShadow = "none"

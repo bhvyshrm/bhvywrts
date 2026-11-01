@@ -219,7 +219,7 @@ function DateSheetStory({ story, onClose }: { story: Story; onClose: () => void 
             </p>
           )}
 
-          <div className="flex items-center gap-1 mt-2.5 text-[11px] text-[var(--orchid)] font-[var(--font-grotesk)] opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="flex items-center gap-1 mt-2.5 text-[11px] text-[#8CCDF2] font-[var(--font-grotesk)] opacity-0 group-hover:opacity-100 transition-opacity">
             Read story
             <ArrowRight className="w-3 h-3" />
           </div>

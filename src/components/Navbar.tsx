@@ -166,12 +166,15 @@ export function Navbar() {
           hidden && !drawerOpen ? "-translate-y-24" : "translate-y-0"
         )}
       >
-        <div className="max-w-[1100px] mx-auto pointer-events-auto">
+        <div className="max-w-[1080px] mx-auto pointer-events-auto">
           <nav
             className={cn(
-              "relative flex items-center justify-between h-[52px] sm:h-14 md:h-[58px] px-3 sm:px-4 md:px-5 rounded-full transition-all duration-300",
-              "glass-pill border border-white/10 bg-[#050505]/85 backdrop-blur-2xl shadow-[0_16px_45px_rgba(0,0,0,0.85)]",
-              isStoryPage && "bg-[var(--glass-fill)]/70 backdrop-blur-xl opacity-90 hover:opacity-100"
+              "relative flex items-center justify-between h-[52px] sm:h-14 md:h-[58px] px-3 sm:px-5 md:px-6 rounded-full transition-all duration-300",
+              "glass-pill border border-white/25 backdrop-blur-2xl shadow-[0_16px_45px_rgba(9,24,37,0.35)]",
+              scrolled
+                ? "bg-[#091825]/85 border-white/30 shadow-[0_20px_50px_rgba(9,24,37,0.5)]"
+                : "bg-white/[0.14] dark:bg-[#091825]/50 hover:bg-[#091825]/70",
+              isStoryPage && "bg-[#091825]/75 backdrop-blur-xl opacity-95 hover:opacity-100"
             )}
           >
             {/* Left — Logo Wordmark */}
@@ -179,8 +182,8 @@ export function Navbar() {
               <Logo href="/" size="md" />
             </div>
 
-            {/* Center — Desktop Nav Links with Sliding Highlight */}
-            <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-white/[0.04] dark:bg-white/[0.05] border border-white/[0.08] dark:border-white/[0.08]">
+            {/* Center — Desktop Nav Links with Apple Sliding Highlight */}
+            <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-white/[0.08] border border-white/[0.15] backdrop-blur-md">
               {NAV_ITEMS.map((item) => {
                 const active = isActive(item.href)
                 return (
@@ -189,16 +192,16 @@ export function Navbar() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "relative px-4 py-1.5 text-xs font-medium transition-colors duration-200 rounded-full font-[var(--font-grotesk)] focus-visible:outline-2 focus-visible:outline-[var(--orchid)] focus-visible:outline-offset-1",
+                      "relative px-4 py-1.5 text-xs font-medium transition-colors duration-200 rounded-full focus-visible:outline-2 focus-visible:outline-[#8CCDF2] focus-visible:outline-offset-1",
                       active
-                        ? "text-foreground font-semibold"
-                        : "text-[var(--text-2)] hover:text-foreground"
+                        ? "text-white font-semibold"
+                        : "text-[#DCE5EC] hover:text-white"
                     )}
                   >
                     {active && (
                       <motion.span
                         layoutId="navbar-pill-active"
-                        className="absolute inset-0 rounded-full bg-white/80 dark:bg-white/15 border border-white/90 dark:border-white/25 shadow-xs dark:shadow-sm -z-10"
+                        className="absolute inset-0 rounded-full bg-white/25 border border-white/40 shadow-xs -z-10 backdrop-blur-md"
                         transition={{ type: "spring", stiffness: 450, damping: 35 }}
                       />
                     )}
@@ -208,31 +211,22 @@ export function Navbar() {
               })}
             </div>
 
-            {/* Right — Primary Action, Admin Controls & Mobile Menu */}
+            {/* Right — Admin Controls & Mobile Menu (No Explore Stories Button) */}
             <div className="flex items-center gap-2 shrink-0">
-              {/* Restrained Primary Action: Explore Stories */}
-              <Link
-                href="/stories"
-                className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium font-[var(--font-grotesk)] text-white/90 bg-white/10 hover:bg-white/15 hover:text-white border border-white/15 transition-all active:scale-95 shadow-xs focus-visible:outline-2 focus-visible:outline-[var(--orchid)] focus-visible:outline-offset-2"
-              >
-                <span>Explore Stories</span>
-                <ArrowRight className="w-3 h-3 text-[var(--orchid)]" />
-              </Link>
-
               {/* Admin Write Pill */}
               {adminReady && (
-                <div className="hidden sm:flex items-center gap-1.5 pl-1.5 border-l border-[var(--glass-border)]">
+                <div className="hidden sm:flex items-center gap-1.5 pl-1.5 border-l border-white/20">
                   <Link
                     href="/dashboard"
                     aria-label="Dashboard"
                     title="Dashboard"
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-full text-[var(--text-2)] hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full text-[#DCE5EC] hover:text-white hover:bg-white/10 transition-colors"
                   >
                     <LayoutDashboard className="w-3.5 h-3.5" />
                   </Link>
                   <Link
                     href="/editor"
-                    className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-medium bg-foreground text-background hover:opacity-90 transition-all font-[var(--font-grotesk)] shadow-sm active:scale-95"
+                    className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-medium bg-white text-[#091825] hover:bg-[#F8FBFF] hover:shadow-[0_0_20px_rgba(140,205,242,0.4)] transition-all shadow-sm active:scale-95"
                   >
                     <PenSquare className="w-3 h-3" />
                     <span>Write</span>
@@ -248,7 +242,7 @@ export function Navbar() {
                 aria-label={drawerOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={drawerOpen}
                 aria-controls="mobile-nav-panel"
-                className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text)] hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
+                className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/25 bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
               >
                 {drawerOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
@@ -257,7 +251,7 @@ export function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile Drawer (Aurora Frosted Glass Slide from Top/Side) */}
+      {/* Mobile Drawer (Coastal Frosted Glass Slide from Top/Side) */}
       <AnimatePresence>
         {drawerOpen && (
           <>
@@ -268,7 +262,7 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setDrawerOpen(false)}
-              className="fixed inset-0 z-[90] bg-black/80 backdrop-blur-md md:hidden"
+              className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-md md:hidden"
             />
 
             {/* Glass Drawer Panel */}
@@ -284,24 +278,24 @@ export function Navbar() {
               transition={{ type: "spring", stiffness: 350, damping: 32 }}
               className="fixed top-0 inset-x-0 z-[100] p-3 sm:p-4 md:hidden pointer-events-auto overscroll-contain"
             >
-              <div className="glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 shadow-2xl border border-white/10 bg-[#050505]/95 backdrop-blur-2xl max-w-md mx-auto">
-                <div className="flex items-center justify-between pb-4 border-b border-[var(--glass-border)]">
+              <div className="glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 shadow-2xl border border-white/25 bg-[#091825]/95 backdrop-blur-2xl max-w-md mx-auto">
+                <div className="flex items-center justify-between pb-4 border-b border-white/15">
                   <Logo href="/" size="sm" />
                   <button
                     type="button"
                     onClick={() => setDrawerOpen(false)}
                     aria-label="Close navigation menu"
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-[var(--glass-border)] text-foreground hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 </div>
 
                 <div className="py-4">
-                  <p className="text-[10px] uppercase tracking-[0.28em] text-[var(--orchid)] font-[var(--font-grotesk)]">
+                  <p className="text-[10px] uppercase tracking-[0.28em] text-[#8CCDF2] font-medium">
                     Digital Journal
                   </p>
-                  <p className="text-xs text-[var(--text-3)] mt-1 font-[var(--font-source-serif)] italic">
+                  <p className="text-xs text-[#DCE5EC] mt-1 italic">
                     Stories, thoughts and things left unsaid.
                   </p>
                 </div>
@@ -317,17 +311,17 @@ export function Navbar() {
                         href={item.href}
                         onClick={() => setDrawerOpen(false)}
                         className={cn(
-                          "flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all font-[var(--font-grotesk)] focus-visible:outline-2 focus-visible:outline-[var(--orchid)]",
+                          "flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all focus-visible:outline-2 focus-visible:outline-[#8CCDF2]",
                           active
-                            ? "bg-white/15 text-white font-semibold border border-white/20 shadow-xs"
-                            : "text-[var(--text-2)] hover:text-foreground hover:bg-white/10"
+                            ? "bg-white/20 text-white font-semibold border border-white/30 shadow-xs"
+                            : "text-[#DCE5EC] hover:text-white hover:bg-white/10"
                         )}
                       >
                         <span className="flex items-center gap-3">
-                          <Icon className="w-4 h-4 text-[var(--orchid)]" />
+                          <Icon className="w-4 h-4 text-[#8CCDF2]" />
                           <span>{item.label}</span>
                         </span>
-                        <ArrowRight className="w-3.5 h-3.5 opacity-60" />
+                        <ArrowRight className="w-3.5 h-3.5 opacity-70" />
                       </Link>
                     )
                   })}
@@ -336,30 +330,30 @@ export function Navbar() {
                   <Link
                     href="/rss.xml"
                     onClick={() => setDrawerOpen(false)}
-                    className="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all font-[var(--font-grotesk)] text-[var(--text-2)] hover:text-foreground hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-[var(--orchid)]"
+                    className="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all text-[#DCE5EC] hover:text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
                   >
                     <span className="flex items-center gap-3">
-                      <Rss className="w-4 h-4 text-[var(--orchid)]" />
+                      <Rss className="w-4 h-4 text-[#8CCDF2]" />
                       <span>RSS Feed</span>
                     </span>
-                    <ArrowRight className="w-3.5 h-3.5 opacity-60" />
+                    <ArrowRight className="w-3.5 h-3.5 opacity-70" />
                   </Link>
                 </nav>
 
                 {/* Mobile Admin Section */}
                 {adminReady && (
-                  <div className="mt-4 pt-4 border-t border-[var(--glass-border)] flex items-center gap-2">
+                  <div className="mt-4 pt-4 border-t border-white/15 flex items-center gap-2">
                     <Link
                       href="/dashboard"
                       onClick={() => setDrawerOpen(false)}
-                      className="flex-1 text-center py-2.5 rounded-xl border border-[var(--glass-border)] text-xs font-medium font-[var(--font-grotesk)] hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                      className="flex-1 text-center py-2.5 rounded-xl border border-white/20 text-xs font-medium text-white hover:bg-white/10 transition-colors"
                     >
                       Dashboard
                     </Link>
                     <Link
                       href="/editor"
                       onClick={() => setDrawerOpen(false)}
-                      className="flex-1 text-center py-2.5 rounded-xl bg-foreground text-background text-xs font-medium font-[var(--font-grotesk)] hover:opacity-90 transition-opacity"
+                      className="flex-1 text-center py-2.5 rounded-xl bg-white text-[#091825] text-xs font-medium hover:bg-[#F8FBFF] transition-colors"
                     >
                       Write Story
                     </Link>

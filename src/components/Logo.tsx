@@ -14,22 +14,27 @@ export function Logo({ href, size = "md", className, shine = false }: LogoProps)
   const logoText = (
     <span
       className={cn(
-        "group/logo inline-flex items-baseline select-none tracking-tight leading-none transition-all duration-300 font-normal",
+        "group/logo inline-flex items-baseline select-none tracking-tight leading-none transition-all duration-300 font-medium",
         size === "sm" && "text-xl",
         size === "md" && "text-2xl",
         size === "lg" && "text-3xl sm:text-4xl",
         size === "xl" && "text-4xl sm:text-5xl",
         className
       )}
-      style={{ fontFamily: "var(--font-instrument-serif)" }}
+      style={{
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif',
+      }}
     >
-      <span className={cn(
-        "transition-colors duration-300 text-[#F5F1EA] group-hover/logo:text-white",
-        shine && "gradient-shine"
-      )}>
+      <span
+        className={cn(
+          "transition-colors duration-300 text-white group-hover/logo:text-[#F8FBFF]",
+          shine && "gradient-shine"
+        )}
+      >
         bhvy
       </span>
-      <span className="text-[var(--orchid)] transition-transform duration-300 inline-block group-hover/logo:scale-125 group-hover/logo:drop-shadow-[0_0_8px_rgba(182,107,255,0.7)] ml-0.5">
+      <span className="text-[#8CCDF2] transition-transform duration-300 inline-block group-hover/logo:scale-125 group-hover/logo:drop-shadow-[0_0_10px_rgba(140,205,242,0.85)] ml-0.5 font-bold">
         .
       </span>
     </span>
@@ -37,7 +42,11 @@ export function Logo({ href, size = "md", className, shine = false }: LogoProps)
 
   if (href) {
     return (
-      <Link href={href} aria-label="bhvy. — home" className="inline-block focus-visible:outline-2 focus-visible:outline-[var(--orchid)] focus-visible:outline-offset-2 rounded-sm">
+      <Link
+        href={href}
+        aria-label="bhvy. — home"
+        className="inline-block focus-visible:outline-2 focus-visible:outline-[#8CCDF2] focus-visible:outline-offset-2 rounded-sm"
+      >
         {logoText}
       </Link>
     )

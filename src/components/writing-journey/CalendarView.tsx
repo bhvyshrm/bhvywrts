@@ -83,7 +83,7 @@ export default function CalendarView({ year, month, storiesByDate, selectedDate,
               const hasStories = dayStories.length > 0
               const isSelected = selectedDate === dateKey
               const accentColor = hasStories
-                ? parseStoryTags(dayStories[0].tags).accent || "var(--orchid)"
+                ? parseStoryTags(dayStories[0].tags).accent || "#8CCDF2"
                 : undefined
 
               return (
@@ -153,7 +153,7 @@ export default function CalendarView({ year, month, storiesByDate, selectedDate,
       {/* Legend */}
       <div className="flex items-center justify-center gap-4 mt-6 pt-4 border-t border-[var(--border)]">
         <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--orchid)]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#8CCDF2]" />
           <span className="text-[10px] text-[var(--muted)] font-[var(--font-grotesk)]">Writing day</span>
         </div>
         <div className="flex items-center gap-1.5">
