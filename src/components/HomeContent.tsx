@@ -63,7 +63,7 @@ export function HomeContent() {
       {/* 1. FLOATING NAVIGATION */}
       <Navbar />
 
-      <main id="main-content" className="relative min-h-screen text-foreground overflow-x-clip">
+      <main id="main-content" className="relative z-10 min-h-screen text-foreground overflow-x-clip">
         {/* 2. LONG COASTAL GLASS HERO BANNER */}
         <GalaxyHero
           featuredStory={featuredStory}

@@ -209,6 +209,31 @@
     background-color: transparent;
     overflow-x: hidden;
     transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Fixed Stationary Coastal Background (Scenic Pages) */
+  .bhvy-coastal-fixed-bg {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background-image: url("/images/bhvy-coastal-background.webp");
+    background-size: cover;
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+    transform: none !important;
+  }
+
+  @media (max-width: 767px) {
+    .bhvy-coastal-fixed-bg {
+      background-image: url("/images/bhvy-coastal-background-mobile.webp");
+      background-position: center 40%;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
