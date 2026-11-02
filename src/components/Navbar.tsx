@@ -77,9 +77,11 @@ export function Navbar() {
     }
   }, [drawerOpen])
 
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname)
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname)
     setDrawerOpen(false)
-  }, [pathname])
+  }
 
   useEffect(() => {
     const onScroll = () => {

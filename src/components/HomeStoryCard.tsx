@@ -9,13 +9,11 @@ import type { Story } from "@/types"
 
 interface HomeStoryCardProps {
   story: Story
-  index?: number
   priority?: boolean
 }
 
 export const HomeStoryCard = memo(function HomeStoryCard({
   story,
-  index = 0,
   priority = false,
 }: HomeStoryCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false)

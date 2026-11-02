@@ -57,7 +57,6 @@ export function HomeStoryArchive({ stories, loading = false }: HomeStoryArchiveP
             <HomeStoryCard
               key={story.id}
               story={story}
-              index={index}
               priority={index < 3}
             />
           ))}
