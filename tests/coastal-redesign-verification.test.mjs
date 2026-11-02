@@ -108,23 +108,24 @@ test("Mobile Reading Comfort: No heavy blur behind long text", () => {
   assert.ok(css.includes("backdrop-filter: none;"), "Reading glass must disable expensive backdrop-filter on mobile")
 })
 
-test("Homepage Structure: Navbar -> Hero -> Latest stories -> Collections -> Journey/About -> Footer", () => {
+test("Homepage Structure: Navbar -> Stationary Background -> Story Archive -> Minimal Footer", () => {
   const home = fs.readFileSync(path.join(ROOT, "src/components/HomeContent.tsx"), "utf-8")
 
-  const heroIndex = home.indexOf("<GalaxyHero")
-  const galleryIndex = home.indexOf("<GalaxyStoryGallery")
-  const collectionsIndex = home.indexOf("<GalaxyCollections")
-  const journeyIndex = home.indexOf("<GalaxyJourneyLink")
+  const navbarIndex = home.indexOf("<Navbar")
+  const bgIndex = home.indexOf("<GalaxyBackground")
+  const archiveIndex = home.indexOf("<HomeStoryArchive")
   const footerIndex = home.indexOf("<Footer")
 
-  assert.ok(heroIndex !== -1, "Hero must exist")
-  assert.ok(galleryIndex !== -1, "Latest stories gallery must exist")
-  assert.ok(collectionsIndex !== -1, "Collections must exist")
-  assert.ok(journeyIndex !== -1, "Journey/About link must exist")
-  assert.ok(footerIndex !== -1, "Footer must exist")
+  assert.ok(navbarIndex !== -1, "Navbar must exist on homepage")
+  assert.ok(bgIndex !== -1, "Stationary Background must exist on homepage")
+  assert.ok(archiveIndex !== -1, "Latest stories archive must exist on homepage")
+  assert.ok(footerIndex !== -1, "Minimal Footer must exist on homepage")
 
-  assert.ok(heroIndex < galleryIndex, "Hero must precede Latest stories")
-  assert.ok(galleryIndex < collectionsIndex, "Latest stories must precede Collections")
-  assert.ok(collectionsIndex < journeyIndex, "Collections must precede Journey/About")
-  assert.ok(journeyIndex < footerIndex, "Journey/About must precede Footer")
+  assert.ok(navbarIndex < archiveIndex, "Navbar must precede Story Archive")
+  assert.ok(archiveIndex < footerIndex, "Story Archive must precede Footer")
+
+  // Ensure non-archive sections are removed from homepage
+  assert.ok(!home.includes("<GalaxyHero"), "Hero banner must be removed from homepage")
+  assert.ok(!home.includes("<GalaxyCollections"), "Collections section must be removed from homepage")
+  assert.ok(!home.includes("<GalaxyJourneyLink"), "Journey/About link must be removed from homepage")
 })
