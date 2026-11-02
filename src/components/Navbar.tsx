@@ -37,6 +37,8 @@ export function Navbar() {
   const ticking = useRef(false)
   const lastScrollY = useRef(0)
   const drawerOpenRef = useRef(false)
+  const scrolledRef = useRef(false)
+  const hiddenRef = useRef(false)
 
   const isStoryPage = pathname.startsWith("/stories/") && pathname !== "/stories"
 
@@ -86,14 +88,23 @@ export function Navbar() {
           const currentY = window.scrollY
           const isScrolled = currentY > 20
 
-          setScrolled(isScrolled)
+          if (isScrolled !== scrolledRef.current) {
+            scrolledRef.current = isScrolled
+            setScrolled(isScrolled)
+          }
 
+          let nextHidden = hiddenRef.current
           if (drawerOpenRef.current || currentY < 60) {
-            setHidden(false)
+            nextHidden = false
           } else if (currentY > lastScrollY.current + 8) {
-            setHidden(true)
+            nextHidden = true
           } else if (currentY < lastScrollY.current - 8) {
-            setHidden(false)
+            nextHidden = false
+          }
+
+          if (nextHidden !== hiddenRef.current) {
+            hiddenRef.current = nextHidden
+            setHidden(nextHidden)
           }
 
           lastScrollY.current = currentY
