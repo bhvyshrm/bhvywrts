@@ -44,10 +44,13 @@ export function HomeStoryCard({ story, index = 0, priority = false }: HomeStoryC
     <Link
       href={`/stories/${encodeURIComponent(story.slug.trim())}`}
       aria-label={`Read story: ${story.title}`}
-      className="group flex flex-col h-full rounded-[22px] sm:rounded-[26px] overflow-hidden border border-white/15 bg-[#091825]/60 hover:bg-[#091825]/75 hover:border-white/30 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#8CCDF2] focus-visible:outline-offset-2 backdrop-blur-md max-md:backdrop-blur-none hover:shadow-[0_20px_50px_rgba(9,24,37,0.5)] md:hover:-translate-y-1"
+      className="group flex flex-col h-full rounded-[22px] sm:rounded-[26px] overflow-hidden border border-white/15 bg-[#091825]/65 hover:bg-[#091825]/85 hover:border-white/30 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-[#8CCDF2] focus-visible:outline-offset-2 backdrop-blur-md max-md:backdrop-blur-none hover:shadow-[0_20px_50px_rgba(9,24,37,0.5)] md:hover:-translate-y-1 select-none"
     >
       {/* 1. Cover Image or Visual Coastal Motif */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#091825] shrink-0 border-b border-white/10">
+        {/* Subtle Specular Top Reflection */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none z-20" />
+
         {hasImage ? (
           <>
             {!imageLoaded && (
@@ -85,13 +88,13 @@ export function HomeStoryCard({ story, index = 0, priority = false }: HomeStoryC
           </div>
         )}
 
-        {/* Ambient Top Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25 pointer-events-none" />
+        {/* Ambient Vignette for Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#091825]/90 via-black/20 to-black/25 pointer-events-none" />
 
         {/* Category Badge & Action Arrow Overlaid on Image */}
         <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between pointer-events-none z-10">
           {story.category ? (
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-[0.18em] font-medium text-[#8CCDF2] bg-[#091825]/80 border border-white/20 backdrop-blur-xs shadow-xs pointer-events-auto">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-[0.18em] font-medium text-[#8CCDF2] bg-[#091825]/85 border border-white/20 backdrop-blur-xs shadow-xs pointer-events-auto">
               {story.category}
             </span>
           ) : (
@@ -100,7 +103,7 @@ export function HomeStoryCard({ story, index = 0, priority = false }: HomeStoryC
 
           <div
             aria-hidden="true"
-            className="w-7 h-7 rounded-full bg-[#091825]/60 border border-white/20 flex items-center justify-center text-white/80 group-hover:text-white group-hover:border-white/40 group-hover:bg-[#091825]/80 transition-all pointer-events-auto shadow-xs"
+            className="w-7 h-7 rounded-full bg-[#091825]/60 border border-white/20 flex items-center justify-center text-white/80 group-hover:text-white group-hover:border-white/40 group-hover:bg-[#091825]/85 transition-all pointer-events-auto shadow-xs"
           >
             <ArrowUpRight className="w-3.5 h-3.5 text-[#8CCDF2] transition-transform md:group-hover:translate-x-0.5 md:group-hover:-translate-y-0.5" />
           </div>
@@ -108,7 +111,7 @@ export function HomeStoryCard({ story, index = 0, priority = false }: HomeStoryC
       </div>
 
       {/* 2. Story Details & Excerpt */}
-      <div className="flex flex-col flex-1 justify-between p-5 sm:p-6">
+      <div className="flex flex-col flex-1 justify-between p-5 sm:p-5.5">
         <div>
           {/* Metadata line: Reading Time & Publication Date */}
           <div className="flex items-center gap-2 text-[11px] text-[#DCE5EC]/70 font-[var(--font-grotesk)]">
@@ -125,7 +128,7 @@ export function HomeStoryCard({ story, index = 0, priority = false }: HomeStoryC
           </div>
 
           {/* Story Title */}
-          <h2 className="font-[var(--font-instrument-serif)] text-2xl sm:text-[25px] text-white font-normal leading-[1.22] tracking-tight group-hover:text-[#F8FBFF] mt-2.5 transition-colors">
+          <h2 className="font-[var(--font-instrument-serif)] text-2xl sm:text-[25px] text-white font-normal leading-[1.22] tracking-tight group-hover:text-[#F8FBFF] mt-2.5 transition-colors line-clamp-2">
             {story.title}
           </h2>
 

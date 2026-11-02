@@ -170,11 +170,11 @@ export function Navbar() {
           <nav
             className={cn(
               "relative flex items-center justify-between h-[52px] sm:h-14 md:h-[58px] px-3 sm:px-5 md:px-6 rounded-full transition-all duration-300",
-              "glass-pill border border-white/25 backdrop-blur-2xl shadow-[0_16px_45px_rgba(9,24,37,0.35)]",
+              "glass-pill border border-white/20 backdrop-blur-md shadow-[0_12px_36px_rgba(9,24,37,0.3)]",
               scrolled
-                ? "bg-[#091825]/85 border-white/30 shadow-[0_20px_50px_rgba(9,24,37,0.5)]"
-                : "bg-white/[0.14] dark:bg-[#091825]/50 hover:bg-[#091825]/70",
-              isStoryPage && "bg-[#091825]/75 backdrop-blur-xl opacity-95 hover:opacity-100"
+                ? "bg-[#091825]/90 border-white/25 shadow-[0_16px_40px_rgba(9,24,37,0.45)]"
+                : "bg-[#091825]/50 border-white/20 hover:bg-[#091825]/70",
+              isStoryPage && "bg-[#091825]/80 backdrop-blur-md opacity-95 hover:opacity-100"
             )}
           >
             {/* Left — Logo Wordmark */}
@@ -278,7 +278,7 @@ export function Navbar() {
               transition={{ type: "spring", stiffness: 350, damping: 32 }}
               className="fixed top-0 inset-x-0 z-[100] p-3 sm:p-4 md:hidden pointer-events-auto overscroll-contain"
             >
-              <div className="glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 shadow-2xl border border-white/25 bg-[#091825]/95 backdrop-blur-2xl max-w-md mx-auto">
+              <div className="glass-strong rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 shadow-2xl border border-white/20 bg-[#091825]/95 backdrop-blur-md max-w-md mx-auto">
                 <div className="flex items-center justify-between pb-4 border-b border-white/15">
                   <Logo href="/" size="sm" />
                   <button
