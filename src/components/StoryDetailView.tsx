@@ -278,7 +278,7 @@ function LockedStory({
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-[#000000] text-[#F8FBFF]">
       <Navbar />
 
       <main id="main-content" className="relative z-10 min-h-[calc(100vh-80px)] flex items-center justify-center px-4 sm:px-6 py-24">
@@ -296,7 +296,7 @@ function LockedStory({
             <span>All stories</span>
           </Link>
 
-          <div className="glass-strong rounded-[32px] p-8 md:p-11 text-center relative overflow-hidden border border-white/20 shadow-2xl">
+          <div className="bg-[#070709] rounded-[32px] p-8 md:p-11 text-center relative overflow-hidden border border-white/10 shadow-2xl">
             <motion.div
               initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -406,119 +406,36 @@ function StoryHero({
   onOpenFeedback,
 }: {
   story: Story
-  tags: ReturnType<typeof parseStoryTags>
+  tags: { mood?: string; collection?: string; accent?: string; coverPos?: { x: number; y: number } }
   readingMode: boolean
   onReadingMode: () => void
   onOpenFeedback: () => void
 }) {
-  const [imageLoaded, setImageLoaded] = useState(false)
-  const heroRef = useRef<HTMLDivElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  })
-
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.04])
-  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.5])
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 24])
-
-  const moodColor = tags.mood ? MOOD_COLORS[tags.mood as Mood] : undefined
-  const accentColor = tags.accent || moodColor || "#8CCDF2"
-
   return (
-    <div
-      ref={heroRef}
-      className="relative w-full overflow-hidden min-h-[520px] md:min-h-[580px] h-[58vh] max-h-[740px] flex flex-col justify-between"
-    >
-      {/* Layer 1: Full-width Cover Image with Motion */}
-      {story.coverImage ? (
-        <motion.div
-          initial={{ scale: 1.04, opacity: 0, filter: "blur(8px)" }}
-          animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            scale: heroScale,
-            opacity: heroOpacity,
-            y: heroY,
-          }}
-          className="absolute inset-0 w-full h-full pointer-events-none will-change-transform"
-        >
-          {!imageLoaded && <div className="absolute inset-0 skeleton" />}
-          <img
-            src={story.coverImage}
-            alt={story.title}
-            width={1920}
-            height={1080}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            onLoad={() => setImageLoaded(true)}
-            className={cn(
-              "w-full h-full object-cover transition-opacity duration-700",
-              imageLoaded ? "opacity-100" : "opacity-0"
-            )}
-            style={
-              tags.coverPos
-                ? { objectPosition: `${tags.coverPos.x}% ${tags.coverPos.y}%` }
-                : undefined
-            }
-          />
-        </motion.div>
-      ) : (
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `radial-gradient(ellipse at 50% 30%, ${moodColor || "rgba(140,205,242,0.22)"} 0%, transparent 75%)`,
-          }}
-        />
-      )}
+    <header className="relative w-full bg-[#000000] text-[#F8FBFF] pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-12 border-b border-white/10">
+      <div className="max-w-[1560px] 2xl:max-w-[1740px] mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        {/* Editorial Back to Stories Link */}
+        <div className="mb-6 sm:mb-8">
+          <Link
+            href="/stories"
+            className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[#DCE5EC]/70 hover:text-white transition-colors duration-200 font-[var(--font-grotesk)] font-medium"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-1 text-[#8CCDF2]" />
+            <span>Back to stories</span>
+          </Link>
+        </div>
 
-      {/* Top subtle vignette for Navbar and Back link */}
-      <div className="absolute top-0 inset-x-0 h-44 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-[1]" />
-
-      {/* Bottom Gradient Blending into Ambient Background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-base)] via-[var(--bg-base)]/85 via-45% to-transparent pointer-events-none z-[2]" />
-
-      {/* Top: Editorial Back to Stories Link */}
-      <div className="max-w-[1560px] 2xl:max-w-[1740px] mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-20 md:pt-24 z-10 relative">
-        <Link
-          href="/stories"
-          className="group inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-white/80 hover:text-white transition-colors duration-200 font-[var(--font-grotesk)] font-medium"
-        >
-          <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
-          <span>Back to stories</span>
-        </Link>
-      </div>
-
-      {/* Bottom: Anchored Aurora Glass Panel for Story Identity */}
-      <motion.div
-        initial={{ opacity: 0, y: 22 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-[1560px] 2xl:max-w-[1740px] mx-auto w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-8 md:pb-12 z-10 relative mt-auto"
-      >
-        <div className="glass-strong rounded-[28px] md:rounded-[36px] p-6 sm:p-8 md:p-10 lg:p-12 border border-white/25 shadow-2xl backdrop-blur-2xl bg-black/60 dark:bg-black/65 max-w-4xl">
-          {/* Category Chips & Meta */}
-          <div className="flex flex-wrap items-center gap-2 mb-3.5">
+        <div className="max-w-4xl">
+          {/* Category, Mood, Collection Chips */}
+          <div className="flex flex-wrap items-center gap-2 mb-4">
             {story.category && (
-              <span
-                className="text-[10px] uppercase tracking-[0.2em] font-medium font-[var(--font-grotesk)] px-3 py-1 rounded-full border border-white/25 text-white/95 bg-white/10 backdrop-blur-md"
-                style={{
-                  borderColor:
-                    accentColor !== "#8CCDF2"
-                      ? `${accentColor}50`
-                      : undefined,
-                  color:
-                    accentColor !== "#8CCDF2" ? accentColor : undefined,
-                }}
-              >
+              <span className="text-[10px] uppercase tracking-[0.2em] font-medium font-[var(--font-grotesk)] px-3 py-1 rounded-full border border-white/15 text-[#8CCDF2] bg-white/[0.04]">
                 {story.category}
               </span>
             )}
 
             {tags.mood && (
-              <span className="text-[10px] uppercase tracking-[0.2em] font-medium font-[var(--font-grotesk)] px-3 py-1 rounded-full border border-white/20 text-white/85 bg-black/35 backdrop-blur-md">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-medium font-[var(--font-grotesk)] px-3 py-1 rounded-full border border-white/10 text-[#DCE5EC]/80 bg-white/[0.02]">
                 {tags.mood}
               </span>
             )}
@@ -526,7 +443,7 @@ function StoryHero({
             {tags.collection && (
               <Link
                 href={`/collections/${encodeURIComponent(tags.collection.toLowerCase())}`}
-                className="text-[10px] uppercase tracking-[0.2em] font-medium font-[var(--font-grotesk)] px-3 py-1 rounded-full border border-white/20 text-white/85 hover:text-white hover:border-white/40 bg-black/35 backdrop-blur-md transition-colors"
+                className="text-[10px] uppercase tracking-[0.2em] font-medium font-[var(--font-grotesk)] px-3 py-1 rounded-full border border-white/15 text-[#DCE5EC] hover:text-white hover:border-white/30 bg-white/[0.04] transition-colors"
               >
                 {tags.collection}
               </Link>
@@ -534,28 +451,31 @@ function StoryHero({
           </div>
 
           {/* Editorial Title */}
-          <h1 className="font-[var(--font-instrument-serif)] text-3xl sm:text-4.5xl md:text-5xl lg:text-[56px] leading-[1.08] text-white tracking-tight drop-shadow-md">
+          <h1 className="font-[var(--font-instrument-serif)] text-3xl sm:text-4.5xl md:text-5xl lg:text-[56px] leading-[1.08] text-white tracking-tight">
             {story.title}
           </h1>
 
           {/* Subtitle */}
           {story.subtitle && (
-            <p className="mt-3 text-base sm:text-lg md:text-xl text-white/85 font-[var(--font-source-serif)] italic leading-relaxed max-w-2xl">
+            <p className="mt-3 text-base sm:text-lg md:text-xl text-[#DCE5EC]/85 font-[var(--font-source-serif)] italic leading-relaxed max-w-2xl">
               {story.subtitle}
             </p>
           )}
 
-          {/* Meta & 44px Circular Glass Actions Row */}
-          <div className="mt-6 pt-5 border-t border-white/15 flex flex-wrap items-center justify-between gap-4 text-xs text-white/80 font-[var(--font-grotesk)]">
+          {/* Meta & Actions Row */}
+          <div className="mt-6 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-[#667B8C] font-[var(--font-grotesk)]">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 tracking-wide">
               <span>{formatDate(story.createdAt)}</span>
-              <span className="text-white/40">·</span>
-              <span>{story.readingTime || 5} min read</span>
-              <span className="text-white/40">·</span>
-              <span className="text-white font-medium">by Bhavya</span>
+              <span className="text-white/20">&middot;</span>
+              <span className="inline-flex items-center gap-1 text-[#DCE5EC]/80">
+                <Clock className="w-3.5 h-3.5 text-[#8CCDF2]" />
+                {story.readingTime || 5} min read
+              </span>
+              <span className="text-white/20">&middot;</span>
+              <span className="text-[#DCE5EC] font-medium">by Bhavya</span>
             </div>
 
-            {/* 44px Circular Glass Action Buttons */}
+            {/* Action Buttons */}
             <div className="flex items-center gap-2 flex-wrap">
               <StoryLikeButton slug={story.slug} hero />
               <BookmarkButton id={story.id} hero />
@@ -564,7 +484,7 @@ function StoryHero({
                 onClick={onOpenFeedback}
                 aria-label="Write to the Author"
                 title="Write to the Author"
-                className="w-11 h-11 rounded-full border border-white/20 bg-black/40 backdrop-blur-md text-white/90 hover:text-white hover:bg-white/20 hover:border-white/40 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95 focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
+                className="w-10 h-10 rounded-full border border-white/15 bg-white/5 text-[#DCE5EC] hover:text-white hover:bg-white/10 hover:border-white/30 flex items-center justify-center transition-all cursor-pointer active:scale-95 focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
               >
                 <Mail className="w-4 h-4 text-[#8CCDF2]" />
               </button>
@@ -575,7 +495,7 @@ function StoryHero({
                   onClick={onReadingMode}
                   aria-label="Enter reading mode"
                   title="Reading mode"
-                  className="w-11 h-11 rounded-full border border-white/20 bg-black/40 backdrop-blur-md text-white/90 hover:text-white hover:bg-white/20 hover:border-white/40 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95 focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
+                  className="w-10 h-10 rounded-full border border-white/15 bg-white/5 text-[#DCE5EC] hover:text-white hover:bg-white/10 hover:border-white/30 flex items-center justify-center transition-all cursor-pointer active:scale-95 focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
                 >
                   <Maximize2 className="w-4 h-4" />
                 </button>
@@ -583,8 +503,26 @@ function StoryHero({
             </div>
           </div>
         </div>
-      </motion.div>
-    </div>
+
+        {/* Editorial Framed Cover Image (When present, framed as a clean photo without full-bleed background takeover) */}
+        {story.coverImage && (
+          <div className="mt-8 max-w-4xl rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 aspect-[16/9] sm:aspect-[21/9] bg-[#050505] relative">
+            <img
+              src={story.coverImage}
+              alt={story.title}
+              width={1600}
+              height={900}
+              className="w-full h-full object-cover"
+              style={
+                tags.coverPos
+                  ? { objectPosition: `${tags.coverPos.x}% ${tags.coverPos.y}%` }
+                  : undefined
+              }
+            />
+          </div>
+        )}
+      </div>
+    </header>
   )
 }
 
@@ -608,12 +546,26 @@ export function StoryDetailView({
   const [activeHeadingId, setActiveHeadingId] = useState<string>("")
   const setBgImage = useAmbientStore((s) => s.setBgImage)
 
-  // Set ambient background image
+  // Clear ambient background on story pages so pure AMOLED black is guaranteed
   useEffect(() => {
-    if (story?.coverImage) {
-      setBgImage(story.coverImage)
+    setBgImage(null)
+    return () => {
+      setBgImage(null)
     }
-  }, [story?.coverImage, setBgImage])
+  }, [setBgImage])
+
+  // Lock document and body background to pure AMOLED black (#000000)
+  useEffect(() => {
+    if (typeof document === "undefined") return
+    const prevHtmlBg = document.documentElement.style.backgroundColor
+    const prevBodyBg = document.body.style.backgroundColor
+    document.documentElement.style.backgroundColor = "#000000"
+    document.body.style.backgroundColor = "#000000"
+    return () => {
+      document.documentElement.style.backgroundColor = prevHtmlBg
+      document.body.style.backgroundColor = prevBodyBg
+    }
+  }, [])
 
   // Track reading history locally
   useEffect(() => {
@@ -705,14 +657,14 @@ export function StoryDetailView({
 
   if (!story) {
     return (
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-[#000000] text-[#F8FBFF]">
         <Navbar />
         <main id="main-content" className="pt-36 max-w-xl mx-auto px-6 py-20 text-center">
-          <div className="glass-card rounded-[32px] p-10 border border-white/20 shadow-xl">
-            <h1 className="text-3xl font-[var(--font-instrument-serif)] text-foreground">
+          <div className="bg-[#070709] rounded-[32px] p-10 border border-white/10 shadow-xl">
+            <h1 className="text-3xl font-[var(--font-instrument-serif)] text-white">
               Story not found
             </h1>
-            <p className="mt-3 text-sm text-[var(--text-3)] font-[var(--font-source-serif)]">
+            <p className="mt-3 text-sm text-[#667B8C] font-[var(--font-source-serif)]">
               The story you are looking for may have been moved or unpublished.
             </p>
             <Link
@@ -728,7 +680,7 @@ export function StoryDetailView({
   }
 
   return (
-    <div className={cn("min-h-screen relative", readingMode && "reading-mode")}>
+    <div className={cn("min-h-screen relative bg-[#000000] text-[#F8FBFF]", readingMode && "reading-mode")}>
       <ReadingProgress />
       {!readingMode && <Navbar />}
 
@@ -805,14 +757,14 @@ export function StoryDetailView({
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className={cn(
-                  "reading-glass rounded-[24px] sm:rounded-[32px] md:rounded-[36px] p-5 sm:p-8 md:p-14 border border-white/80 dark:border-white/20 shadow-2xl relative",
-                  readingMode && "bg-black/80 dark:bg-black/85 max-w-[780px] mx-auto"
+                  "bg-[#000000] text-[#F8FBFF] py-2 md:py-4 relative border-0 shadow-none",
+                  readingMode && "max-w-[780px] mx-auto"
                 )}
               >
                 {/* Story Prose Body with readable measure */}
                 <div
                   className={cn(
-                    "reading-prose max-w-[760px] mx-auto",
+                    "reading-prose max-w-[760px] mx-auto text-[#E6EFF7]",
                     readingMode && "reading-prose-large"
                   )}
                   dangerouslySetInnerHTML={{
@@ -821,8 +773,8 @@ export function StoryDetailView({
                 />
 
                 {/* Minimal Editorial Signature */}
-                <div className="mt-16 md:mt-24 pt-10 border-t border-[var(--glass-border)] text-center max-w-[760px] mx-auto">
-                  <p className="font-[var(--font-instrument-serif)] italic text-lg md:text-xl text-[var(--text-2)] leading-relaxed max-w-md mx-auto">
+                <div className="mt-16 md:mt-24 pt-10 border-t border-white/10 text-center max-w-[760px] mx-auto">
+                  <p className="font-[var(--font-instrument-serif)] italic text-lg md:text-xl text-[#DCE5EC]/80 leading-relaxed max-w-md mx-auto">
                     Thank you for reading this far.
                   </p>
                   <p className="font-[var(--font-great-vibes)] text-3.5xl md:text-4.5xl gradient-logo mt-4">
@@ -836,7 +788,7 @@ export function StoryDetailView({
                       type="button"
                       onClick={() => setFeedbackOpen(true)}
                       aria-label="Write to the Author"
-                      className="h-11 px-5 rounded-full border border-[var(--glass-border)] bg-[var(--glass-fill)] text-[var(--text-2)] hover:text-foreground hover:bg-white/10 flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95 text-xs font-[var(--font-grotesk)] font-medium backdrop-blur-md focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
+                      className="h-11 px-5 rounded-full border border-white/15 bg-white/5 text-[#DCE5EC] hover:text-white hover:bg-white/10 hover:border-white/30 flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95 text-xs font-[var(--font-grotesk)] font-medium focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
                     >
                       <Mail className="w-4 h-4 text-[#8CCDF2]" />
                       <span>Write to the Author</span>
@@ -857,13 +809,13 @@ export function StoryDetailView({
                       {prevStory ? (
                         <Link
                           href={`/stories/${prevStory.slug}`}
-                          className="group block p-5 rounded-[24px] glass border border-[var(--glass-border)] hover:bg-white/10 transition-all shadow-md"
+                          className="group block p-5 rounded-[22px] bg-[#070709] border border-white/10 hover:border-white/20 transition-all shadow-md"
                         >
-                          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[var(--text-3)] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[#667B8C] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
                             <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-1" />
                             Previous story
                           </span>
-                          <span className="font-[var(--font-instrument-serif)] text-lg text-foreground group-hover:text-[#8CCDF2] transition-colors mt-2 block line-clamp-2 leading-snug">
+                          <span className="font-[var(--font-instrument-serif)] text-lg text-[#F8FBFF] group-hover:text-[#8CCDF2] transition-colors mt-2 block line-clamp-2 leading-snug">
                             {prevStory.title}
                           </span>
                         </Link>
@@ -874,13 +826,13 @@ export function StoryDetailView({
                       {nextStory && (
                         <Link
                           href={`/stories/${nextStory.slug}`}
-                          className="group block p-5 rounded-[24px] glass border border-[var(--glass-border)] hover:bg-white/10 transition-all text-left sm:text-right shadow-md"
+                          className="group block p-5 rounded-[22px] bg-[#070709] border border-white/10 hover:border-white/20 transition-all text-left sm:text-right shadow-md"
                         >
-                          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[var(--text-3)] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[#667B8C] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
                             Next story
                             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                           </span>
-                          <span className="font-[var(--font-instrument-serif)] text-lg text-foreground group-hover:text-[#8CCDF2] transition-colors mt-2 block line-clamp-2 leading-snug">
+                          <span className="font-[var(--font-instrument-serif)] text-lg text-[#F8FBFF] group-hover:text-[#8CCDF2] transition-colors mt-2 block line-clamp-2 leading-snug">
                             {nextStory.title}
                           </span>
                         </Link>
@@ -891,8 +843,8 @@ export function StoryDetailView({
                   {/* More from bhvy. on mobile */}
                   {recommendedStories.length > 0 && (
                     <section className="pt-6">
-                      <div className="flex items-center justify-between pb-3 border-b border-[var(--glass-border)] mb-4">
-                        <h3 className="text-sm font-[var(--font-grotesk)] uppercase tracking-wider text-[var(--text-2)] font-medium">
+                      <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
+                        <h3 className="text-sm font-[var(--font-grotesk)] uppercase tracking-wider text-[#DCE5EC]/80 font-medium">
                           More from bhvy.
                         </h3>
                         <Link
@@ -907,9 +859,9 @@ export function StoryDetailView({
                           <Link
                             key={rec.id}
                             href={`/stories/${rec.slug}`}
-                            className="group block glass-card rounded-[22px] p-3.5 border border-[var(--glass-border)] hover:border-white/30 transition-all"
+                            className="group block bg-[#070709] rounded-[22px] p-3.5 border border-white/10 hover:border-white/20 transition-all"
                           >
-                            <div className="aspect-[16/10] rounded-[16px] overflow-hidden bg-black/40 mb-3 relative">
+                            <div className="aspect-[16/10] rounded-[16px] overflow-hidden bg-black mb-3 relative border border-white/5">
                               {rec.coverImage ? (
                                 <img
                                   src={rec.coverImage}
@@ -918,7 +870,7 @@ export function StoryDetailView({
                                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                               ) : (
-                                <div className="w-full h-full bg-gradient-to-br from-white/5 to-white/0" />
+                                <div className="w-full h-full bg-white/[0.03]" />
                               )}
                             </div>
                             {rec.category && (
@@ -926,10 +878,10 @@ export function StoryDetailView({
                                 {rec.category}
                               </p>
                             )}
-                            <h4 className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[#8CCDF2] transition-colors line-clamp-2 leading-snug">
+                            <h4 className="font-[var(--font-instrument-serif)] text-base text-[#F8FBFF] group-hover:text-[#8CCDF2] transition-colors line-clamp-2 leading-snug">
                               {rec.title}
                             </h4>
-                            <p className="text-[11px] text-[var(--text-3)] font-[var(--font-grotesk)] mt-2">
+                            <p className="text-[11px] text-[#667B8C] font-[var(--font-grotesk)] mt-2">
                               {formatDate(rec.createdAt)} · {rec.readingTime || 5} min read
                             </p>
                           </Link>
@@ -939,23 +891,23 @@ export function StoryDetailView({
                   )}
 
                   {/* Mobile RSS Card */}
-                  <div className="glass-card rounded-[24px] p-5 border border-[var(--glass-border)] flex items-center justify-between gap-4">
+                  <div className="bg-[#070709] rounded-[24px] p-5 border border-white/10 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
                       <div className="w-9 h-9 rounded-full bg-[#8CCDF2]/15 border border-[#8CCDF2]/30 flex items-center justify-center text-[#8CCDF2] shrink-0">
                         <Rss className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="font-[var(--font-instrument-serif)] text-base text-foreground">
+                        <p className="font-[var(--font-instrument-serif)] text-base text-[#F8FBFF]">
                           Follow new writing by RSS
                         </p>
-                        <p className="text-xs text-[var(--text-3)] font-[var(--font-source-serif)] italic">
+                        <p className="text-xs text-[#667B8C] font-[var(--font-source-serif)] italic">
                           Stay quietly in the loop.
                         </p>
                       </div>
                     </div>
                     <Link
                       href="/rss.xml"
-                      className="px-3.5 py-1.5 rounded-full text-xs font-[var(--font-grotesk)] font-medium bg-foreground text-background hover:opacity-90 transition-opacity shrink-0"
+                      className="px-3.5 py-1.5 rounded-full text-xs font-[var(--font-grotesk)] font-medium bg-[#F8FBFF] text-[#050505] hover:opacity-90 transition-opacity shrink-0"
                     >
                       RSS Feed
                     </Link>
@@ -969,17 +921,17 @@ export function StoryDetailView({
               <aside className="lg:col-span-4 min-w-0 hidden lg:block sticky top-24 space-y-6 max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar">
                 {/* 1. “More from bhvy.” (3 recommendations) */}
                 {recommendedStories.length > 0 && (
-                  <section className="glass-card rounded-[28px] p-5 xl:p-6 border border-[var(--glass-border)] shadow-lg">
-                    <div className="flex items-center justify-between pb-3.5 border-b border-[var(--glass-border)] mb-4">
+                  <section className="bg-[#070709] rounded-[24px] p-5 xl:p-6 border border-white/10 shadow-lg">
+                    <div className="flex items-center justify-between pb-3.5 border-b border-white/10 mb-4">
                       <div className="flex items-center gap-2">
                         <Sparkles className="w-3.5 h-3.5 text-[#8CCDF2]" />
-                        <h3 className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-2)] font-[var(--font-grotesk)] font-semibold">
+                        <h3 className="text-[11px] uppercase tracking-[0.22em] text-[#DCE5EC]/80 font-[var(--font-grotesk)] font-semibold">
                           More from bhvy.
                         </h3>
                       </div>
                       <Link
                         href="/stories"
-                        className="text-[11px] text-[var(--text-3)] hover:text-foreground transition-colors font-[var(--font-grotesk)]"
+                        className="text-[11px] text-[#667B8C] hover:text-[#F8FBFF] transition-colors font-[var(--font-grotesk)]"
                       >
                         All →
                       </Link>
@@ -990,9 +942,9 @@ export function StoryDetailView({
                         <Link
                           key={rec.id}
                           href={`/stories/${rec.slug}`}
-                          className="group flex gap-3.5 p-2 rounded-[20px] hover:bg-white/5 transition-all duration-300"
+                          className="group flex gap-3.5 p-2 rounded-[18px] hover:bg-white/5 transition-all duration-300"
                         >
-                          <div className="relative w-20 h-20 shrink-0 rounded-[16px] overflow-hidden bg-black/40 border border-white/15">
+                          <div className="relative w-20 h-20 shrink-0 rounded-[14px] overflow-hidden bg-black border border-white/10">
                             {rec.coverImage ? (
                               <img
                                 src={rec.coverImage}
@@ -1001,7 +953,7 @@ export function StoryDetailView({
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                               />
                             ) : (
-                              <div className="w-full h-full bg-gradient-to-br from-white/10 to-white/0 flex items-center justify-center">
+                              <div className="w-full h-full bg-white/[0.03] flex items-center justify-center">
                                 <BookOpen className="w-4 h-4 text-white/40" />
                               </div>
                             )}
@@ -1012,10 +964,10 @@ export function StoryDetailView({
                                 {rec.category}
                               </span>
                             )}
-                            <h4 className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[#8CCDF2] transition-colors line-clamp-2 leading-snug mt-0.5">
+                            <h4 className="font-[var(--font-instrument-serif)] text-base text-[#F8FBFF] group-hover:text-[#8CCDF2] transition-colors line-clamp-2 leading-snug mt-0.5">
                               {rec.title}
                             </h4>
-                            <p className="text-[10px] text-[var(--text-3)] font-[var(--font-grotesk)] mt-1.5 flex items-center gap-2">
+                            <p className="text-[10px] text-[#667B8C] font-[var(--font-grotesk)] mt-1.5 flex items-center gap-2">
                               <span>{formatDate(rec.createdAt)}</span>
                               <span>·</span>
                               <span>{rec.readingTime || 5} min read</span>
@@ -1029,10 +981,10 @@ export function StoryDetailView({
 
                 {/* 2. “In this story” (Table of Contents - only if meaningful headings) */}
                 {headings.length >= 2 && (
-                  <section className="glass-card rounded-[28px] p-5 xl:p-6 border border-[var(--glass-border)] shadow-lg">
-                    <div className="flex items-center gap-2 pb-3.5 border-b border-[var(--glass-border)] mb-3">
+                  <section className="bg-[#070709] rounded-[24px] p-5 xl:p-6 border border-white/10 shadow-lg">
+                    <div className="flex items-center gap-2 pb-3.5 border-b border-white/10 mb-3">
                       <ListOrdered className="w-3.5 h-3.5 text-[#8CCDF2]" />
-                      <h3 className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-2)] font-[var(--font-grotesk)] font-semibold">
+                      <h3 className="text-[11px] uppercase tracking-[0.22em] text-[#DCE5EC]/80 font-[var(--font-grotesk)] font-semibold">
                         In this story
                       </h3>
                     </div>
@@ -1049,7 +1001,7 @@ export function StoryDetailView({
                               h.level === 3 && "pl-6 text-[11px]",
                               active
                                 ? "bg-white/10 text-[#8CCDF2] font-semibold"
-                                : "text-[var(--text-2)] hover:text-foreground hover:bg-white/5"
+                                : "text-[#DCE5EC]/70 hover:text-[#F8FBFF] hover:bg-white/5"
                             )}
                           >
                             {h.text}
@@ -1062,21 +1014,21 @@ export function StoryDetailView({
 
                 {/* 3. “Continue reading” (Previous & Next story navigation) */}
                 {(prevStory || nextStory) && (
-                  <section className="glass-card rounded-[28px] p-5 xl:p-6 border border-[var(--glass-border)] shadow-lg space-y-3">
-                    <h3 className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-2)] font-[var(--font-grotesk)] font-semibold pb-2 border-b border-[var(--glass-border)]">
+                  <section className="bg-[#070709] rounded-[24px] p-5 xl:p-6 border border-white/10 shadow-lg space-y-3">
+                    <h3 className="text-[11px] uppercase tracking-[0.22em] text-[#DCE5EC]/80 font-[var(--font-grotesk)] font-semibold pb-2 border-b border-white/10">
                       Continue reading
                     </h3>
 
                     {prevStory && (
                       <Link
                         href={`/stories/${prevStory.slug}`}
-                        className="group block p-3.5 rounded-[20px] bg-black/20 hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-200"
+                        className="group block p-3.5 rounded-[18px] bg-black/40 hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-200"
                       >
-                        <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-[var(--text-3)] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
+                        <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-[#667B8C] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
                           <ArrowLeft className="w-3 h-3 transition-transform group-hover:-translate-x-0.5" />
                           Previous story
                         </span>
-                        <span className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[#8CCDF2] transition-colors mt-1 block line-clamp-1 leading-snug">
+                        <span className="font-[var(--font-instrument-serif)] text-base text-[#F8FBFF] group-hover:text-[#8CCDF2] transition-colors mt-1 block line-clamp-1 leading-snug">
                           {prevStory.title}
                         </span>
                       </Link>
@@ -1085,13 +1037,13 @@ export function StoryDetailView({
                     {nextStory && (
                       <Link
                         href={`/stories/${nextStory.slug}`}
-                        className="group block p-3.5 rounded-[20px] bg-black/20 hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-200"
+                        className="group block p-3.5 rounded-[18px] bg-black/40 hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-200"
                       >
-                        <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-[var(--text-3)] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
+                        <span className="inline-flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em] text-[#667B8C] group-hover:text-[#8CCDF2] transition-colors font-[var(--font-grotesk)] font-medium">
                           Next story
                           <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
                         </span>
-                        <span className="font-[var(--font-instrument-serif)] text-base text-foreground group-hover:text-[#8CCDF2] transition-colors mt-1 block line-clamp-1 leading-snug">
+                        <span className="font-[var(--font-instrument-serif)] text-base text-[#F8FBFF] group-hover:text-[#8CCDF2] transition-colors mt-1 block line-clamp-1 leading-snug">
                           {nextStory.title}
                         </span>
                       </Link>
@@ -1100,23 +1052,23 @@ export function StoryDetailView({
                 )}
 
                 {/* 4. Small RSS Callout */}
-                <div className="glass-card rounded-[24px] p-5 border border-[var(--glass-border)] shadow-md flex items-center justify-between gap-3">
+                <div className="bg-[#070709] rounded-[24px] p-5 border border-white/10 shadow-md flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-[#8CCDF2]/15 border border-[#8CCDF2]/30 flex items-center justify-center text-[#8CCDF2] shrink-0">
                       <Rss className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="font-[var(--font-instrument-serif)] text-base text-foreground">
+                      <p className="font-[var(--font-instrument-serif)] text-base text-[#F8FBFF]">
                         Follow new writing by RSS
                       </p>
-                      <p className="text-[11px] text-[var(--text-3)] font-[var(--font-source-serif)] italic">
+                      <p className="text-[11px] text-[#667B8C] font-[var(--font-source-serif)] italic">
                         Quiet updates in your feed reader.
                       </p>
                     </div>
                   </div>
                   <Link
                     href="/rss.xml"
-                    className="px-3.5 py-1.5 rounded-full text-xs font-[var(--font-grotesk)] font-medium bg-foreground text-background hover:opacity-90 active:scale-95 transition-all shrink-0 cursor-pointer shadow-xs"
+                    className="px-3.5 py-1.5 rounded-full text-xs font-[var(--font-grotesk)] font-medium bg-[#F8FBFF] text-[#050505] hover:opacity-90 active:scale-95 transition-all shrink-0 cursor-pointer shadow-xs"
                   >
                     /rss.xml
                   </Link>
