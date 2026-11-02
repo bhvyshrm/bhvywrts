@@ -48,22 +48,22 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "bhvy. — A Digital Journal",
+    default: "bhvy. — Digital Journal",
     template: "%s — bhvy.",
   },
   description:
-    "A personal writing sanctuary. Stories, fragments, and quiet thoughts from a mind that never quite runs out of words.",
-  keywords: ["bhvy.", "bhvy", "Bhavya Writes", "stories", "journal", "writing", "poetry", "thoughts"],
+    "Stories, thoughts, and fragments of life — collected in one quiet corner of the internet.",
+  keywords: ["bhvy.", "bhvy", "digital journal", "stories", "writing", "essays"],
   openGraph: {
     type: "website",
     siteName: "bhvy.",
-    title: "bhvy. — A Digital Journal",
-    description: "A personal digital journal. Stories, fragments, and quiet thoughts from a mind that never quite runs out of words.",
+    title: "bhvy. — Digital Journal",
+    description: "Stories, thoughts, and fragments of life — collected in one quiet corner of the internet.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "bhvy. — A Digital Journal",
-    description: "A personal digital journal. Stories, fragments, and quiet thoughts.",
+    title: "bhvy. — Digital Journal",
+    description: "Stories, thoughts, and fragments of life — collected in one quiet corner of the internet.",
   },
 }
 
@@ -86,7 +86,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`dark ${inter.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable} ${sourceSerif.variable} ${greatVibes.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-screen antialiased bg-background text-foreground">
+      <body className="min-h-screen antialiased bg-transparent text-foreground">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-full focus:bg-[#8CCDF2] focus:text-[#091825] focus:font-semibold focus:shadow-lg focus:outline-none"

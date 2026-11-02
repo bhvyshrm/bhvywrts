@@ -133,19 +133,19 @@
 
   color-scheme: dark;
 
-  /* Moods */
-  --mood-dreams: #b66bff;
-  --mood-moonlight: #8e5bce;
-  --mood-silence: #77737e;
+  /* Moods — Coastal Palette */
+  --mood-dreams: #8ccdf2;
+  --mood-moonlight: #176b9c;
+  --mood-silence: #667b8c;
   --mood-nature: #34d399;
-  --mood-heartbreak: #e8a5cf;
-  --mood-hope: #fbbf24;
-  --mood-philosophy: #b66bff;
-  --mood-rain: #8e5bce;
-  --mood-nostalgia: #e8a5cf;
-  --mood-calm: #8e5bce;
-  --mood-mystery: #b66bff;
-  --mood-adventure: #f97316;
+  --mood-heartbreak: #8ccdf2;
+  --mood-hope: #8ccdf2;
+  --mood-philosophy: #176b9c;
+  --mood-rain: #123d5a;
+  --mood-nostalgia: #dce5ec;
+  --mood-calm: #176b9c;
+  --mood-mystery: #123d5a;
+  --mood-adventure: #8ccdf2;
 }
 
 
@@ -204,11 +204,11 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
-    background-color: var(--background);
+    background-color: transparent;
     overflow-x: hidden;
-    transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   h1, h2, h3, h4, h5, h6 {

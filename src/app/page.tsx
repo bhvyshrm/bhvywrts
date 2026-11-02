@@ -2,25 +2,25 @@ import type { Metadata } from "next"
 import { HomeContent } from "@/components/HomeContent"
 
 export const metadata: Metadata = {
-  title: "bhvy. — A Digital Journal",
+  title: "bhvy. — Digital Journal",
   description:
-    "A personal digital journal of stories, fragments, and quiet thoughts from a mind that never quite runs out of words.",
+    "Stories, thoughts, and fragments of life — collected in one quiet corner of the internet.",
   alternates: {
     canonical: "https://bhvywrts.vercel.app",
   },
   openGraph: {
     type: "website",
     url: "https://bhvywrts.vercel.app",
-    title: "bhvy. — A Digital Journal",
+    title: "bhvy. — Digital Journal",
     description:
-      "A personal digital journal of stories, fragments, and quiet thoughts by Bhavya.",
+      "Stories, thoughts, and fragments of life — collected in one quiet corner of the internet.",
     siteName: "bhvy.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "bhvy. — A Digital Journal",
+    title: "bhvy. — Digital Journal",
     description:
-      "A personal digital journal of stories, fragments, and quiet thoughts by Bhavya.",
+      "Stories, thoughts, and fragments of life — collected in one quiet corner of the internet.",
   },
 }
 
@@ -28,10 +28,10 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "bhvy.",
-  alternateName: "Bhavya Writes",
+  alternateName: "bhvy",
   url: "https://bhvywrts.vercel.app",
   description:
-    "A personal digital journal of stories, fragments, and quiet thoughts.",
+    "Stories, thoughts, and fragments of life — collected in one quiet corner of the internet.",
   author: {
     "@type": "Person",
     name: "Bhavya",
