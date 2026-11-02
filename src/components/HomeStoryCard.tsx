@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, memo } from "react"
 import Link from "next/link"
 import { Clock, ArrowUpRight, BookOpen } from "lucide-react"
 import { parseStoryTags } from "@/lib/constants"
@@ -13,7 +13,11 @@ interface HomeStoryCardProps {
   priority?: boolean
 }
 
-export function HomeStoryCard({ story, index = 0, priority = false }: HomeStoryCardProps) {
+export const HomeStoryCard = memo(function HomeStoryCard({
+  story,
+  index = 0,
+  priority = false,
+}: HomeStoryCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imageFailed, setImageFailed] = useState(false)
 
@@ -60,6 +64,8 @@ export function HomeStoryCard({ story, index = 0, priority = false }: HomeStoryC
               src={story.coverImage!}
               alt=""
               role="presentation"
+              width={600}
+              height={375}
               loading={priority ? "eager" : "lazy"}
               fetchPriority={priority ? "high" : "auto"}
               decoding="async"
@@ -148,4 +154,4 @@ export function HomeStoryCard({ story, index = 0, priority = false }: HomeStoryC
       </div>
     </Link>
   )
-}
+})
