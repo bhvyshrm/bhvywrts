@@ -25,9 +25,9 @@ export function GalaxyHero({ featuredStory, loading = false, onScrollToGallery }
   }, [])
 
   return (
-    <section className="relative z-10 w-full pt-28 sm:pt-32 md:pt-36 pb-14 sm:pb-18 md:pb-24 galaxy-container min-h-[82vh] md:min-h-[88vh] flex flex-col justify-center">
+    <section className="relative z-10 w-full pt-24 sm:pt-30 md:pt-36 pb-10 sm:pb-16 md:pb-20 galaxy-container flex flex-col justify-center">
       {/* Long Immersive Coastal Glass Banner */}
-      <div className="relative w-full rounded-[32px] sm:rounded-[40px] md:rounded-[48px] border border-white/20 sm:border-white/25 bg-white/[0.08] dark:bg-[#091825]/40 backdrop-blur-2xl shadow-[0_30px_90px_rgba(9,24,37,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.4)] p-7 sm:p-10 md:p-14 lg:p-16 overflow-hidden">
+      <div className="relative w-full rounded-[28px] sm:rounded-[36px] md:rounded-[48px] border border-white/20 sm:border-white/25 bg-white/[0.08] dark:bg-[#091825]/45 backdrop-blur-2xl shadow-[0_24px_70px_rgba(9,24,37,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.4)] p-6 sm:p-9 md:p-14 lg:p-16 overflow-hidden">
         {/* Subtle Specular Top Highlight */}
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
 
@@ -42,7 +42,7 @@ export function GalaxyHero({ featuredStory, loading = false, onScrollToGallery }
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
           {/* Left Column: Brand Eyebrow, Main Editorial Headline & Supporting Copy */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-5 sm:space-y-6">
             {/* Eyebrow Pill */}
             <motion.div
               initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -8 }}
@@ -64,9 +64,9 @@ export function GalaxyHero({ featuredStory, loading = false, onScrollToGallery }
               initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reducedMotion ? { duration: 0 } : { duration: 0.8, delay: 0.1, ease: GALAXY_EASING.editorial }}
-              className="space-y-4"
+              className="space-y-3.5 sm:space-y-4"
             >
-              <h1 className="font-[var(--font-instrument-serif)] text-[32px] min-[360px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7.5xl text-white font-normal tracking-[-0.025em] leading-[1.04] select-none text-balance drop-shadow-[0_4px_24px_rgba(9,24,37,0.5)]">
+              <h1 className="font-[var(--font-instrument-serif)] text-[32px] min-[360px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7.5xl text-white font-normal tracking-[-0.025em] leading-[1.06] select-none text-balance drop-shadow-[0_4px_24px_rgba(9,24,37,0.5)]">
                 Some things are better left between the lines.
               </h1>
               <p className="max-w-xl text-sm sm:text-base md:text-lg text-[#DCE5EC] leading-relaxed text-balance drop-shadow-sm font-normal">
@@ -79,7 +79,7 @@ export function GalaxyHero({ featuredStory, loading = false, onScrollToGallery }
               initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reducedMotion ? { duration: 0 } : { duration: 0.7, delay: 0.2, ease: GALAXY_EASING.editorial }}
-              className="flex flex-wrap items-center gap-4 pt-2"
+              className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 sm:pt-2"
             >
               <button
                 type="button"
@@ -99,8 +99,8 @@ export function GalaxyHero({ featuredStory, loading = false, onScrollToGallery }
             </motion.div>
           </div>
 
-          {/* Right Column: Asymmetrical Editorial Floating Glass Detail */}
-          <div className="lg:col-span-5">
+          {/* Right Column: Asymmetrical Editorial Floating Glass Detail (Desktop Viewports >= 1024px) */}
+          <div className="hidden lg:block lg:col-span-5">
             {featuredStory ? (
               <motion.div
                 initial={reducedMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}

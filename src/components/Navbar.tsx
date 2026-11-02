@@ -242,7 +242,7 @@ export function Navbar() {
                 aria-label={drawerOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={drawerOpen}
                 aria-controls="mobile-nav-panel"
-                className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/25 bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
+                className="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/25 bg-white/10 text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[#8CCDF2]"
               >
                 {drawerOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
