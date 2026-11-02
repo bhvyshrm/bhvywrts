@@ -1,104 +1,61 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 
 interface AmbientBackgroundProps {
   coverImage?: string | null
 }
 
-export function AmbientBackground({ coverImage: _coverImage }: AmbientBackgroundProps) {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+export function AmbientBackground({ coverImage }: AmbientBackgroundProps) {
+  const pathname = usePathname()
 
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-    setPrefersReducedMotion(media.matches)
-    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
-    media.addEventListener("change", listener)
-    return () => media.removeEventListener("change", listener)
-  }, [])
+  // On the home page, GalaxyBackground provides the dedicated coastal background
+  if (pathname === "/") {
+    return null
+  }
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none -z-10 overflow-hidden select-none bg-[var(--bg-base)]"
+      className="fixed inset-0 pointer-events-none -z-10 overflow-hidden select-none bg-[#091825]"
       aria-hidden="true"
     >
-      {/* LAYER 1: Subtle Coastal Landscape Continuity Backdrop */}
-      <div className="absolute inset-0 opacity-25 pointer-events-none overflow-hidden">
-        <picture>
-          <source
-            media="(max-width: 767px)"
-            srcSet="/images/coastal-wallpaper-mobile.webp"
-            type="image/webp"
-          />
-          <source
-            srcSet="/images/coastal-wallpaper.webp"
-            type="image/webp"
-          />
+      {/* LAYER 1: Coastal Wallpaper Backdrop for subpages */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {coverImage ? (
           <img
-            src="/images/coastal-wallpaper.jpg"
+            src={coverImage}
             alt=""
             role="presentation"
-            className="w-full h-full object-cover object-[center_65%] filter blur-[1px]"
+            className="w-full h-full object-cover opacity-20 filter blur-md"
           />
-        </picture>
+        ) : (
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcSet="/images/bhvy-coastal-background-mobile.webp"
+              type="image/webp"
+            />
+            <source
+              srcSet="/images/bhvy-coastal-background.webp"
+              type="image/webp"
+            />
+            <img
+              src="/images/bhvy-coastal-background.webp"
+              alt=""
+              role="presentation"
+              className="w-full h-full object-cover object-[center_50%] sm:object-[center_60%] opacity-85"
+            />
+          </picture>
+        )}
       </div>
 
-      {/* LAYER 2: Flowing Liquid Gradients (Fluid Atmospheric Shapes) */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Shape 1: Upper-Left Deep Aqua & Soft Teal Atmosphere */}
-        <div
-          className={`absolute -top-[18%] -left-[12%] w-[72vw] max-w-[1100px] h-[68vh] max-h-[920px] min-w-[460px] min-h-[460px] rounded-full blur-[100px] sm:blur-[140px] will-change-transform ${
-            prefersReducedMotion ? "" : "animate-aqua-flow-1"
-          }`}
-          style={{ background: "var(--flow-grad-1)" }}
-        />
-
-        {/* Shape 2: Upper-Right Cool Blue & Muted Cyan Atmosphere */}
-        <div
-          className={`absolute -top-[8%] -right-[14%] w-[68vw] max-w-[1050px] h-[64vh] max-h-[880px] min-w-[440px] min-h-[440px] rounded-full blur-[105px] sm:blur-[145px] will-change-transform ${
-            prefersReducedMotion ? "" : "animate-aqua-flow-2"
-          }`}
-          style={{ background: "var(--flow-grad-2)" }}
-        />
-
-        {/* Shape 3: Mid-Depth Flow (Soft Aqua with tiny whisper of Lavender) */}
-        <div
-          className={`hidden sm:block absolute top-[30%] left-[10%] w-[62vw] max-w-[950px] h-[56vh] max-h-[800px] min-w-[400px] min-h-[400px] rounded-full blur-[115px] sm:blur-[155px] will-change-transform ${
-            prefersReducedMotion ? "" : "animate-aqua-flow-3"
-          }`}
-          style={{ background: "var(--flow-grad-3)" }}
-        />
-
-        {/* Shape 4: Lower Oceanic Depth (Deep Aqua Ocean Foundation) */}
-        <div
-          className={`absolute -bottom-[16%] left-[6%] w-[80vw] max-w-[1200px] h-[64vh] max-h-[880px] min-w-[480px] min-h-[480px] rounded-full blur-[105px] sm:blur-[145px] will-change-transform ${
-            prefersReducedMotion ? "" : "animate-aqua-flow-4"
-          }`}
-          style={{ background: "var(--flow-grad-4)" }}
-        />
-
-        {/* LAYER 3: Subtle Light Refraction (Translucent Caustic Highlight) */}
-        <div
-          className={`absolute top-[6%] left-[8%] w-[44vw] max-w-[640px] h-[30vh] max-h-[420px] rounded-full blur-[90px] sm:blur-[120px] will-change-transform ${
-            prefersReducedMotion ? "" : "animate-aqua-refraction"
-          }`}
-          style={{ background: "var(--flow-grad-refraction)" }}
-        />
-      </div>
-
-      {/* LAYER 4: Monochromatic Micro-Noise Texture */}
+      {/* LAYER 2: Subtle Top and Bottom Vignette for reading focus & navbar legibility */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          opacity: "var(--flow-noise-opacity)",
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+          background:
+            "linear-gradient(to bottom, rgba(9, 24, 37, 0.40) 0%, rgba(9, 24, 37, 0.15) 30%, rgba(9, 24, 37, 0.35) 70%, rgba(9, 24, 37, 0.85) 100%)",
         }}
-      />
-
-      {/* LAYER 5: Soft Vignette Gradient for Text Legibility & Reading Focus */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "var(--flow-vignette)" }}
       />
     </div>
   )
