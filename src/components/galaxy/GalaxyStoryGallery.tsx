@@ -27,7 +27,10 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
   const containerRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
-  const [reducedMotion, setReducedMotion] = useState(false)
+  const [reducedMotion, setReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  })
   const [activeCardIndex, setActiveCardIndex] = useState(0)
 
   const { scrollYProgress } = useScroll({
@@ -49,7 +52,6 @@ export function GalaxyStoryGallery({ stories, loading = false }: GalaxyStoryGall
       setMounted(true)
     })
     const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-    setReducedMotion(media.matches)
     const listener = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
     media.addEventListener("change", listener)
     return () => {

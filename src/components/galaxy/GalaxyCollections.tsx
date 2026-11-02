@@ -63,7 +63,7 @@ export function GalaxyCollections({ stories }: GalaxyCollectionsProps) {
           <Link
             key={col.name}
             href={getCollectionHref(col.name)}
-            className="group block relative overflow-hidden rounded-[26px] border border-white/20 hover:border-white/40 bg-white/[0.10] dark:bg-[#091825]/45 hover:bg-white/[0.16] dark:hover:bg-[#091825]/60 hover:shadow-[0_20px_50px_rgba(9,24,37,0.4),0_0_24px_rgba(140,205,242,0.15)] p-6 sm:p-7 transition-all duration-400 focus-visible:outline-2 focus-visible:outline-[#8CCDF2] cursor-pointer backdrop-blur-xl shadow-[0_16px_40px_rgba(9,24,37,0.35)]"
+            className="group block relative overflow-hidden rounded-[26px] border border-white/20 hover:border-white/40 bg-white/[0.10] dark:bg-[#091825]/45 hover:bg-white/[0.16] dark:hover:bg-[#091825]/60 hover:shadow-[0_20px_50px_rgba(9,24,37,0.4),0_0_24px_rgba(140,205,242,0.15)] p-6 sm:p-7 transition-all duration-400 focus-visible:outline-2 focus-visible:outline-[#8CCDF2] cursor-pointer backdrop-blur-xl shadow-[0_16px_40px_rgba(9,24,37,0.35)] active:scale-[0.98]"
           >
             {/* Top specular reflection */}
             <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />

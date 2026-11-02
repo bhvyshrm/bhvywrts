@@ -52,6 +52,7 @@ export function GalaxyStoryCard({
           "bg-white/[0.10] dark:bg-[#091825]/45 backdrop-blur-xl",
           "shadow-[0_16px_40px_rgba(9,24,37,0.35),inset_0_1px_1px_rgba(255,255,255,0.35)]",
           "group-hover:border-white/40 group-hover:bg-white/[0.16] dark:group-hover:bg-[#091825]/60 group-hover:shadow-[0_24px_60px_rgba(9,24,37,0.45),0_0_24px_rgba(140,205,242,0.18)]",
+          "active:scale-[0.98]",
           isActive ? "border-white/50 shadow-[0_28px_70px_rgba(9,24,37,0.55)]" : ""
         )}
       >
