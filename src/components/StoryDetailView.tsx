@@ -469,7 +469,7 @@ function StoryHero({
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: `radial-gradient(ellipse at 50% 30%, ${moodColor || "rgba(232,121,249,0.22)"} 0%, transparent 75%)`,
+            background: `radial-gradient(ellipse at 50% 30%, ${moodColor || "rgba(140,205,242,0.22)"} 0%, transparent 75%)`,
           }}
         />
       )}
@@ -805,7 +805,7 @@ export function StoryDetailView({
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className={cn(
-                  "reading-glass rounded-[32px] md:rounded-[36px] p-6 sm:p-9 md:p-14 border border-white/80 dark:border-white/20 shadow-2xl relative",
+                  "reading-glass rounded-[24px] sm:rounded-[32px] md:rounded-[36px] p-5 sm:p-8 md:p-14 border border-white/80 dark:border-white/20 shadow-2xl relative",
                   readingMode && "bg-black/80 dark:bg-black/85 max-w-[780px] mx-auto"
                 )}
               >

@@ -107,11 +107,11 @@ export function CollectionsView() {
                   >
                     <Link
                       href={`/collections/${encodeURIComponent(collection.toLowerCase())}`}
-                      className="group block h-full focus-visible:outline-none"
+                      className="group block h-full focus-visible:outline-none active:scale-[0.98] transition-transform"
                     >
-                      <div className="glass-card overflow-hidden h-full rounded-[32px] border border-[var(--glass-border)] group-hover:border-white/30 transition-all duration-500 shadow-lg flex flex-col justify-between">
+                      <div className="glass-card overflow-hidden h-full rounded-[28px] sm:rounded-[32px] border border-[var(--glass-border)] group-hover:border-white/30 transition-all duration-500 shadow-lg flex flex-col justify-between">
                         {/* Book Cover Image Area */}
-                        <div className="relative aspect-[16/10] overflow-hidden bg-[#09090c]">
+                        <div className="relative aspect-[16/10] overflow-hidden bg-[#091825]">
                           {firstStory?.coverImage ? (
                             <img
                               src={firstStory.coverImage}
@@ -123,7 +123,7 @@ export function CollectionsView() {
                           ) : (
                             <div
                               className="w-full h-full"
-                              style={{ background: `linear-gradient(140deg, ${accent}25 0%, #07060b 80%)` }}
+                              style={{ background: `linear-gradient(140deg, ${accent}25 0%, #091825 80%)` }}
                             />
                           )}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/15" />
